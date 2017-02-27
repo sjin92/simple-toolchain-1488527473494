@@ -19,7 +19,7 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 git clone https://github.com/Nexsign/Demo-RP.git
 ```
 
-**4. ```cd``` into this newly created directory**
+**4.** ```cd``` **into this newly created directory**
 
 **5. Open the ```mainfest.yml``` file and change the ```host``` value to something unique.**
 
