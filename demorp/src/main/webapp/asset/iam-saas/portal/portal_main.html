@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div>
+    <img src="../img/main_page_sample.png" />
+</div>
+
+<div class="current-time">
+    <span class="date">September. 19, 2016</span><br />
+    <span class="time">00:00</span>
+</div>
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+    var callback = {
+            successFunc: function( data ) { // jshint ignore:line
+                if ( data.PC_LOG_OFF === true || data.PC_LOG_OFF === 'true' ) {
+                    location.replace( commonJs.PAGE_LIST.PC_LOGIN );
+                }
+            },
+            errorFunc: function() {
+                // Do nothing.
+            }
+        };
+
+    setInterval( function() {
+        commonAjax( commonJs.PAGE_LIST.PC_OFF_CHECK, 'a', 'GET', callback );
+    }, 3000 * 1 );
+
+    setInterval( function() {
+        var month = new Array(),
+            now = new Date(),
+            dateStr,
+            timeStr;
+
+        month[0] = "January";
+        month[1] = "February";
+        month[2] = "March";
+        month[3] = "April";
+        month[4] = "May";
+        month[5] = "June";
+        month[6] = "July";
+        month[7] = "August";
+        month[8] = "September";
+        month[9] = "October";
+        month[10] = "November";
+        month[11] = "December";
+
+        dateStr = month[ now.getMonth() ] + '. ' + now.getDate() + ', ' + now.getFullYear();
+        timeStr = ( now.getHours() < 10 ? '0' + now.getHours() : now.getHours() ) +
+            ':' + ( now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes() );
+
+        $( '.current-time span.date' ).text( dateStr );
+        $( '.current-time span.time' ).text( timeStr );
+    }, 1000 * 1 );
+} );
+</script>
+</body>
+</html>

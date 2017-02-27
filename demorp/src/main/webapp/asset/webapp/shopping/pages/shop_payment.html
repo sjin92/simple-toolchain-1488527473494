@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <title>FIDO Demo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../common/css/default.css">
+  <link rel="stylesheet" href="../../common/css/common.css">  
+  <link rel="stylesheet" href="../../common/lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../common/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../common/lib/bootstrap/css/w3.css">  
+  
+  <link rel="stylesheet" href="../css/shopping-common.css">
+  
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+<style>
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+}
+
+.modal-header {
+	color: black !important;
+}
+
+.modal-body {
+	color: black !important;
+}
+
+.img-area {
+   float: left;
+   width: 125px;
+   /* height: 160px; */
+   border-radius: 8px;
+   border-style: solid;
+   border-width: 2px;
+   border-color: lightgray;
+   -webkit-filter: grayscale(80%);
+}  
+ 
+.text-area {
+   /* float: left; */
+ 	text-align: left;
+	padding-left: 140px;
+	padding-top: 20px;
+	color: #929292;
+}
+ 
+.selected {
+/* border-color: #6FFF91; */  
+   -webkit-filter: brightness(105%);
+}
+</style>
+  
+</head>
+<body class="w3-content" style="max-width:1600px" id="myHome" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<!-- Sidenav/menu -->
+<nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index:3;width:250px;"><br>
+
+  <a href="#" class="w3-padding nav-link" onclick="goPolicySetting();">POLICY SETTING</a>
+  <a href="#" class="w3-padding nav-link" onclick="moveMainPage();">Demo Main</a>
+   
+</nav>
+
+<!-- Overlay effect when opening sidenav on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  <!-- Header -->
+  <header class="w3-container w3-top">
+    <!-- <span style="float:left; width:30px; color:rgb(3, 142, 209);">|</span> -->
+    <span style="float:left;"><i class="fa fa-home" aria-hidden="true" style="font-size:32px; padding-top:10px; cursor:pointer;" onclick="moveMainPage()"></i></span>
+    <!-- <span class="w3-opennav w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()" style="color:white"><i class="fa fa-bars"></i></span> -->
+    <span class="w3-nav-title"><a href="shop_main.html">Shopping Mall</a></span>
+    <!-- <span style="float:right;"><i class="fa fa-cog" aria-hidden="true" style="font-size:32px; padding-top:10px; cursor:pointer;" onclick="goPolicySetting()"></i></span> -->
+  </header>
+
+<!-- First Container -->
+<div class="container-fluid text-center top-content">
+    <div class="col-sm-4 gray-border">
+    	<div class="w3-card-4">
+	      <div class="order-item-area">
+	      	<div class="total-amount-title">Total</div>
+	      	<div class="total-amount-content"></div>
+	      </div>
+	    </div>
+    </div>
+
+    <div class="col-sm-4 card-top-content">
+      	<div class="w3-card-4">
+	      <div class="shop-item">
+	      	<img src="../img/card-samsung.jpg" class="img-responsive img-area" alt="Image">
+	      	<div class="text-area">Samsung Card</div>
+	    </div>
+      </div>
+    </div>
+    
+    <div class="col-sm-4">
+    	<div class="w3-card-4">
+	      <div class="shop-item">
+	      	<img src="../img/card-nh.png" class="img-responsive img-rounded img-area" alt="Image">
+	      	<div class="text-area" >NH Card</div>
+	      </div>
+	    </div>
+    </div>
+
+</div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid text-center">
+	<!-- <div class="footer-btn left-btn" onclick="cancel()">Cancel</div> -->
+	<div class="footer-btn" onclick="pay()">Pay</div>
+</footer>
+
+    <script src="../../common/lib/jquery/jquery-2.1.1.min.js"></script>    
+    <script src="../../common/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../common/js/language/language.js"></script>
+    <script src="../../common/js/util/exception.js"></script>
+    <script src="../../common/js/util/commonUtils.js"></script>
+    <script src="../../common/js/util/commonPopup.js"></script>
+    <script src="../../common/js/util/logger.js"></script>
+    <script src="../../common/js/util/app.js"></script>
+
+
+<script type="text/javascript">
+
+
+
+function w3_open() {
+    document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
+    document.getElementsByClassName("w3-overlay")[0].style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementsByClassName("w3-sidenav")[0].style.display = "none";
+    document.getElementsByClassName("w3-overlay")[0].style.display = "none";
+}    
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function cancel(){
+	location.assign("new_shop_main.html");
+}
+
+var selectedItemCnt = 0;
+  
+$(function(){
+	var userInfo = customStorage.read("USER");
+	
+	$('.total-amount-content').append("$ " + numberWithCommas(userInfo.totalShopPrice));
+	
+	
+	$('.shop-item').on('click', function(){
+		$('.btn-footer').removeClass("disabled");
+		selectedItemCnt = 1;
+		
+		$('.img-area').removeClass("selected");
+		$('.text-area').removeClass("selected-text");
+		$('.shop-item').removeClass('selected-shop-item');
+		$('.img-area' ,this).addClass("selected");
+		$('.text-area', this).addClass("selected-text");
+		$(this).addClass('selected-shop-item');
+	});
+
+});    
+  
+function goPolicySetting(){
+	location.assign("../../policy/pages/policy_setting.html");
+}
+
+function moveMainPage() {
+	location.assign("../../main/pages/main.html");
+}
+  
+function pay(){
+	if(selectedItemCnt > 0){
+		var userInfo = customStorage.read("USER");
+		//location.href="new_shop_complete.html";
+		var card = $(".selected-shop-item > div").text();
+		userInfo.selectedCard= card;
+		customStorage.write("USER", userInfo);
+		requestFido("AUTH");
+	}else {
+		commonPopup.showPopup("Notice","Please select a credit card to use.");
+	}
+}
+
+function returnCallback(result){
+	if(result == "false" || result == false){
+		commonPopup.showPopup("Notice", "Canceled Authentication","OK", "goPayment", "");
+	}else{
+		location.assign("shop_success.html");
+	}
+}
+
+function goPayment() {
+	location.assign("shop_payment.html");
+}
+
+
+function requestFido(type){
+	var userInfo = customStorage.read("USER");
+	var policyId = customStorage.read("POLICY");
+	app.requestFido(type, userInfo.loginId, policyId);
+}
+
+function requestOtp(type){
+	var userInfo = customStorage.read("USER");
+	app.requestOtp(type, userInfo.loginId);
+}
+</script>
+
+</body>
+</html>

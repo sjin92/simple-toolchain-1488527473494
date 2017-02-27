@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/button_pressed" android:state_pressed="true"/>
+    <item android:drawable="@color/button_color" android:state_pressed="false">
+        <shape>
+            <solid
+                    android:color="#449def"/>
+            <stroke
+                    android:width="1dp"
+                    android:color="#2f6699"/>
+            <corners
+                    android:radius="3dp"/>
+
+        </shape>
+    </item>
+    <item android:drawable="@color/button_pressed" android:state_focused="true"/>
+</selector><!-- From: file:/Users/FIDO-kj84park/Desktop/AndroidMultiModalAuthenticator/sc_ma_fido_client/client-sdk/src/main/res/drawable/dialog_button_selector.xml -->

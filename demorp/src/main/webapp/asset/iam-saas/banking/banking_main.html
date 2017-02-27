@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<title></title>
+<link rel="stylesheet" href="../css/swiper.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <a href="#" class="openmenu"><span></span><span></span><span></span></a>
+        <h2>Banking</h2>
+    </header>
+
+    <div class="gnbmenu">
+        <h2>Welcome!</h2>
+        <ul class="setting-menus">
+            <li><a href="#" class="transfer">Transfer</a></li>
+            <li><a href="#">Debit card</a></li>
+            <li><a href="#">Deposit/Fund</a></li>
+            <li><a href="#">Loan</a></li>
+            <li><a href="#" class="fraud-test">Fraud Detection</a></li>
+            <li><a href="#" class="exit">Exit</a></li>
+        </ul>
+    </div>
+
+    <div class="menuon-dimmed">a</div>
+
+    <section class="body-section">
+        <div class="banking">
+            <div class="total-account">
+                <span>Total accounts</span>
+                <p>$ 13,730</p>
+            </div>
+
+            <div class="account-lists">
+                <ul>
+                    <li id="A01">
+                        <div class="clearfix">
+                            <span class="current">Current account</span><br />
+                            <span class="current account">10-11-53215</span>
+                            <span class="accounts">$ 10,230</span>
+                        </div>
+                        <div class="btns">
+                            <a href="#" class="a">DETAIL</a><a href="#" class="b transfer">TRANSFER</a>
+                        </div>
+                    </li>
+                    <li id="A02">
+                        <div class="clearfix">
+                            <span class="current">Rewards Wallet</span><br />
+                            <span class="current account">13-32-65212</span>
+                            <span class="accounts">$ 500</span>
+                        </div>
+                        <div class="btns">
+                            <a href="#" class="a">DETAIL</a><a href="#" class="b transfer">TRANSFER</a>
+                        </div>
+                    </li>
+                    <li id="A03">
+                        <div class="clearfix">
+                            <span class="current">Saving account</span><br />
+                            <span class="current account">31-12-12847</span>
+                            <span class="accounts">$ 3,000</span>
+                        </div>
+                        <div class="btns">
+                            <a href="#" class="a">DETAIL</a><a href="#" class="b transfer">TRANSFER</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script src="../common/lib/swiper/swiper.min.js"></script>
+<script>
+$( document ).ready( function() {
+    /*
+    $( '.openmenu' ).click( function() {
+        $( '.openmenu span' ).toggleClass( 'active' );
+    } );
+    */
+    $( '.openmenu' ).click( function() {
+        $( '.gnbmenu, header, .body-section, .menuon-dimmed' ).addClass( 'active' );
+        $( '.body-section' ).css( 'position','fixed' );
+    } );
+    $( '.menuon-dimmed' ).click( function() {
+        $( '.gnbmenu, header, .body-section, .menuon-dimmed' ).removeClass( 'active' );
+        setTimeout( function() {
+            $( '.body-section' ).css( 'position','absolute' );
+        }, 500 );
+    } );
+
+    $( '.setting-menus li a' ).on( 'touchstart', function() {
+        $( this ).addClass( 'on' );
+    } );
+    $( '.setting-menus li a' ).on( 'touchend', function() {
+        $( this ).removeClass( 'on' );
+    } );
+
+    $( '.btns a.transfer' ).on( 'touchstart', function() {
+        $( this ).addClass( 'on' );
+    } );
+    $( '.btns a.transfer' ).on( 'touchend', function() {
+        $( this ).removeClass( 'on' );
+    } );
+
+
+    // $( '.setting-menus li a.transfer' ).on( 'click', function() {
+    //     commonJs.movePage( commonJs.PAGE_LIST.BANKING_TRANSFER );
+    // } );
+
+    $( '.setting-menus li a.fraud-test' ).on( 'click', function() {
+        commonJs.movePage( commonJs.PAGE_LIST.FRAUD_SETTING );
+    } );
+    $( '.setting-menus li a.exit' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+
+    $( '.btns a.transfer' ).on( 'click', function() {
+        var acntNo = $( this ).parent( '.btns' ).parent( 'li' ).find( 'span.account' ).text(),
+            amount = $( this ).parent( '.btns' ).parent( 'li' ).find( 'span.accounts' ).text().substr( 2 ).replace( /,/g, '' );
+        commonJs.movePage( commonJs.PAGE_LIST.BANKING_TRANSFER + '?acntNo=' + acntNo + '&amount=' + amount );
+    } );
+} );
+</script>
+</body>
+</html>
+

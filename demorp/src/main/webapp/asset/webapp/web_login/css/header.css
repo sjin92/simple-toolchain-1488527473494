@@ -1,0 +1,22 @@
+
+#header .header_top{position:relative; height:60px;}
+
+ /*  2015-09-22 수정 S*/
+#header {height: 65px; /*min-width:1280px;*//* border-bottom: 3px solid #3169a4; */} /* 2015-03-23 jy98.lee 디자인 적용 */
+#header .gnbarea {margin: 0 auto;}/* 2015-03-23 jy98.lee 디자인 적용*/
+#header .gnbarea .h_logo {display: table;float: left;width: 225px;height: 65px;background: url('../img/menu_split.png') no-repeat right center;margin-right:10px}/* 2015-03-23 jy98.lee 디자인 적용*/
+#header .gnbarea .h_logo .logo {font-size: 30px;color: #3169A4;text-align: center;vertical-align: middle; display: table-cell;}/* 2015-03-23 jy98.lee 디자인 적용*/
+#header .gnbarea .gnbinner {}/* 2015-03-23 jy98.lee 디자인 적용*/
+#header .gnbarea .gnbinner .workspace{float: left;}/* 2015-03-23 jy98.lee 디자인 적용*/
+#header .gnbarea .gnbinner .workspace a{height: 65px;  padding: 0 13px;  font-size: 16px; color:#000;  line-height: 66px;font-weight:500;margin-left:1px} /* 2015-03-23 jy98.lee 디자인 적용 */
+#header .gnbarea .gnbinner .workspace a:hover{background:#3169a4;color:#fff;} /* 2015-03-23. jy98.lee 디자인 반영 */
+#header .gnbarea .gnbinner .workspace.select a{background:#3169a4;color:#fff;cursor:default;} /* 2015-03-23. jy98.lee 디자인 반영*/
+
+#header .gnbarea .gnbutil {float: right;padding: 20px 30px 0 0;}
+#header .gnbarea .gnbutil .userinfo { float:left; line-height: 30px;color:#3169a4;font-size: 14px;text-align: center;padding-right:10px;}
+#header .gnbarea .gnbutil .btns {text-align: center;}
+
+#header .gnbarea .gnbutil .btns .gnb_btn-wrap {display: inline-block;min-width:65px;padding:0;border: 1px solid #3169a4;background:#fff;} /* 2015-03-23. jy98.lee 디자인 반영*/
+#header .gnbarea .gnbutil .btns .gnb_btn-wrap a {height:27px; line-height: 28px;padding: 0 10px;color: #3169a4;font-size: 12px;color: #3169a4;font-weight:bold;}
+#header .gnbarea .gnbutil .btns .gnb_btn-wrap:hover {background: #E3EFFC;}
+#header .gnbarea .gnbutil .btns .gnb_btn-wrap a:hover {/*background: #E3EFFC;*//*color: #ffffff;font-size: 12px;font-weight:bold;*/}

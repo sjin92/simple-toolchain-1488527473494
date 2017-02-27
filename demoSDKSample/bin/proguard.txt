@@ -1,0 +1,37 @@
+# view AndroidManifest.xml #generated:50
+-keep class com.nice.client.AuthenticationActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:60
+-keep class com.nice.client.DeregistrationActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:40
+-keep class com.nice.client.GetDiscoveryActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:30
+-keep class com.nice.client.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:45
+-keep class com.nice.client.RegistrationActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:55
+-keep class com.nice.client.TransactionActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:18
+-keep class com.samsung.sds.fido.uaf.client.sdk.SDKActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:24
+-keep class com.samsung.sds.fido.uaf.client.sdk.ui.AuthenticatorSelector { <init>(...); }
+
+# onClick res/layout/activity_authentication.xml #generated:20
+# onClick res/layout/activity_deregistration.xml #generated:20
+# onClick res/layout/activity_getdiscovery.xml #generated:21
+# onClick res/layout/activity_main.xml #generated:113
+# onClick res/layout/activity_main.xml #generated:128
+# onClick res/layout/activity_main.xml #generated:143
+# onClick res/layout/activity_main.xml #generated:69
+# onClick res/layout/activity_main.xml #generated:83
+# onClick res/layout/activity_main.xml #generated:98
+# onClick res/layout/activity_registration.xml #generated:20
+# onClick res/layout/activity_transaction.xml #generated:20
+-keepclassmembers class * { *** startTest(...); }
+

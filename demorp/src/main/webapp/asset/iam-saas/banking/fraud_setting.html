@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <a href="#" class="go-back"></a>
+        <h2>Fraud Detection</h2>
+    </header>
+
+    <div class="clearfix activation-control">
+        <span>Activation</span>
+        <div class="checkToggle1">
+            <input type="checkbox" value="none" id="checkToggle1" name="check" />
+            <label for="checkToggle1"></label>
+        </div>
+    </div>
+    <ul class="activation-list">
+        <li class="clearfix">
+            <div class="f"><input type="radio" id="activation-1" /><label for="activation-1"><span></span></label></div>
+            <div class="s">
+                <p class="txt1 timeout">Timeout Anomaly</p>
+                <p class="txt2">Elapsed time for Authentication</p>
+                <p class="txt3">more than <input type="number" class="second-define" /> seconds</p>
+            </div>
+        </li>
+        <li class="clearfix">
+            <div class="f"><input type="radio" id="activation-2" /><label for="activation-2"><span></span></label></div>
+            <div class="s">
+                <p class="txt1 geo">Geolocation Anomaly</p>
+                <p class="txt2">Last located in</p>
+                <div class="combo-wrap">
+                    <a href="#" id="last-location" class="combolink locationcombo">South Korea</a>
+                    <div class="country-list last hide">
+                        <a href="#" name="L1">United States</a>
+                        <a href="#" name="L2">France</a>
+                        <a href="#" name="L3" class="on">South Korea</a>
+                        <a href="#" name="L4" class="last">Indonesia</a>
+                    </div>
+                </div>
+                <p class="txt2 mgt">Current Location</p>
+                <div class="combo-wrap">
+                    <a href="#" id="current-location" class="combolink locationcombo">United States</a>
+                    <div class="country-list current hide">
+                        <a href="#" name="L1" class="on">United States</a>
+                        <a href="#" name="L2">France</a>
+                        <a href="#" name="L3">South Korea</a>
+                        <a href="#" name="L4" class="last">Indonesia</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li id="behaviorcombo" class="clearfix">
+            <div class="f"><input type="radio" id="activation-3" /><label for="activation-3"><span></span></label></div>
+            <div class="s">
+                <p class="txt1">Behavioral Anomaly</p>
+                <p class="txt2">Most authentication :</p>
+                <div class="combo-wrap">
+                    <a href="#" id="authtype" class="combolink typecombo">Fingerprint</a>
+                    <div class="auth-list hide">
+                        <a href="#" id="finger" class="on">Fingerprint</a>
+                        <a href="#" id="facevoice" class="last">Face &amp; Voice</a>
+                        <a href="#" id="iris" class="last">Iris</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <section class="dfbox-section">
+        <div class="btn">
+            <a href="#" class="btn-light big apply">Apply</a>
+        </div>
+    </section>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+    var listedItem = '';
+
+    if ( commonJs.isGalaxyNote7() ) {
+        $( '#facevoice' ).addClass( 'hide' );
+        $( 'p.timeout' ).text( 'Timeout Anomaly' );
+        $( 'p.geo' ).text( 'Geolocation Anomaly' );
+        $( '#behaviorcombo' ).addClass( 'hide' );
+    } else {
+        $( '#iris' ).addClass( 'hide' );
+        $( 'p.timeout' ).text( 'Timeout Anomaly' );
+        $( 'p.geo' ).text( 'Geolocation Anomaly' );
+    }
+
+    $( '.second-define' ).on( 'focus', function() {
+        $( '.activation-list input[type="radio"]' ).prop( 'checked', false );
+        $( '#activation-1' ).prop( 'checked', true );
+        $( '#checkToggle1' ).prop( 'checked', true );
+    } );
+
+    $( 'a.go-back' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+
+    $( '.btn a.apply' ).on( 'touchstart', function() {
+        $( this ).addClass( 'on' );
+    } );
+    $( '.btn a.apply' ).on( 'touchend', function() {
+        $( this ).removeClass( 'on' );
+    } );
+
+    $( '#checkToggle1' ).on( 'click', function() {
+        if ( $( this ).prop( 'checked' ) === true ) {
+            $( '.second-define' ).focus();
+        } else {
+            $( '.activation-list input[type="radio"]' ).prop( 'checked', false );
+
+        }
+    } );
+
+    $( '#activation-1' ).on( 'click', function() {
+        $( '.second-define' ).focus();
+        $( '.activation-list input[type="radio"]' ).prop( 'checked', false );
+        $( this ).prop( 'checked', true );
+        $( '#checkToggle1' ).prop( 'checked', true );
+        // TODO:
+
+
+    } );
+    $( '#activation-2' ).on( 'click', function() {
+        $( '.activation-list input[type="radio"]' ).prop( 'checked', false );
+        $( this ).prop( 'checked', true );
+        $( '#checkToggle1' ).prop( 'checked', true );
+        // TODO:
+
+    } );
+    $( '#activation-3' ).on( 'click', function() {
+        $( '.activation-list input[type="radio"]' ).prop( 'checked', false );
+        $( this ).prop( 'checked', true );
+        $( '#checkToggle1' ).prop( 'checked', true );
+        // TODO:
+
+    } );
+
+    $( '.locationcombo' ).on( 'click', function() {
+        var id = $( this ).attr( 'name' );
+        $( '.country-list' ).addClass( 'hide' );
+        $( '.auth-list' ).addClass( 'hide' );
+        $( '.activation-list input[type="radio"]' ).prop( 'checked', false );
+        $( '#activation-2' ).prop( 'checked', true );
+        $( '#checkToggle1' ).prop( 'checked', true );
+
+        if ( listedItem === id ) {
+            listedItem = '';
+        } else {
+            $( this ).parent( '.combo-wrap' ).find( 'div.country-list' ).removeClass( 'hide' );
+            listedItem = id;
+        }
+    } );
+
+    $( '.typecombo' ).on( 'click', function() {
+        var id = $( this ).attr( 'id' );
+        $( '.country-list' ).addClass( 'hide' );
+        $( '.auth-list' ).addClass( 'hide' );
+        $( '.activation-list input[type="radio"]' ).prop( 'checked', false );
+        $( '#activation-3' ).prop( 'checked', true );
+        $( '#checkToggle1' ).prop( 'checked', true );
+
+        if ( listedItem === id ) {
+            listedItem = '';
+        } else {
+            $( this ).parent( '.combo-wrap' ).find( 'div.auth-list' ).removeClass( 'hide' );
+            listedItem = id;
+        }
+    } );
+
+    $( '.auth-list a' ).on( 'click', function() {
+        $( '#authtype' ).text( $( this ).text() );
+        $( this ).parent( '.auth-list' ).addClass( 'hide' );
+        $( this ).parent( '.auth-list' ).find( 'a' ).removeClass( 'on' );
+        $( this ).addClass( 'on' );
+        listedItem = '';
+    } );
+
+    $( '.last.country-list a' ).on( 'click', function() {
+        $( '#last-location' ).text( $( this ).text() );
+        $( this ).parent( '.country-list' ).addClass( 'hide' );
+        $( this ).parent( '.country-list' ).find( 'a' ).removeClass( 'on' );
+        $( this ).addClass( 'on' );
+        listedItem = '';
+    } );
+
+    $( '.current.country-list a' ).on( 'click', function() {
+        $( '#current-location' ).text( $( this ).text() );
+        $( this ).parent( '.country-list' ).addClass( 'hide' );
+        $( this ).parent( '.country-list' ).find( 'a' ).removeClass( 'on' );
+        $( this ).addClass( 'on' );
+        listedItem = '';
+    } );
+
+
+    $( '.btn a.apply' ).on( 'click', function() {
+        var fraudInfo = commonJs.getFraudInfo(),
+            limit = $( '.second-define' ).val() * 1;
+        if ( fraudInfo &&  $( '#checkToggle1' ).prop( 'checked' ) === true ) {
+            fraudInfo.isActive = true;
+
+            if ( $( '#activation-1' ).prop( 'checked' ) === true ) {
+                if ( limit < 10 ) {
+                    commonPopup.showPopup( 'LABEL_ERR_TITLE'.i18n(), 'Elipsed time should be larger than 9 seconds.' );
+                    $( '.second-define' ).focus();
+                    return;
+                }
+                fraudInfo.type = 'timeout';
+                fraudInfo.timeout = limit;
+
+            } else if ( $( '#activation-2' ).prop( 'checked' ) === true ) {
+                fraudInfo.type = 'geo';
+                fraudInfo.lastLocation = $( '.last.country-list a.on' ).prop( 'name' );
+                fraudInfo.currentLocation = $( '.current.country-list a.on' ).prop( 'name' );
+
+            } else if ( $( '#activation-3' ).prop( 'checked' ) === true ) {
+                fraudInfo.type = 'behavior';
+                fraudInfo.behavior = $( '.auth-list a.on' ).prop( 'id' );
+            }
+
+        } else {
+            fraudInfo.isActive = false;
+        }
+        commonJs.setFraudInfo( fraudInfo );
+        if ( fraudInfo.isActive ) {
+            app.requestToast( 'Fraud Detection is activated.' );
+        } else {
+            app.requestToast( 'Fraud Detection is inactivated.' );
+        }
+    } );
+
+
+    // TODO: 설정사항 불러오기
+    var fraudInfo = commonJs.getFraudInfo();
+
+    if ( fraudInfo.isActive === true ) {
+        $( '#checkToggle1' ).prop( 'checked', true );
+
+        switch ( fraudInfo.type ) {
+            case 'timeout':
+                $( '#activation-1' ).prop( 'checked', true );
+                $( '.second-define' ).val( fraudInfo.timeout );
+                break;
+            case 'geo':
+                $( '#activation-2' ).prop( 'checked', true );
+                $( '.last.country-list a[name=' + fraudInfo.lastLocation + ']' ).click();
+                $( '.current.country-list a[name=' + fraudInfo.currentLocation + ']' ).click();
+                break;
+            case 'behavior':
+                $( '#activation-3' ).prop( 'checked', true );
+                $( '#' + fraudInfo.behavior ).click();
+                break;
+        }
+    }
+
+} );
+</script>
+</body>
+</html>

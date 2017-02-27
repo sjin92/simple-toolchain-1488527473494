@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Square Portal Auth</title>
+
+<link rel="stylesheet"
+	href="../../common/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="../../common/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../common/lib/bootstrap/css/w3.css">
+<link rel="stylesheet" href="../css/square-common.css">
+
+</head>
+<body class="w3-content" style="max-width: 1600px" id="myHome"
+	data-spy="scroll" data-target=".navbar" data-offset="50">
+
+	<div class="w3-main" style="margin-left: 300px">
+		<div class="square-main-header">
+			<div style="width: 100%;">
+				<p class="square-main-header-text text-center">Square Portal</p>
+			</div>
+			<div class="text-center">
+				<h3 class="user-name"></h3>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="../../common/lib/jquery/jquery-2.1.1.min.js"></script>
+	<script src="../../common/lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../common/js/language/language.js"></script>
+	<script src="../../common/js/util/exception.js"></script>
+	<script src="../../common/js/util/commonUtils.js"></script>
+	<script src="../../common/js/util/commonPopup.js"></script>
+	<script src="../../common/js/util/logger.js"></script>
+	<script src="../../common/js/util/app.js"></script>
+
+	<script>
+		$(function() {
+			// Initialize
+			app.requestBlurView(false);
+
+			var userInfo = customStorage.read("USER");
+			$('.user-name').text(userInfo.loginId);
+
+			var policyId = customStorage.read("POLICY"); 
+			app.requestFido("AUTH", userInfo.loginId, policyId);			
+		});
+		
+		function returnCallback(result){
+			if(result == "false" || result == false){
+				commonPopup.showPopup("Notice", "Canceled Authentication", "OK", "goHome", "");
+			}else{
+				location.assign("square_home.html");
+			}
+		}
+		
+		function goHome() {
+			location.assign("../../main/pages/main.html");
+		}
+		
+		
+	</script>
+
+
+
+</body>
+</html>

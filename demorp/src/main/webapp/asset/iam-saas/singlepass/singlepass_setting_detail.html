@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <a href="#" class="go-back"></a>
+        <h2>Account</h2>
+    </header>
+
+    <!-- Singlepass setting section -->
+    <section class="singlepass-section">
+
+    <h3 class="appinfo">Groupware</h3>
+    <div class="inner-activate">
+
+            <div class="activation-control clearfix">
+            <span>Activation</span><!-- class="off"-->
+            <div class="checkToggle1">
+                <input type="checkbox" value="none" id="checkToggle1" name="check" />
+                <label for="checkToggle1"></label>
+            </div>
+        </div>
+
+        <h4>User Information</h4>
+        <div class="account off"><!-- off -->
+            <input type="text" class="inbox id" placeholder="Enter user ID." value="">
+            <input type="password" class="inbox pw" placeholder="Enter user password." value="">
+        </div>
+        <div class="btn">
+            <span class="warning hide">ID &amp; PW doesn’t match</span>
+            <a href="#" class="btn-light save off">SAVE</a><!-- off -->
+        </div>
+    </div>
+
+    </section>
+</div>
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+    var params = commonJs.getSearchParameters();
+
+    app.requestAppInfo( params.appId );
+
+    switch ( params.appId ) {
+        case 'C01':
+            $( 'h3.appinfo' ).addClass( 'hcm' );
+            $( 'h3.appinfo' ).text( 'Oracle HCM' );
+            $( '.account input.inbox.id' ).val( 'user01' );
+            $( '.account input.inbox.pw' ).val( 'demo01' );
+            break;
+        case 'C02':
+            $( 'h3.appinfo' ).addClass( 'remote' );
+            $( 'h3.appinfo' ).text( 'Desktop Control' );
+            $( '.account input.inbox.id' ).val( 'user01' );
+            $( '.account input.inbox.pw' ).val( 'demo01' );
+            break;
+        case 'P01':
+            $( 'h3.appinfo' ).addClass( 'banking' );
+            $( 'h3.appinfo' ).text( 'Banking' );
+            $( '.account input.inbox.id' ).val( 'userb1' );
+            $( '.account input.inbox.pw' ).val( 'demob1' );
+            break;
+        case 'P02':
+            $( 'h3.appinfo' ).addClass( 'shopping' );
+            $( 'h3.appinfo' ).text( 'Shopping' );
+            $( '.account input.inbox.id' ).val( 'users1' );
+            $( '.account input.inbox.pw' ).val( 'demos1' );
+            break;
+        case 'P03':
+            $( 'h3.appinfo' ).addClass( 'dutyfree' );
+            $( 'h3.appinfo' ).text( 'Online Mall' );
+            $( '.account input.inbox.id' ).val( 'usero1' );
+            $( '.account input.inbox.pw' ).val( 'demoo1' );
+            break;
+        case 'P04':
+            $( 'h3.appinfo' ).addClass( 'onesns' );
+            $( 'h3.appinfo' ).text( 'One SNS' );
+            $( '.account input.inbox.id' ).val( 'user01' );
+            $( '.account input.inbox.pw' ).val( 'demo01' );
+            break;
+        case 'P05':
+            $( 'h3.appinfo' ).addClass( 'onewallet' );
+            $( 'h3.appinfo' ).text( 'Wallet' );
+            $( '.account input.inbox.id' ).val( 'userw1' );
+            $( '.account input.inbox.pw' ).val( 'demow1' );
+            break;
+    }
+
+    $( '.go-back' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+
+    $( '.account input.inbox.id' ).on( 'input', function() {
+        $( '.btn span.warning' ).addClass( 'hide' );
+        $( '.account input.inbox.pw' ).val( '' );
+        $( '.btn a.save' ).removeClass( 'off' );
+        $( '#checkToggle1' ).prop( 'checked', true );
+        $( 'div.account' ).removeClass( 'off' );
+    } );
+    $( '.account input.inbox.pw' ).on( 'input', function() {
+        $( '.btn span.warning' ).addClass( 'hide' );
+        $( '.btn a.save' ).removeClass( 'off' );
+        $( '#checkToggle1' ).prop( 'checked', true );
+        $( 'div.account' ).removeClass( 'off' );
+    } );
+    $( '.account input.inbox.pw' ).on( 'focusin', function() {
+        $( this ).val( '' );
+    } );
+
+    $( '#checkToggle1' ).on( 'click', function() {
+        if ( $( this ).prop( 'checked' ) === true ) {
+            // $( '.account input.inbox.id' ).focus();
+        } else {
+            // $( '.account input.inbox.id' ).val( '' );
+            // $( '.account input.inbox.pw' ).val( '' );
+        }
+        $( '.btn a.save' ).removeClass( 'off' );
+    } );
+
+    $( '#checkToggle1' ).on( 'click', function() {
+        if ( $( this ).prop( 'checked' ) === true ) {
+            $( 'div.account' ).removeClass( 'off' );
+        } else {
+            $( 'div.account' ).addClass( 'off' );
+        }
+    } );
+
+    $( '.btn a.save' ).on( 'click', function() {
+        if ( $( this ).attr( 'class' ).includes( 'off' ) ) {
+            return;
+        }
+        if ( $( '#checkToggle1' ).prop( 'checked' ) === true &&
+            ( $( '.account input.inbox.id' ).val() == null || $( '.account input.inbox.pw' ).val() === '' ) ) {
+            commonPopup.showPopup( 'LABEL_ERR_TITLE'.i18n(), 'Please enter ID and Password.' );
+            return;
+        }
+
+        var params = commonJs.getSearchParameters(),
+            data = {
+                'AppId': params.appId,
+                'isActive': $( '#checkToggle1' ).prop( 'checked' ),
+                'UserId': $( '.account input.inbox.id' ).val(),
+                'UserName': $( '.account input.inbox.pw' ).val()
+            };
+        app.updateAppInfo( JSON.stringify( data ) );
+    } );
+} );
+
+
+function returnCallback( result ) { // jshint ignore:line
+    if ( result != null ) {
+        result = JSON.parse( result );
+
+        if ( result.isActive === true || result.isActive === 'true' ) {
+            $( '#checkToggle1' ).prop( 'checked', true );
+            $( '.account input.inbox.id' ).val( result.UserId );
+            $( '.account input.inbox.pw' ).val( result.UserName );
+        }
+
+    } else {
+        // Do nothing.
+    }
+}
+
+function callbackUpdateAppInfo( result ) { // jshint ignore:line
+    if ( result != null && ( result === true || result === 'true' ) ) {
+        $( '.btn span.warning' ).addClass( 'hide' );
+        $( this ).addClass( 'off' );
+        commonJs.moveBack();
+    } else {
+        $( '#checkToggle1' ).prop( 'checked', false );
+        $( '.btn span.warning' ).removeClass( 'hide' );
+    }
+}
+
+</script>
+</body>
+</html>

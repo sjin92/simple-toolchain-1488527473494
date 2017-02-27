@@ -1,0 +1,479 @@
+android.support.annotation.AnimRes
+android.support.annotation.AnimatorRes
+android.support.annotation.AnyRes
+android.support.annotation.ArrayRes
+android.support.annotation.AttrRes
+android.support.annotation.BoolRes
+android.support.annotation.ColorRes
+android.support.annotation.DimenRes
+android.support.annotation.DrawableRes
+android.support.annotation.FractionRes
+android.support.annotation.IdRes
+android.support.annotation.IntDef
+android.support.annotation.IntegerRes
+android.support.annotation.InterpolatorRes
+android.support.annotation.LayoutRes
+android.support.annotation.MenuRes
+android.support.annotation.NonNull
+android.support.annotation.Nullable
+android.support.annotation.PluralsRes
+android.support.annotation.RawRes
+android.support.annotation.StringDef
+android.support.annotation.StringRes
+android.support.annotation.StyleRes
+android.support.annotation.StyleableRes
+android.support.annotation.XmlRes
+com.nice.client.BuildConfig
+com.nice.client.MainActivity:
+    public static final int sGetDiscoveryRequestType
+    public static final int sRegistrationRequestType
+    public static final int sAuthenticationRequestType
+    public static final int sTransactionRequestType
+    public static final int sDeregistrationRequestType
+    public static final int sGetDiscoveryCallback
+    public static final int sRegistrationCallback
+    public static final int sAuthenticationCallback
+    public static final int sTransactionCallback
+    public static final int sDeregistrationCallback
+com.nice.client.R
+com.nice.client.R$attr
+com.nice.client.R$dimen
+com.nice.client.R$drawable
+com.nice.client.R$id
+com.nice.client.R$layout
+com.nice.client.R$string
+com.nice.client.R$style
+com.nice.client.RegistrationActivity:
+    private static final java.lang.String sRegistrationData
+com.nice.client.TransactionActivity:
+    private static final java.lang.String sTransactionData
+com.sample.util.DiscoveryDataItem:
+    74:74:public java.lang.String getIcon()
+com.sample.util.UafRequestDataItem:
+    55:55:public java.lang.String getOpforUafProtocolMessage()
+com.sample.util.UafRequestParsing:
+    135:135:public com.sample.util.UafRequestParsing$PolicyAaidforTest getPolicyAaid()
+    143:143:public int getStatusCode()
+com.samsung.sds.fido.uaf.message.Message:
+    public abstract java.lang.String toJson()
+    public abstract void validate()
+com.samsung.sds.fido.uaf.message.Message$Builder
+com.samsung.sds.fido.uaf.message.common.Transaction$Builder:
+    134:135:public com.samsung.sds.fido.uaf.message.common.Transaction$Builder setTcDisplayPngCharacteristics(com.samsung.sds.fido.uaf.message.metadata.statement.DisplayPngCharacteristicsDescriptor)
+    139:141:public com.samsung.sds.fido.uaf.message.common.Transaction build()
+    118:118:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.common.Version:
+    32:32:public static com.samsung.sds.fido.uaf.message.common.Version$Builder newBuilder(int,int)
+    39:53:public static com.samsung.sds.fido.uaf.message.common.Version fromJson(java.lang.String)
+    66:66:public java.lang.String toJson()
+    20:20:synthetic Version(com.samsung.sds.fido.uaf.message.common.Version$Builder,com.samsung.sds.fido.uaf.message.common.Version$1)
+com.samsung.sds.fido.uaf.message.common.Version$1
+com.samsung.sds.fido.uaf.message.common.Version$Builder:
+    134:137:private Version$Builder(int,int)
+    140:142:public com.samsung.sds.fido.uaf.message.common.Version build()
+    128:128:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+    128:128:synthetic Version$Builder(int,int,com.samsung.sds.fido.uaf.message.common.Version$1)
+com.samsung.sds.fido.uaf.message.metadata.statement.DisplayPngCharacteristicsDescriptor:
+    50:50:public static com.samsung.sds.fido.uaf.message.metadata.statement.DisplayPngCharacteristicsDescriptor$Builder newBuilder(int,int,int,int,int,int,int)
+    93:108:public static com.samsung.sds.fido.uaf.message.metadata.statement.DisplayPngCharacteristicsDescriptor fromJson(java.lang.String)
+    113:113:public java.lang.String toJson()
+    19:19:synthetic DisplayPngCharacteristicsDescriptor(com.samsung.sds.fido.uaf.message.metadata.statement.DisplayPngCharacteristicsDescriptor$Builder,com.samsung.sds.fido.uaf.message.metadata.statement.DisplayPngCharacteristicsDescriptor$1)
+com.samsung.sds.fido.uaf.message.metadata.statement.DisplayPngCharacteristicsDescriptor$1
+com.samsung.sds.fido.uaf.message.metadata.statement.DisplayPngCharacteristicsDescriptor$Builder:
+    230:239:private DisplayPngCharacteristicsDescriptor$Builder(int,int,int,int,int,int,int)
+    242:246:public com.samsung.sds.fido.uaf.message.metadata.statement.DisplayPngCharacteristicsDescriptor$Builder setPlteList(java.util.List)
+    250:253:public com.samsung.sds.fido.uaf.message.metadata.statement.DisplayPngCharacteristicsDescriptor build()
+    211:211:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+    211:211:synthetic DisplayPngCharacteristicsDescriptor$Builder(int,int,int,int,int,int,int,com.samsung.sds.fido.uaf.message.metadata.statement.DisplayPngCharacteristicsDescriptor$1)
+com.samsung.sds.fido.uaf.message.metadata.statement.RgbPalletteEntry:
+    29:29:public static com.samsung.sds.fido.uaf.message.metadata.statement.RgbPalletteEntry$Builder newBuilder(int,int,int)
+    48:62:public static com.samsung.sds.fido.uaf.message.metadata.statement.RgbPalletteEntry fromJson(java.lang.String)
+    67:67:public java.lang.String toJson()
+    14:14:synthetic RgbPalletteEntry(com.samsung.sds.fido.uaf.message.metadata.statement.RgbPalletteEntry$Builder,com.samsung.sds.fido.uaf.message.metadata.statement.RgbPalletteEntry$1)
+com.samsung.sds.fido.uaf.message.metadata.statement.RgbPalletteEntry$1
+com.samsung.sds.fido.uaf.message.metadata.statement.RgbPalletteEntry$Builder:
+    108:112:public RgbPalletteEntry$Builder(int,int,int)
+    115:117:public com.samsung.sds.fido.uaf.message.metadata.statement.RgbPalletteEntry build()
+    100:100:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.protocol.AuthenticationRequest$Builder:
+    172:175:public com.samsung.sds.fido.uaf.message.protocol.AuthenticationRequest$Builder setTransactionList(java.util.List)
+    179:181:public com.samsung.sds.fido.uaf.message.protocol.AuthenticationRequest build()
+    154:154:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.protocol.AuthenticationRequestList:
+    46:46:public static com.samsung.sds.fido.uaf.message.protocol.AuthenticationRequestList$Builder newBuilder(java.util.List)
+    55:55:public java.util.List getAuthenticationRequestList()
+    59:82:public static com.samsung.sds.fido.uaf.message.protocol.AuthenticationRequestList fromJson(java.lang.String)
+    87:87:public java.lang.String toJson()
+    99:115:public void validate()
+    32:32:synthetic AuthenticationRequestList(com.samsung.sds.fido.uaf.message.protocol.AuthenticationRequestList$Builder,com.samsung.sds.fido.uaf.message.protocol.AuthenticationRequestList$1)
+com.samsung.sds.fido.uaf.message.protocol.AuthenticationRequestList$1
+com.samsung.sds.fido.uaf.message.protocol.AuthenticationRequestList$Builder:
+    131:135:private AuthenticationRequestList$Builder(java.util.List)
+    143:145:public com.samsung.sds.fido.uaf.message.protocol.AuthenticationRequestList build()
+    127:127:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+    127:127:synthetic AuthenticationRequestList$Builder(java.util.List,com.samsung.sds.fido.uaf.message.protocol.AuthenticationRequestList$1)
+com.samsung.sds.fido.uaf.message.protocol.AuthenticatorRegistrationAssertion:
+    45:45:public static com.samsung.sds.fido.uaf.message.protocol.AuthenticatorRegistrationAssertion$Builder newBuilder(java.lang.String,java.lang.String)
+    52:67:public static com.samsung.sds.fido.uaf.message.protocol.AuthenticatorRegistrationAssertion fromJson(java.lang.String)
+    71:71:public java.lang.String getAssertionScheme()
+    75:75:public java.lang.String getAssertion()
+    79:83:public java.util.List getTcDisplayPNGCharacteristicList()
+    87:91:public java.util.List getExtensionList()
+    96:96:public java.lang.String toJson()
+    27:27:synthetic AuthenticatorRegistrationAssertion(com.samsung.sds.fido.uaf.message.protocol.AuthenticatorRegistrationAssertion$Builder,com.samsung.sds.fido.uaf.message.protocol.AuthenticatorRegistrationAssertion$1)
+com.samsung.sds.fido.uaf.message.protocol.AuthenticatorRegistrationAssertion$1
+com.samsung.sds.fido.uaf.message.protocol.AuthenticatorRegistrationAssertion$Builder:
+    169:173:private AuthenticatorRegistrationAssertion$Builder(java.lang.String,java.lang.String)
+    177:181:public com.samsung.sds.fido.uaf.message.protocol.AuthenticatorRegistrationAssertion$Builder setTcDisplayPNGCharacteristicList(java.util.List)
+    185:189:public com.samsung.sds.fido.uaf.message.protocol.AuthenticatorRegistrationAssertion$Builder setExtensionList(java.util.List)
+    193:196:public com.samsung.sds.fido.uaf.message.protocol.AuthenticatorRegistrationAssertion build()
+    159:159:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+    159:159:synthetic AuthenticatorRegistrationAssertion$Builder(java.lang.String,java.lang.String,com.samsung.sds.fido.uaf.message.protocol.AuthenticatorRegistrationAssertion$1)
+com.samsung.sds.fido.uaf.message.protocol.ChannelBinding:
+    45:59:public static com.samsung.sds.fido.uaf.message.protocol.ChannelBinding fromJson(java.lang.String)
+    63:63:public java.lang.String getServerEndPoint()
+    67:67:public java.lang.String getTlsServerCertificate()
+    71:71:public java.lang.String getTlsUnique()
+    75:75:public java.lang.String getCidPubkey()
+com.samsung.sds.fido.uaf.message.protocol.ChannelBinding$Builder:
+    173:174:public com.samsung.sds.fido.uaf.message.protocol.ChannelBinding$Builder setServerEndPoint(java.lang.String)
+    178:179:public com.samsung.sds.fido.uaf.message.protocol.ChannelBinding$Builder setTlsServerCertificate(java.lang.String)
+    183:184:public com.samsung.sds.fido.uaf.message.protocol.ChannelBinding$Builder setTlsUnique(java.lang.String)
+    188:189:public com.samsung.sds.fido.uaf.message.protocol.ChannelBinding$Builder setCidPubkey(java.lang.String)
+    155:155:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.protocol.DeregisterAuthenticator$Builder:
+    105:107:public com.samsung.sds.fido.uaf.message.protocol.DeregisterAuthenticator build()
+    93:93:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.protocol.DeregistrationRequest$Builder:
+    133:135:public com.samsung.sds.fido.uaf.message.protocol.DeregistrationRequest build()
+    118:118:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.protocol.DeregistrationRequestList:
+    46:46:public static com.samsung.sds.fido.uaf.message.protocol.DeregistrationRequestList$Builder newBuilder(java.util.List)
+    50:73:public static com.samsung.sds.fido.uaf.message.protocol.DeregistrationRequestList fromJson(java.lang.String)
+    82:82:public java.util.List getDeregistrationRequestList()
+    87:87:public java.lang.String toJson()
+    99:115:public void validate()
+    32:32:synthetic DeregistrationRequestList(com.samsung.sds.fido.uaf.message.protocol.DeregistrationRequestList$Builder,com.samsung.sds.fido.uaf.message.protocol.DeregistrationRequestList$1)
+com.samsung.sds.fido.uaf.message.protocol.DeregistrationRequestList$1
+com.samsung.sds.fido.uaf.message.protocol.DeregistrationRequestList$Builder:
+    131:135:private DeregistrationRequestList$Builder(java.util.List)
+    143:145:public com.samsung.sds.fido.uaf.message.protocol.DeregistrationRequestList build()
+    127:127:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+    127:127:synthetic DeregistrationRequestList$Builder(java.util.List,com.samsung.sds.fido.uaf.message.protocol.DeregistrationRequestList$1)
+com.samsung.sds.fido.uaf.message.protocol.Extension:
+    36:36:public static com.samsung.sds.fido.uaf.message.protocol.Extension$Builder newBuilder(java.lang.String,java.lang.String,boolean)
+    43:57:public static com.samsung.sds.fido.uaf.message.protocol.Extension fromJson(java.lang.String)
+    61:61:public java.lang.String getId()
+    65:65:public java.lang.String getData()
+    69:69:public boolean getFailIfUnknown()
+    74:74:public java.lang.String toJson()
+    21:21:synthetic Extension(com.samsung.sds.fido.uaf.message.protocol.Extension$Builder,com.samsung.sds.fido.uaf.message.protocol.Extension$1)
+com.samsung.sds.fido.uaf.message.protocol.Extension$1
+com.samsung.sds.fido.uaf.message.protocol.Extension$Builder:
+    123:127:private Extension$Builder(java.lang.String,java.lang.String,boolean)
+    130:132:public com.samsung.sds.fido.uaf.message.protocol.Extension build()
+    115:115:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+    115:115:synthetic Extension$Builder(java.lang.String,java.lang.String,boolean,com.samsung.sds.fido.uaf.message.protocol.Extension$1)
+com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder:
+    400:404:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder setAaidList(java.util.List)
+    408:412:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder setVendorIdList(java.util.List)
+    416:420:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder setKeyIDList(java.util.List)
+    424:425:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder setUserVerification(java.lang.Integer)
+    429:430:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder setKeyProtection(java.lang.Short)
+    434:435:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder setMatcherProtection(java.lang.Short)
+    439:440:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder setAttachmentHint(java.lang.Integer)
+    444:445:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder setTcDisplay(java.lang.Short)
+    449:453:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder setAuthenticationAlgorithmList(java.util.List)
+    457:461:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder setAssertionSchemeList(java.util.List)
+    465:469:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder setAttestationTypeList(java.util.List)
+    473:474:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder setAuthenticatorVersion(java.lang.Short)
+    478:482:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria$Builder setExtensionList(java.util.List)
+    486:488:public com.samsung.sds.fido.uaf.message.protocol.MatchCriteria build()
+    355:355:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.protocol.Operation:
+    public static final java.lang.String REG
+    public static final java.lang.String AUTH
+    public static final java.lang.String DEREG
+    20:21:private Operation()
+    44:44:public static java.util.Set getSetOfOperationTypes()
+com.samsung.sds.fido.uaf.message.protocol.OperationHeader$Builder:
+    177:178:public com.samsung.sds.fido.uaf.message.protocol.OperationHeader$Builder setAppId(java.lang.String)
+    182:183:public com.samsung.sds.fido.uaf.message.protocol.OperationHeader$Builder setServerData(java.lang.String)
+    187:191:public com.samsung.sds.fido.uaf.message.protocol.OperationHeader$Builder setExtensionList(java.util.List)
+    195:197:public com.samsung.sds.fido.uaf.message.protocol.OperationHeader build()
+    156:156:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.protocol.Policy:
+    59:65:public java.util.List getAcceptedGroups()
+    69:73:public java.util.List getDisallowedList()
+    78:78:public java.lang.String toJson()
+    23:23:synthetic Policy(com.samsung.sds.fido.uaf.message.protocol.Policy$Builder,com.samsung.sds.fido.uaf.message.protocol.Policy$1)
+com.samsung.sds.fido.uaf.message.protocol.Policy$Builder:
+    141:145:public com.samsung.sds.fido.uaf.message.protocol.Policy$Builder setDisallowedList(java.util.List)
+    149:151:public com.samsung.sds.fido.uaf.message.protocol.Policy build()
+    120:120:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.protocol.ProtocolMessage:
+    public abstract com.samsung.sds.fido.uaf.message.protocol.OperationHeader getOperationHeader()
+com.samsung.sds.fido.uaf.message.protocol.RegistrationRequest$Builder:
+    160:162:public com.samsung.sds.fido.uaf.message.protocol.RegistrationRequest build()
+    142:142:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.protocol.RegistrationRequestList:
+    46:46:public static com.samsung.sds.fido.uaf.message.protocol.RegistrationRequestList$Builder newBuilder(java.util.List)
+    50:73:public static com.samsung.sds.fido.uaf.message.protocol.RegistrationRequestList fromJson(java.lang.String)
+    82:82:public java.util.List getRegistrationRequestList()
+    87:87:public java.lang.String toJson()
+    99:115:public void validate()
+    32:32:synthetic RegistrationRequestList(com.samsung.sds.fido.uaf.message.protocol.RegistrationRequestList$Builder,com.samsung.sds.fido.uaf.message.protocol.RegistrationRequestList$1)
+com.samsung.sds.fido.uaf.message.protocol.RegistrationRequestList$1
+com.samsung.sds.fido.uaf.message.protocol.RegistrationRequestList$Builder:
+    131:135:private RegistrationRequestList$Builder(java.util.List)
+    143:145:public com.samsung.sds.fido.uaf.message.protocol.RegistrationRequestList build()
+    127:127:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+    127:127:synthetic RegistrationRequestList$Builder(java.util.List,com.samsung.sds.fido.uaf.message.protocol.RegistrationRequestList$1)
+com.samsung.sds.fido.uaf.message.protocol.RegistrationResponse$Builder:
+    190:192:public com.samsung.sds.fido.uaf.message.protocol.RegistrationResponse build()
+    156:156:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.protocol.RegistrationResponseList:
+    46:46:public static com.samsung.sds.fido.uaf.message.protocol.RegistrationResponseList$Builder newBuilder(java.util.List)
+    50:73:public static com.samsung.sds.fido.uaf.message.protocol.RegistrationResponseList fromJson(java.lang.String)
+    82:82:public java.util.List getRegistrationResponseList()
+    87:87:public java.lang.String toJson()
+    99:115:public void validate()
+    32:32:synthetic RegistrationResponseList(com.samsung.sds.fido.uaf.message.protocol.RegistrationResponseList$Builder,com.samsung.sds.fido.uaf.message.protocol.RegistrationResponseList$1)
+com.samsung.sds.fido.uaf.message.protocol.RegistrationResponseList$1
+com.samsung.sds.fido.uaf.message.protocol.RegistrationResponseList$Builder:
+    131:135:public RegistrationResponseList$Builder(java.util.List)
+    143:145:public com.samsung.sds.fido.uaf.message.protocol.RegistrationResponseList build()
+    127:127:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.protocol.UafMessage:
+    25:25:public static com.samsung.sds.fido.uaf.message.protocol.UafMessage$Builder newBuilder(java.lang.String)
+    54:54:public java.lang.Object getAdditionalData()
+    65:94:public java.lang.String getOperationType()
+    13:13:synthetic UafMessage(com.samsung.sds.fido.uaf.message.protocol.UafMessage$Builder,com.samsung.sds.fido.uaf.message.protocol.UafMessage$1)
+com.samsung.sds.fido.uaf.message.protocol.UafMessage$1
+com.samsung.sds.fido.uaf.message.protocol.UafMessage$Builder:
+    131:134:private UafMessage$Builder(java.lang.String)
+    137:138:public com.samsung.sds.fido.uaf.message.protocol.UafMessage$Builder setAdditionalData(java.lang.Object)
+    142:144:public com.samsung.sds.fido.uaf.message.protocol.UafMessage build()
+    125:125:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+    125:125:synthetic UafMessage$Builder(java.lang.String,com.samsung.sds.fido.uaf.message.protocol.UafMessage$1)
+com.samsung.sds.fido.uaf.message.registry.AssertionSchemes:
+    public static final java.lang.String UAFV1_TLV
+    20:21:private AssertionSchemes()
+com.samsung.sds.fido.uaf.message.registry.AttachmentHint:
+    public static final int ATTACHMENT_HINT_INTERNAL
+    public static final int ATTACHMENT_HINT_EXTERNAL
+    public static final int ATTACHMENT_HINT_WIRED
+    public static final int ATTACHMENT_HINT_WIRELESS
+    public static final int ATTACHMENT_HINT_NFC
+    public static final int ATTACHMENT_HINT_BLUETOOTH
+    public static final int ATTACHMENT_HINT_NETWORK
+    public static final int ATTACHMENT_HINT_READY
+    public static final int ATTACHMENT_HINT_WIFI_DIRECT
+    31:32:private AttachmentHint()
+com.samsung.sds.fido.uaf.message.registry.AuthenticationAlgorithm:
+    public static final short UAF_ALG_SIGN_SECP256R1_ECDSA_SHA256_RAW
+    public static final short UAF_ALG_SIGN_SECP256R1_ECDSA_SHA256_DER
+    public static final short UAF_ALG_SIGN_RSASSA_PSS_SHA256_RAW
+    public static final short UAF_ALG_SIGN_RSASSA_PSS_SHA256_DER
+    public static final short UAF_ALG_SIGN_SECP256K1_ECDSA_SHA256_RAW
+    public static final short UAF_ALG_SIGN_SECP256K1_ECDSA_SHA256_DER
+    20:21:private AuthenticationAlgorithm()
+com.samsung.sds.fido.uaf.message.registry.KeyProtection:
+    public static final short KEY_PROTECTION_SOFTWARE
+    public static final short KEY_PROTECTION_HARDWARE
+    public static final short KEY_PROTECTION_TEE
+    public static final short KEY_PROTECTION_SECURE_ELEMENT
+    public static final short KEY_PROTECTION_REMOTE_HANDLE
+    23:24:private KeyProtection()
+com.samsung.sds.fido.uaf.message.registry.MatcherProtection:
+    public static final short MATCHER_PROTECTION_SOFTWARE
+    public static final short MATCHER_PROTECTION_TEE
+    public static final short MATCHER_PROTECTION_ON_CHIP
+    17:18:private MatcherProtection()
+com.samsung.sds.fido.uaf.message.registry.TagType:
+    public static final short TAG_UAFV1_REG_ASSERTION
+    public static final short TAG_UAFV1_AUTH_ASSERTION
+    public static final short TAG_UAFV1_KRD
+    public static final short TAG_UAFV1_SIGNED_DATA
+    public static final short TAG_ATTESTATION_CERT
+    public static final short TAG_SIGNATURE
+    public static final short TAG_ATTESTATION_BASIC_FULL
+    public static final short TAG_ATTESTATION_BASIC_SURROGATE
+    public static final short TAG_KEYID
+    public static final short TAG_FINAL_CHALLENGE
+    public static final short TAG_AAID
+    public static final short TAG_PUB_KEY
+    public static final short TAG_COUNTERS
+    public static final short TAG_ASSERTION_INFO
+    public static final short TAG_AUTHENTICATOR_NONCE
+    public static final short TAG_TRANSACTION_CONTENT_HASH
+    public static final short TAG_EXTENSION_1
+    public static final short TAG_EXTENSION_2
+    public static final short TAG_EXTENSION_ID
+    public static final short TAG_EXTENSION_DATA
+    30:31:private TagType()
+    176:176:public static boolean contains(java.lang.Short)
+    196:196:public static java.lang.String stringValueOf(java.lang.Short)
+com.samsung.sds.fido.uaf.message.registry.TcDisplay:
+    public static final short TRANSACTION_CONFIRMATION_DISPLAY_NONE
+    public static final short TRANSACTION_CONFIRMATION_DISPLAY_ANY
+    public static final short TRANSACTION_CONFIRMATION_DISPLAY_PRIVILEGED_SOFTWARE
+    public static final short TRANSACTION_CONFIRMATION_DISPLAY_TEE
+    public static final short TRANSACTION_CONFIRMATION_DISPLAY_HARDWARE
+    public static final short TRANSACTION_CONFIRMATION_DISPLAY_REMOTE
+    17:18:private TcDisplay()
+com.samsung.sds.fido.uaf.message.registry.UserVerification:
+    public static final int USER_VERIFY_PRESENCE
+    public static final int USER_VERIFY_FINGERPRINT
+    public static final int USER_VERIFY_PASSCODE
+    public static final int USER_VERIFY_VOICEPRINT
+    public static final int USER_VERIFY_FACEPRINT
+    public static final int USER_VERIFY_LOCATION
+    public static final int USER_VERIFY_EYEPRINT
+    public static final int USER_VERIFY_PATTERN
+    public static final int USER_VERIFY_HANDPRINT
+    public static final int USER_VERIFY_NONE
+    public static final int USER_VERIFY_ALL
+    26:27:private UserVerification()
+com.samsung.sds.fido.uaf.message.tag.Tag
+com.samsung.sds.fido.uaf.message.tag.uafv1tlv.Krd
+com.samsung.sds.fido.uaf.message.tag.uafv1tlv.RegAssertion
+com.samsung.sds.fido.uaf.message.transport.GetUafRequest:
+    55:55:public java.lang.String getOperation()
+    67:67:public java.lang.String getPreviousRequest()
+    78:78:public java.lang.String getContext()
+    92:106:public static com.samsung.sds.fido.uaf.message.transport.GetUafRequest fromJson(java.lang.String)
+com.samsung.sds.fido.uaf.message.transport.GetUafRequest$Builder:
+    190:191:public com.samsung.sds.fido.uaf.message.transport.GetUafRequest$Builder setPreviousRequest(java.lang.String)
+    155:155:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.transport.ReturnUafRequest:
+    46:46:public static com.samsung.sds.fido.uaf.message.transport.ReturnUafRequest$Builder newBuilder(int)
+    51:51:public java.lang.String toJson()
+    23:23:synthetic ReturnUafRequest(com.samsung.sds.fido.uaf.message.transport.ReturnUafRequest$Builder,com.samsung.sds.fido.uaf.message.transport.ReturnUafRequest$1)
+com.samsung.sds.fido.uaf.message.transport.ReturnUafRequest$1
+com.samsung.sds.fido.uaf.message.transport.ReturnUafRequest$Builder:
+    183:188:private ReturnUafRequest$Builder(int)
+    196:198:public com.samsung.sds.fido.uaf.message.transport.ReturnUafRequest build()
+    208:209:public com.samsung.sds.fido.uaf.message.transport.ReturnUafRequest$Builder setUafRequest(java.lang.String)
+    219:220:public com.samsung.sds.fido.uaf.message.transport.ReturnUafRequest$Builder setOperation(java.lang.String)
+    230:231:public com.samsung.sds.fido.uaf.message.transport.ReturnUafRequest$Builder setLifetimeMillis(java.lang.Long)
+    170:170:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+    170:170:synthetic ReturnUafRequest$Builder(int,com.samsung.sds.fido.uaf.message.transport.ReturnUafRequest$1)
+com.samsung.sds.fido.uaf.message.transport.SendUafResponse:
+    69:83:public static com.samsung.sds.fido.uaf.message.transport.SendUafResponse fromJson(java.lang.String)
+    92:92:public java.lang.String getUafResponse()
+    101:101:public java.lang.String getContext()
+com.samsung.sds.fido.uaf.message.transport.SendUafResponse$Builder:
+    115:115:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.transport.ServerResponse$Builder:
+    263:265:public com.samsung.sds.fido.uaf.message.transport.ServerResponse build()
+    275:276:public com.samsung.sds.fido.uaf.message.transport.ServerResponse$Builder setDescription(java.lang.String)
+    286:290:public com.samsung.sds.fido.uaf.message.transport.ServerResponse$Builder setAdditionalTokenList(java.util.List)
+    300:301:public com.samsung.sds.fido.uaf.message.transport.ServerResponse$Builder setLocation(java.lang.String)
+    311:312:public com.samsung.sds.fido.uaf.message.transport.ServerResponse$Builder setPostData(java.lang.String)
+    322:323:public com.samsung.sds.fido.uaf.message.transport.ServerResponse$Builder setNewUAFRequest(java.lang.String)
+    231:231:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.transport.Token:
+    27:27:public static com.samsung.sds.fido.uaf.message.transport.Token$Builder newBuilder(java.lang.String,java.lang.String)
+    40:54:public static com.samsung.sds.fido.uaf.message.transport.Token fromJson(java.lang.String)
+    59:59:public java.lang.String toJson()
+    10:10:synthetic Token(com.samsung.sds.fido.uaf.message.transport.Token$Builder,com.samsung.sds.fido.uaf.message.transport.Token$1)
+com.samsung.sds.fido.uaf.message.transport.Token$1
+com.samsung.sds.fido.uaf.message.transport.Token$Builder:
+    108:111:private Token$Builder(java.lang.String,java.lang.String)
+    119:121:public com.samsung.sds.fido.uaf.message.transport.Token build()
+    102:102:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+    102:102:synthetic Token$Builder(java.lang.String,java.lang.String,com.samsung.sds.fido.uaf.message.transport.Token$1)
+com.samsung.sds.fido.uaf.message.transport.TokenType:
+    public static final java.lang.String HTTP_COOKIE
+    public static final java.lang.String OAUTH
+    public static final java.lang.String OAUTH2
+    public static final java.lang.String SAML1_1
+    public static final java.lang.String SAML2
+    public static final java.lang.String JWT
+    public static final java.lang.String OPENID_CONNECT
+    11:12:private TokenType()
+com.samsung.sds.fido.uaf.message.transport.UafStatusCode:
+    public static final int OK
+    public static final int ACCEPTED
+    public static final int BAD_REQUEST
+    public static final int UNAUTHORIZED
+    public static final int FORBIDDEN
+    public static final int NOT_FOUND
+    public static final int REQUEST_TIMEOUT
+    public static final int UNKNOWN_AAID
+    public static final int UNKNOWN_KEYID
+    public static final int CHANNEL_BINDING_REFUSED
+    public static final int REQUEST_INVALID
+    public static final int UNACCEPTABLE_AUTHENTICATOR
+    public static final int REVOKED_AUTHENTICATOR
+    public static final int UNACCEPTABLE_KEY
+    public static final int UNACCEPTABLE_ALGORITHM
+    public static final int UNACCEPTABLE_ATTESTATION
+    public static final int UNACCEPTABLE_CLIENT_CAPABILITIES
+    public static final int UNACCEPTABLE_CONTENT
+    public static final int INTERNAL_SERVER_ERROR
+    22:23:private UafStatusCode()
+com.samsung.sds.fido.uaf.message.transport.context.Context:
+    46:50:public java.util.List getO2ContextList()
+    59:59:public java.lang.String getRpContext()
+    80:94:public static com.samsung.sds.fido.uaf.message.transport.context.Context fromJson(java.lang.String)
+com.samsung.sds.fido.uaf.message.transport.context.Context$Builder:
+    135:135:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+com.samsung.sds.fido.uaf.message.transport.context.ContextData:
+    33:33:public static com.samsung.sds.fido.uaf.message.transport.context.ContextData$Builder newBuilder(com.samsung.sds.fido.uaf.message.common.Version,java.lang.String)
+    42:42:public com.samsung.sds.fido.uaf.message.common.Version getVersion()
+    51:51:public java.lang.String getData()
+    64:78:public static com.samsung.sds.fido.uaf.message.transport.context.ContextData fromJson(java.lang.String)
+    86:86:public java.lang.String toJson()
+    14:14:synthetic ContextData(com.samsung.sds.fido.uaf.message.transport.context.ContextData$Builder,com.samsung.sds.fido.uaf.message.transport.context.ContextData$1)
+com.samsung.sds.fido.uaf.message.transport.context.ContextData$1
+com.samsung.sds.fido.uaf.message.transport.context.ContextData$Builder:
+    125:128:private ContextData$Builder(com.samsung.sds.fido.uaf.message.common.Version,java.lang.String)
+    135:137:public com.samsung.sds.fido.uaf.message.transport.context.ContextData build()
+    119:119:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+    119:119:synthetic ContextData$Builder(com.samsung.sds.fido.uaf.message.common.Version,java.lang.String,com.samsung.sds.fido.uaf.message.transport.context.ContextData$1)
+com.samsung.sds.fido.uaf.message.transport.context.ContextId:
+    public static final java.lang.String LOCATION
+    11:12:private ContextId()
+com.samsung.sds.fido.uaf.message.transport.context.OxygenContext:
+    36:36:public static com.samsung.sds.fido.uaf.message.transport.context.OxygenContext$Builder newBuilder(java.lang.String,java.util.List)
+    45:45:public java.lang.String getId()
+    55:55:public java.util.List getDataList()
+    68:82:public static com.samsung.sds.fido.uaf.message.transport.context.OxygenContext fromJson(java.lang.String)
+    90:90:public java.lang.String toJson()
+    17:17:synthetic OxygenContext(com.samsung.sds.fido.uaf.message.transport.context.OxygenContext$Builder,com.samsung.sds.fido.uaf.message.transport.context.OxygenContext$1)
+com.samsung.sds.fido.uaf.message.transport.context.OxygenContext$1
+com.samsung.sds.fido.uaf.message.transport.context.OxygenContext$Builder:
+    134:140:private OxygenContext$Builder(java.lang.String,java.util.List)
+    147:149:public com.samsung.sds.fido.uaf.message.transport.context.OxygenContext build()
+    128:128:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+    128:128:synthetic OxygenContext$Builder(java.lang.String,java.util.List,com.samsung.sds.fido.uaf.message.transport.context.OxygenContext$1)
+com.samsung.sds.fido.uaf.message.transport.context.RpContext:
+    40:40:public static com.samsung.sds.fido.uaf.message.transport.context.RpContext$Builder newBuilder()
+    50:50:public java.lang.String getUserName()
+    60:60:public java.lang.String getDeviceId()
+    70:70:public java.lang.String getRegistrationData()
+    80:80:public java.lang.String getTransactionData()
+    90:90:public com.samsung.sds.fido.uaf.message.transport.Token getToken()
+    125:125:public java.lang.String toJson()
+    14:14:synthetic RpContext(com.samsung.sds.fido.uaf.message.transport.context.RpContext$Builder,com.samsung.sds.fido.uaf.message.transport.context.RpContext$1)
+com.samsung.sds.fido.uaf.message.transport.context.RpContext$1
+com.samsung.sds.fido.uaf.message.transport.context.RpContext$Builder:
+    168:174:private RpContext$Builder()
+    181:183:public com.samsung.sds.fido.uaf.message.transport.context.RpContext build()
+    193:194:public com.samsung.sds.fido.uaf.message.transport.context.RpContext$Builder setUserName(java.lang.String)
+    204:205:public com.samsung.sds.fido.uaf.message.transport.context.RpContext$Builder setDeviceId(java.lang.String)
+    215:216:public com.samsung.sds.fido.uaf.message.transport.context.RpContext$Builder setRegistrationData(java.lang.String)
+    226:227:public com.samsung.sds.fido.uaf.message.transport.context.RpContext$Builder setTransactionData(java.lang.String)
+    237:238:public com.samsung.sds.fido.uaf.message.transport.context.RpContext$Builder setToken(com.samsung.sds.fido.uaf.message.transport.Token)
+    156:156:public bridge synthetic com.samsung.sds.fido.uaf.message.Message build()
+    156:156:synthetic RpContext$Builder(com.samsung.sds.fido.uaf.message.transport.context.RpContext$1)
+com.samsung.sds.fido.uaf.message.util.BitFields:
+    9:9:public BitFields()
+com.samsung.sds.fido.uaf.message.util.GsonHelper:
+    10:10:public GsonHelper()
+    23:23:public static java.lang.Object fromJson(java.lang.String,java.lang.reflect.Type)
+com.samsung.sds.fido.uaf.message.util.TypeValidator:
+    11:12:private TypeValidator()
+    119:119:public static boolean isValidIso8601Date(java.lang.String)

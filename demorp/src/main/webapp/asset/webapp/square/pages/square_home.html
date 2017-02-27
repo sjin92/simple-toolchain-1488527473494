@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Square Portal Home</title>
+
+<!-- CSS Import -->
+<link href="../../common/css/default.css" rel="stylesheet">
+<link href="../../common/css/common.css" rel="stylesheet">
+<link rel="stylesheet" href="../../common/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../common/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../common/lib/bootstrap/css/w3.css">
+<link rel="stylesheet" href="../css/square-common.css">
+</head>
+
+<body class="w3-content" style="max-width: 1600px" id="myHome"
+	data-spy="scroll" data-target=".navbar" data-offset="50">
+
+	<!-- Sidenav/menu -->
+	<nav class="w3-sidenav w3-collapse w3-white w3-animate-left"
+		style="z-index: 3; width: 250px;">
+		<br> <a href="#" class="w3-padding nav-link"
+			onclick="userPolicyList();">POLICY SETTING</a> <a href="#"
+			class="w3-padding nav-link" onclick="moveMainPage()">Demo Main</a>
+
+	</nav>
+
+	<!-- Overlay effect when opening sidenav on small screens -->
+	<div class="w3-overlay w3-hide-large w3-animate-opacity"
+		onclick="w3_close()" style="cursor: pointer" title="close side menu"></div>
+
+	<!-- !PAGE CONTENT! -->
+	<div class="w3-main" style="margin-left: 300px">
+
+		<!-- Header -->
+		<header class="w3-container w3-top" style="background-color: #0e1e4c;">
+			<span style="float: left;"><i class="fa fa-home"
+				aria-hidden="true"
+				style="font-size: 32px; padding-top: 15px; cursor: pointer;"
+				onclick="moveMainPage()"></i></span> <span class="w3-nav-title"
+				style="line-height: 4; font-size: 21px; font-weight: bold;margin-right: 26px;">Square Portal</span>
+		</header>
+
+		<div class="square-home">
+		
+			<div class="mail">
+				<div class="mail-vip">
+					<div class="mail-category">VIP</div>
+					<div class="mail-count">0</div>
+				</div>
+
+				<div class="mail-inbox">
+					<div class="mail-category">Inbox</div>
+					<div class="mail-count" style="left: 8px;">1</div>
+				</div>
+
+				<div class="mail-pending">
+					<div class="mail-category">Pending</div>
+					<div class="mail-count" style="left: 16px;">1</div>
+				</div>
+				<div class="mail-plus">
+					<i class="fa fa-plus" aria-hidden="true"></i>
+				</div>
+			</div>
+
+
+			<div class="square-search">
+				<i class="fa fa-user" aria-hidden="true"></i>
+				Name, Job, Phone number
+				<i class="fa fa-search" aria-hidden="true"></i>
+			</div>
+
+			<div class="inbox">
+				<div class="inbox-title">
+					<i class="fa fa-envelope-o" aria-hidden="true"></i>
+					<div
+						style="position: absolute; left: 45px; font-size: 19px; padding-top: 3px;">Inbox</div>
+					<b
+						style="position: absolute; right: 21px; font-size: 19px; padding-top: 3px;">2</b>
+				</div>
+				<div class="inbox-contents">
+					<i class="fa fa-star-o" aria-hidden="true"></i>
+					<div class="mail-content" style="color: black;"onclick="location.href='square_mail.html'">
+						<div class="mail-title">Re : Other requests regarding…</div> 
+						<div class="mail-sender-main">Won Kim/Solution G(Mobile Payment)</div>
+						<i class="fa fa-paperclip" aria-hidden="true"></i>
+					</div>
+					
+					<i class="fa fa-star-o" aria-hidden="true"></i>
+					<div class="mail-content" style="color: gray;">
+						<div class="mail-title">Fingerprint Mouse F/U..</div> 
+						<div class="mail-sender-main">Dana Lim/Solution G(Mobile Payment)</div>
+						<i class="fa fa-paperclip" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+			
+			<div class="home-bottom">
+				<div class="approval">
+					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					<div style="font-weight: bold;font-size: 17px;position: absolute;padding-left: 30px;">Approval</div>
+					<div style="position: absolute; right: 16px; font-weight: bold;">1</div>
+					<div class="text-center" style="padding-top: 41px; padding-bottom: 13px;">1 pending approval</div>
+				</div>
+				<div class="schedule">
+					<i class="fa fa-calendar" aria-hidden="true"></i>
+					<div style="font-weight: bold;font-size: 17px;position: absolute;padding-left: 30px;">Schedule</div>
+					<div style="position: absolute; right: 16px; font-weight: bold;">0</div>
+					<div class="text-center" style="padding-top: 41px; padding-bottom: 13px;">Nothing scheduled</div>
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+
+	<!-- <script src="../common/lib/jqueryMobile/jquery.mobile-1.4.5.min.js"></script> -->
+	<script src="../../common/lib/jquery/jquery-2.1.1.min.js"></script>
+	<script src="../../common/lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../common/js/util/app.js"></script>
+	<script src="../../common/js/language/language.js"></script>
+	<script src="../../common/js/util/exception.js"></script>
+	<script src="../../common/js/util/commonUtils.js"></script>
+	<script src="../../common/js/util/commonPopup.js"></script>
+	<script src="../../common/js/util/logger.js"></script>
+
+	<script type="text/javascript">
+		function moveMainPage() {
+			location.assign("../../main/pages/main.html");
+		}
+		function moveHome() {
+			location.assign("square_home.html");
+		}
+	</script>
+</body>
+</html>

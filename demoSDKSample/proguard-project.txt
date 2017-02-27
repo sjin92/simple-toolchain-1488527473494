@@ -1,0 +1,185 @@
+# To enable ProGuard in your project, edit project.properties
+# to define the proguard.config property as described in that file.
+#
+# Add project specific ProGuard rules here.
+# By default, the flags in this file are appended to flags specified
+# in ${sdk.dir}/tools/proguard/proguard-android.txt
+# You can edit the include path and order by changing the ProGuard
+# include property in project.properties.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# Add any project specific keep options here:
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+-dontwarn com.sun.net.httpserver.**
+-dontwarn javax.annotation.**
+-dontwarn java.beans.**
+-dontwarn javax.annotation.concurrent.**
+-dontwarn sun.misc.Unsafe
+-dontwarn com.samsung.sds.fido.uaf.client.common.http.**
+-dontwarn org.restlet.engine.ssl.**
+-dontwarn com.samsung.sds.fido.uaf.**
+
+#-libraryjars libs/android-support-v4.jar
+#-libraryjars libs/client-sdk.jar
+#-libraryjars libs/gson-2.2.4.jar
+#-libraryjars libs/guava-17.0.jar
+
+-keep class android.support.v4.** { *; }   
+-keep class com.google.** { *; }
+-keep class org.apache.** { *; }
+-keep class org.json.** { *; }
+
+-keep class com.samsung.sds.fido.uaf.client.** { *; }
+-keep class com.samsung.sds.fido.uaf.sdk.** { *; }
+-keep class org.fidoalliance.** { *; }
+-keep class org.restlet.** { *; }
+
+-keep class * implements com.samsung.sds.fido.uaf.message.Message {
+    private *;
+}
+-keep class com.samsung.sds.fido.uaf.client.common.message.DiscoveryData {
+    final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.asm.GetInfoOut {
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.asm.AsmResponse {
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.asm.AuthenticatorInfo {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.UafMessage {
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.UafRegistrationRequest {
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.UafRegistrationResponse {
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.RegistrationRequest {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.RegistrationResponse {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.OperationHeader {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.Policy {
+    public static *;
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.MatchCriteria {
+    *;
+}
+-keep class org.restlet.* {
+    *;
+}
+-keep class org.restlet.engine.* {
+    *;
+}
+-keep class org.restlet.engine.log.* {
+    *;
+}
+-keep class org.restlet.engine.connector.* {
+    *;
+}
+-keep class org.restlet.engine.adapter.* {
+    *;
+}
+-keep class org.restlet.data.* {
+    *;
+}
+-keep class org.restlet.util.* {
+    *;
+}
+-keep class org.restlet.service.* {
+    *;
+}
+-keep class org.restlet.representation.* {
+    *;
+}
+-keep class org.restlet.resource.* {
+    *;
+}
+-keep class org.restlet.routing.* {
+    *;
+}
+-keep class org.restlet.security.* {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.TrustedFacets {
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.TrustedFacetsList {
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.AuthenticatorRegistrationAssertion {
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.Extension {
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.FinalChallengeParams {
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.UafAuthenticationRequest {
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.UafAuthenticationResponse {
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.UafDeregistrationRequest {
+    public final *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.DeregistrationRequest {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.asm.RegisterOut {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.asm.GetRegistrationsOut {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.asm.AppRegistration {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.asm.AuthenticateOut {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.transport.ServerResponse {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.DeregisterAuthenticator {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.AuthenticationRequest {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.AuthenticationResponse {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.protocol.AuthenticationResponse {
+    *;
+}
+-keep class com.samsung.sds.fido.uaf.message.common.Transaction {
+    *;
+}
+
+-keepattributes Signature, *Annotation*
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.examples.android.model.** { *; }
+
+
+

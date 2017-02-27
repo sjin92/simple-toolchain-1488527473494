@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Pragma" content="no-cache">
+<!-- <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi" name="viewport"> -->
+<title>ABC Bank</title>
+<link href="${pageContext.request.contextPath}/demorp/sdc/img/fido_favicon_disable.ico" rel="icon" type="image/x-icon" />
+
+<link type="text/css" rel="stylesheet" href="../css/common.css">
+<link type="text/css" rel="stylesheet" href="../css/login.css">
+<link type="text/css" rel="stylesheet" href="../css/layout.css">
+<link type="text/css" rel="stylesheet" href="../css/header.css">
+<script src="../../common/lib/jquery/jquery-2.1.1.min.js"></script>
+
+</head>
+
+<body style="overflow: hidden;">
+	<div id="container">
+		<div id="header">
+			<div class="gnbarea fix">
+				<h1 class="h_logo">
+					<div class="logo">E Bank</div>
+				</h1>
+				<div id="headerMenu" class="gnbinner">
+					<div class="workspace">
+						<a id="headMenu" name="headMenu" class="headMenu">Service availability</a>
+					</div>
+					<div class="workspace">
+						<a id="headMenu" name="headMenu" class="headMenu">Accessibility</a>
+					</div>
+					<div class="workspace">
+						<a id="headMenu" name="headMenu" class="headMenu">Help</a>
+					</div>
+				</div>
+				
+				<div id="loginHeader" class="gnbutil">
+					<div class="btns">
+						<div id="logoutBtn" class="gnb_btn-wrap black-btn">
+							<a href="javascript:signout()">Logout</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="content">
+			<img src="../img/main_bg.jpg" id="back_img" style="position: absolute; right: 0px; height: 100%; width: 100%;">
+			<div id="messageArea_bg"></div>
+			<div id="messageArea">
+				<div class="title">Confirmed!</div>
+				<div class="message">You have been validated from</br> your registered mobile device</div>
+			</div>
+		
+		</div>	
+	</div>
+		<div id="footer">
+			<ul>
+				<li>SAMSUNG SDS FIDO Server V1.3.1, Admin Portal V1.3.1<em>l</em></li>
+				<li><span>Service Desk</span> <a href="mailto:fido.tech@samsung.com">fido.tech@samsung.com</a></li>
+			</ul>
+			<p>COPYRIGHT(C) SAMSUNG SDS ALL RIGHT RESERVED.</p>
+		</div>
+	</div>
+	</body>
+
+<script type="text/javascript">	
+$("document").ready(function(){	
+	// jy98.lee 151005. background resize기능 추가 
+	var background = $("#back_img");
+	var bgWidth = background.width(); 
+	var bgHeight = background.height();
+	
+	function bgResize() {
+		var winWidth = $(window).width();
+		var winHeight = $(window).height() - $("#header").outerHeight();
+		
+		if(bgHeight / bgWidth <=  winHeight / winWidth) {
+			background.css('height', 'calc(100% - 65px)');
+			background.css('width', 'auto');
+		}
+		else  {
+			background.css('height', 'auto');
+			background.css('width', '100%');
+		}
+		
+		var loginAreaMargin = $(".description").outerHeight() - $(".description").height();
+		var documentHeight = $("#footer").position().top + $("#footer").outerHeight();
+		$(".loginArea .description").height(documentHeight - loginAreaMargin);
+	}
+	$(window).resize(function() {
+		bgResize();		
+	});
+	bgResize();
+});
+
+
+function signout(){
+	window.location.replace("../../web-login.html");
+}
+</script>
+</html>

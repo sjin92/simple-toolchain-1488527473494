@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>E Bank</title>
+<link href="./web_login/img/fido_favicon_disable.ico" rel="icon" type="image/x-icon" />
+
+<link type="text/css" rel="stylesheet" href="./web_login/css/common.css">
+<link type="text/css" rel="stylesheet" href="./web_login/css/login.css">
+<link type="text/css" rel="stylesheet" href="./web_login/css/layout.css">
+<link type="text/css" rel="stylesheet" href="./web_login/css/header.css">
+
+<script src="./common/lib/jquery/jquery-2.1.1.min.js"></script>    
+<script src="./common/js/util/app.js"></script>
+<script src="./common/js/language/language.js"></script>
+<script src="./common/js/util/exception.js"></script>
+<script src="./common/js/util/commonUtils.js"></script>
+<script src="./common/js/util/logger.js"></script>
+
+<script type="text/javascript">
+ 
+$("document").ready(function(){
+	var cook = document.cookie + ";";
+	var idx = cook.indexOf("userid", 0);
+	var val = "";
+
+	if(idx != -1){
+		cook = cook.substring(idx, cook.length);
+        begin = cook.indexOf("=", 0) + 1;
+        end = cook.indexOf(";", begin);
+        val = unescape(cook.substring(begin, end));
+	}
+
+	if(val!= ""){
+		document.getElementById("userid").value = val;
+		//document.getElementById("rememberId").checked = true;
+	}
+	else{
+		$("#userid").val('');
+		$("#password").val('');
+	}
+	
+	// jy98.lee 151005. background resize기능 추가 
+	var background = $("#back_img");
+	var background_wait = $("#back_wait_img");
+	
+	var bgWidth = background.width(); 
+	var bgHeight = background.height();
+	
+	var bgWidth_wait = background_wait.width(); 
+	var bgHeight_wait = background_wait.height();
+	
+	function bgResize() {
+		var winWidth = $(window).width();
+		var winHeight = $(window).height();
+		
+		if(bgHeight / bgWidth <=  winHeight / winWidth) {
+			background.css('height', '100%');
+			background.css('width', 'auto');
+		}
+		else  {
+			background.css('height', 'auto');
+			background.css('width', '100%');
+		}
+		
+		var winWidth_wait = $(window).width();
+		var winHeight_wait = $(window).height() - $("#header").outerHeight();
+		
+		if(bgHeight_wait / bgWidth_wait <=  winHeight_wait / winWidth_wait) {
+			background_wait.css('height', 'calc(100% - 65px)');
+			background_wait.css('width', 'auto');
+		}
+		else  {
+			background_wait.css('height', 'auto');
+			background_wait.css('width', '100%');
+		}
+		
+		var loginAreaMargin = $(".description").outerHeight() - $(".description").height();
+		var documentHeight = $("#footer").position().top + $("#footer").outerHeight();
+		$(".loginArea .description").height(documentHeight - loginAreaMargin);
+	}
+	$(window).resize(function() {
+		bgResize();		
+	});
+	bgResize();
+});
+
+function saveId(){
+    saveLogin($("#userid").val());
+}
+
+function setSave(name, value, expiredays){
+	var today = new Date();
+	today.setDate( today.getDate() + expiredays );
+	document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + today.toGMTString() + ";"
+}
+
+function saveLogin(id){
+	if(id != ""){
+		setSave("userid", id, 7);
+	}else{
+		setSave("userid", id, -1);
+ 	}
+}
+
+// HyunDai Card Login Logic
+function loginProc(){
+/*	$(".sec").text("(" + initialTime + " sec)");	/container_main/ timer표시 초기화
+	$("#loginmodal, #lean_overlay").fadeIn();*/
+	$("#container_wait").show();
+	$("#container_main").hide();
+	
+	var userId = $("#userid").val();
+	
+	saveId();	// 다음을 위해 아이디는 저장하자
+	
+	
+	commonAjax(contextRoot + "/user/login/push", {loginId : userId}, "POST",
+			{
+				successFunc:function(data) {
+					console.log(data);
+					if(data.resultCode == "0"){
+						tstart(userId);
+					}else{
+						layerPop.showPopup("Fail", "Internal Server Error", {callback:function() {
+							$("#container_main").show();
+							$("#container_wait").hide();
+						}});
+					}
+				},
+				errorFunc:function() {
+					console.log("error!!");
+					layerPop.showPopup("Fail", "Authorization Failed.", {callback:function() {
+						$("#container_main").show();
+						$("#container_wait").hide();
+					}});
+				}
+			}
+		);
+	
+}
+
+//Timer 설정
+var initialTime = 2*60;
+var timerHandle = null;
+
+function tstop(action){
+	if(timerHandle) {
+		clearInterval(timerHandle);	// Timer Stop
+		timerHandle = null;
+	}
+	
+	if(action=="timeout") {	
+		layerPop.showPopup("Error", "Login time out", {callback:function() {
+			$("#container_main").show();
+			$("#container_wait").hide();
+		}});
+	} else if(action=="nouser") {
+		layerPop.showPopup("Error", "User does not exist.", {callback:function() {
+			$("#container_main").show();
+			$("#container_wait").hide();
+		}});
+	}
+	else if(action=="fail") {
+		layerPop.showPopup("Error", "Login Failed", {callback:function() {
+			$("#container_main").show();
+			$("#container_wait").hide();
+		}});
+	}
+	else if(action=="fail_notReg") {
+		layerPop.showPopup("Error", "Not registered user", {callback:function() {
+			$("#container_main").show();
+			$("#container_wait").hide();
+		}});
+	}
+	else if(action=="cancel") {
+		layerPop.showPopup("Error", "Authlization Canceled.", {callback:function() {
+			$("#container_main").show();
+			$("#container_wait").hide();
+		}});
+	}
+	else if(action=="back") {
+		$("#container_main").show();
+		$("#container_wait").hide();
+	}
+}
+
+function tstart(userId){
+	var id = userId;
+	var sec = initialTime; 
+
+	if(timerHandle) {
+		clearInterval(timerHandle);
+		timerHandle = null;
+	}
+
+	function Timer(){
+		sec = sec - 1;
+		/*var temp = Math.floor(sec / 60);
+		if(Math.floor(sec/60) < 10){
+			temp = '0' + temp;
+		}
+		temp = temp + ":";
+		if((sec%60) < 10){
+			temp = temp + '0';
+		}
+		temp = temp + (sec % 60);*/
+		$(".sec").text("(" + sec + " sec)");
+		
+		getToken(id);
+		if(sec < 0){
+			tstop("timeout");
+		}
+	}
+	
+	timerHandle = setInterval(function() {
+		Timer();
+	}, 1000);
+}
+
+function main(){
+	location.href = "./demo_home";
+}
+
+function getToken(loginId){
+	
+	commonAjax(contextRoot + "/user/login/token?loginId=" + loginId, null, "GET",
+			{
+				successFunc:function(data) {
+					console.log(data);
+					if(data.resultCode == "success" || data.resultCode == "0"){
+						//location.href = "./main.do";
+						
+						
+						location.href = "./web_login/pages/main.html";
+						//location.href = "./main/pages/main.html";
+					}else if(data.resultCode =="ready"){
+						//Empty
+					}else if(data.resultCode=="fail_notReg"){
+						tstop("fail_notReg");
+					}else{
+						tstop("fail");
+					}
+				},
+				errorFunc:function() {
+					console.log("error!!");
+					layerPop.showPopup("Fail", "Internal Server Error", {callback:function() {
+						$("#container_main").show();
+						$("#container_wait").hide();
+					}});
+				}
+			}
+		);
+	
+}
+
+
+var layerPop = {
+		showOverlay:function() {
+			var overlay = $("<div>").addClass("overlay");	
+			$("body").append(overlay);
+			
+		},
+		hideOverlay:function() {
+			$(".overlay").remove();	
+		},	
+		showPopup:function(title, msg, options) {
+			var defaultOptions = {
+					title : "",
+					msg : "",
+					buttonType:"OK",
+					callback:null
+			}
+			var useOptions = $.extend({}, defaultOptions, options);
+			useOptions.title = title;
+			useOptions.msg = msg;
+			
+			layerPop.closePopup();
+			layerPop.showOverlay();
+			
+			var popWrapper = $("<div>").addClass('popWrap');
+			var titleWrapper = $("<div>").addClass('popTitleWrap');
+			var bodyWrapper = $("<div>").addClass('popBodyWrap');
+			var buttonWrapper = $("<div>").addClass('popButtonWrap');
+			
+			var title = $("<div>").addClass('popTitle');
+			title.html(useOptions.title);
+			var titleClose = $("<div>").addClass('popTitleClose');
+			
+			var bodyContents = $("<div>").addClass('popBodyContents');
+			bodyContents.html(useOptions.msg);
+			
+			var buttonOK = $("<div>").addClass('popButton');
+			buttonOK.html("Close");
+			buttonOK.click(function() {
+				layerPop.closePopup();
+				if(typeof useOptions.callback == "function") {
+					useOptions.callback();
+				}
+			});
+			//var buttonClose = $("<div>").addClass('popButton');
+			buttonWrapper.append(buttonOK);
+			
+			
+			titleWrapper.append(title).append(titleClose);
+			bodyWrapper.append(bodyContents);
+			popWrapper.append(titleWrapper).append(bodyWrapper).append(buttonWrapper);
+			
+			$("body").append(popWrapper);			
+		},
+		closePopup:function() {
+			$(".popWrap").remove();
+			layerPop.hideOverlay();
+		}
+	}	
+
+</script>
+</head>
+<body style="overflow: hidden;">
+	<div id="container_main">
+		<div class="loginArea">
+			<div class="loginWrap">
+				<div class="description"><p><strong class="title">E Bank</strong></p></div>
+
+				<p class="tit">Customer Number</p>
+				<div class="loginbox">
+					<ul>
+						<li><label for="userid" class="hide">Customer Number</label>
+							<input type="text" id="userid" name="userid" tabindex="1" height="50px" class="sign_input" placeholder="Customer Number" required="required" autocomplete="off" maxlength="30" style=" ime-mode: disabled"">						
+						</li>
+					</ul>
+					<div><div class="btn-login purple-btn" onclick="loginProc(event);">Log in</div></div>
+				</div>
+			</div>
+		</div>
+		<img src="./web_login/img/login_back.png" id="back_img" style="position: absolute; right: 0px; opacity: 0.85; height: auto; width: auto">
+	</div>
+	
+	<div id="container_wait" style="display:none">
+		<div id="header">
+			<div class="gnbarea fix">
+				<h1 class="h_logo">
+					<div class="logo">E Bank</div>
+				</h1>
+				<div id="headerMenu" class="gnbinner">
+					<div class="workspace">
+						<a id="headMenu" name="headMenu" class="headMenu">Service availability</a>
+					</div>
+					<div class="workspace">
+						<a id="headMenu" name="headMenu" class="headMenu">Accessibility</a>
+					</div>
+					<div class="workspace">
+						<a id="headMenu" name="headMenu" class="headMenu">Help</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="content">
+			<img src="./web_login/img/main_bg.jpg" id="back_wait_img" style="position: absolute; right: 0px; height: 100%; width: 100%;">
+
+			<div id="messageArea_bg"></div>
+			<div id="messageArea">
+				<div class="title">FIDO Login</div>
+				<div class="message">Awaiting Fingerprint authentication</br> from registered mobile device</div>
+				
+				<div id="btn_area">
+					<div id="fingerprint_wrap">
+						<img id="fingerprint" src="./web_login/img/fingerprint.jpg">
+					</div>
+					<div id="startAgain_wrap" onclick="tstop('back');">
+						<img id="startAgain" src="./web_login/img/again.jpg">
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	
+		
+	<div id="footer">
+		<ul>
+			<li>SAMSUNG SDS FIDO Server V1.3.1, Admin Portal V1.3.1<em>l</em></li>
+			<li><span>Service Desk</span> <a href="mailto:fido.tech@samsung.com">fido.tech@samsung.com</a></li>
+		</ul>
+		<p>COPYRIGHT(C) SAMSUNG SDS ALL RIGHT RESERVED.</p>
+	</div>
+</body>
+</html>

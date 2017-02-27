@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <title>FIDO Demo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="../../common/css/default.css">
+  <link rel="stylesheet" href="../../common/css/common.css">
+  <link rel="stylesheet" href="../../common/lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../common/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../common/lib/bootstrap/css/w3.css">
+  
+  <link rel="stylesheet" href="../css/shopping-common.css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  
+<style>
+.img-area {
+   float: left;
+   background-color: white;
+   border-radius: 50%;
+   width: 80px;
+   height: 80px;
+   padding-top: 15px;
+}  
+ 
+.text-area {
+   /* float: left; */
+   padding-top: 5px;
+   color: #929292;
+ 	text-align: left;
+	padding-left: 100px;
+}
+ 
+.price {
+   /* float: left; */
+	color: #ff8f00;
+	font-size: 15px;
+}
+ 
+.img-responsive {
+	margin: 0 auto;
+	width: 50px;
+}
+
+.list-group-item {
+	border: 1px solid #628479;
+    max-width: 733px;
+    margin: auto;
+       background-color: rgba(45, 121, 117, 0.3);
+}
+
+.frame-footer {
+  padding-top: 17px;
+  padding-bottom: 0px;
+}
+
+.total-field {
+	background-color: rgba(55, 179, 155, 0.5);
+}
+</style>
+  
+</head>
+<body class="w3-content" style="max-width:1600px" id="myHome" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+
+<!-- Sidenav/menu -->
+<nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index:3;width:250px;"><br>
+
+  <a href="#" class="w3-padding nav-link" onclick="goPolicySetting();">POLICY SETTING</a>
+  <a href="#" class="w3-padding nav-link" onclick="moveMainPage();">Demo Main</a>
+   
+</nav>
+
+<!-- Overlay effect when opening sidenav on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  <!-- Header -->
+  <header class="w3-container w3-top">
+    <!-- <span style="float:left; width:30px; color:rgb(3, 142, 209);">|</span> -->
+    <span style="float:left;"><i class="fa fa-home" aria-hidden="true" style="font-size:32px; padding-top:10px; cursor:pointer;" onclick="moveMainPage()"></i></span>
+    <!-- <span class="w3-opennav w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()" style="color:white"><i class="fa fa-bars"></i></span> -->
+    <span class="w3-nav-title"><a href="shop_main.html">Shopping Mall</a></span>
+    <!-- <span style="float:right;"><i class="fa fa-cog" aria-hidden="true" style="font-size:32px; padding-top:10px; cursor:pointer;" onclick="goPolicySetting()"></i></span> -->
+  </header>
+
+<!-- Third Container -->
+<div class="container-fluid text-center top-content bottom-content">
+    <div class="col-sm-4">
+    	<div class="w3-card-4">
+	      <div class="shop-item">
+	      	<div class="img-area"><img src="../img/sec_AX40K3021UWD_001_Front_lightblue_thumb.jpg" class="img-responsive img-rounded" alt="Image" ></div>
+	      	<div class="text-area">Air cleaner</div>
+	      	<div class="text-area price">$ 200</div>
+	      </div>
+		</div>
+    </div>
+    
+    <div class="col-sm-4">
+    	<div class="w3-card-4">    
+	      <div class="shop-item">
+	      	<div class="img-area"><img src="../img/sec_UN55KS9500F-W7_012_Black_black_thumb.jpg" class="img-responsive img-rounded" alt="Image" ></div>
+	      	<div class="text-area">Smart TV</div>
+	      	<div class="text-area price">$ 3,000</div>
+	      </div>
+	    </div>
+    </div>
+    
+    <div class="col-sm-4">
+    	<div class="w3-card-4">    
+	      <div class="shop-item">
+	      	<div class="img-area"><img src="../img/sec_NZ63J3300CKC_001_thumb_black_thumb.jpg" class="img-responsive img-rounded" alt="Image" ></div>
+	      	<div class="text-area">Induction range</div>
+	      	<div class="text-area price">$ 100</div>
+	      </div>
+	    </div>
+    </div>
+    
+    <div class="col-sm-4">
+    	<div class="w3-card-4">    
+	      <div class="shop-item">
+	      	<div class="img-area"><img src="../img/sec_WD17J7810KPA_001_Front_naturalgray_thumb.jpg" class="img-responsive img-rounded" alt="Image" ></div>
+	      	<div class="text-area">Washing machine</div>
+	      	<div class="text-area price">$ 1,000</div>
+	      </div>
+		</div>
+    </div>        
+  
+    <div class="col-sm-4">
+    	<div class="w3-card-4">    
+	      <div class="shop-item">
+	      	<div class="img-area"><img src="../img/sec_VC33K5130LP_001_R-Side_redaurora_thumb.jpg" class="img-responsive img-rounded" alt="Image" ></div>
+	      	<div class="text-area">Vacuum cleaner</div>
+	      	<div class="text-area price">$ 100</div>
+	      </div>
+		</div>	      
+    </div>
+    
+    <div class="col-sm-4">
+    	<div class="w3-card-4">
+	      <div class="shop-item">
+	      	<div class="img-area"><img src="../img/sec_SWA-8000S-KR_010_Set-Front_black_thumb.jpg" class="img-responsive img-rounded" alt="Image" ></div>
+	      	<div class="text-area">Audio systems</div>
+	      	<div class="text-area price">$ 1,000</div>
+      	  </div>
+		</div>     	  	
+    </div> 
+
+  </div>    
+
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+
+<footer class="container-fluid text-center">
+	<!-- <div class="footer-btn left-btn" onclick="cancel()">CANCEL</div> -->
+	<div class="footer-btn" onclick="movePage()">Order</div>
+</footer>
+
+    <script src="../../common/lib/jquery/jquery-2.1.1.min.js"></script>    
+    <script src="../../common/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../common/js/language/language.js"></script>
+    <script src="../../common/js/util/exception.js"></script>
+    <script src="../../common/js/util/commonUtils.js"></script>
+    <script src="../../common/js/util/commonPopup.js"></script>
+    <script src="../../common/js/util/logger.js"></script>
+    <script src="../../common/js/util/app.js"></script>
+    
+
+<script type="text/javascript">
+/* $(document).keydown(function(e){   
+    if(e.target.nodeName != "INPUT" && e.target.nodeName != "TEXTAREA"){       
+        if(e.keyCode === 8){   
+        return false;
+        }
+    }
+});
+
+window.history.forward(0); */
+
+function w3_open() {
+    document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
+    document.getElementsByClassName("w3-overlay")[0].style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementsByClassName("w3-sidenav")[0].style.display = "none";
+    document.getElementsByClassName("w3-overlay")[0].style.display = "none";
+}    
+    
+var totalShopPrice = 0;
+var selectedItemCnt = 0; 
+  	
+$(function(){
+
+	$('.shop-item').on('click', function(){
+		var userInfo = customStorage.read("USER");
+		if($('.img-area' ,this).hasClass("selected") == true){
+			selectedItemCnt -= 1;
+			$('.img-area' ,this).removeClass("selected");
+			$('.text-area', this).removeClass("selected-text");
+			$(this).removeClass('selected-shop-item');
+			var price = $('.price', this).html().replace(/,/gi, "").substring(2);
+			totalShopPrice -= (1 * price);
+	
+		}else{
+			selectedItemCnt += 1;
+			$('.img-area' ,this).addClass("selected");
+			$('.text-area', this).addClass("selected-text");
+			$(this).addClass('selected-shop-item');
+			var price = $('.price', this).html().replace(/,/gi, "").substring(2);
+			totalShopPrice += (1 * price);
+		
+		}
+		
+		
+		if(selectedItemCnt > 0){
+			$('.btn-footer').removeClass("disabled");
+		}else{
+			$('.btn-footer').addClass("disabled");
+		}
+	});			
+
+});
+
+   
+function goPolicySetting(){
+	location.assign("../../policy/pages/policy_setting.html");
+}
+
+function cancel(){
+	location.assign("../../main/pages/main.html");
+}
+
+function moveMainPage() {
+	location.assign("../../main/pages/main.html");
+}
+
+function movePage() {
+	if(selectedItemCnt > 0){
+		var userInfo = customStorage.read("USER");
+		userInfo.totalShopPrice = totalShopPrice;
+		userInfo.selectedItemCnt = selectedItemCnt;
+		customStorage.write("USER", userInfo);
+		
+ 		location.assign("shop_payment.html");
+	}else {
+		commonPopup.showPopup("Notice","Please select product(s) to purchase","OK");
+	}
+}
+
+  
+function moveFido(type){
+	var userInfo = customStorage.read("USER");
+	app.requestFido(null, type, userInfo.userId);
+}
+
+function moveOtp(type){
+	var userInfo = customStorage.read("USER");
+	app.requestOtp(null, type, userInfo.userId);
+}
+</script>
+
+</body>
+</html>

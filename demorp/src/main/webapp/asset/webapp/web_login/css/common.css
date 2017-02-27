@@ -1,0 +1,120 @@
+@charset "utf-8";
+/** reset **/
+* { margin:0; padding:0; /*line-height:117%;*/ }
+html, body {width:100%; height:100%; font-family:Arial,"돋움",dotum,dodum;color:#333;}
+button {font-family:Arial,"돋움",dotum,dodum;} /* 2014-05-07 by kangminkyung 추가 */
+/* html>/**/ /*body {overflow-y:scroll} */ /* 2014-04-30 by kangminkyung 수정 */
+body {color:#333; font-size:12px; background:#fff;scrollbar-face-color: #fff; scrollbar-shadow-color: #ccc; scrollbar-highlight-color: #ccc; scrollbar-3dlight-color: #fff; scrollbar-darkshadow-color: #fff; scrollbar-track-color: #F7F7F7; scrollbar-arrow-color: #B8B8B8}
+div,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,li,ol,th,td,
+p,blockquote,form,fieldset,input,legend {margin:0;padding:0}
+legend {display:none}
+table, td, th {font-size:12px; color:#333;table-layout:fixed}
+table {border-collapse:collapse; border-spacing:0}
+img, fieldset, iframe { border:0 none}
+img { -ms-interpolation-mode: bicubic;  filter: progid:DXimageTransform.Microsoft.AlphaimageLoader(...)}
+dl,ul, ol, li { list-style:none; padding:0; margin:0}
+img { vertical-align:middle}
+hr {display:none}
+a {color:#333;text-decoration:none;display:inline-block}
+a:hover {text-decoration:none}
+textarea {font-size:12px}
+em, address { font-style:normal}
+button {cursor:pointer; _cursor /**/:hand}
+label {vertical-align:1px;margin:0 10px 0 0}
+form { padding:0; border:0 none; font-size:12px}
+* html input {margin:-1px 0;}  /* ie6 ie7 input 1px */
+*:first-child+html input {margin:-1px 0} /* ie6 ie7 input 1px */
+input  { padding:2px 5px 0 10px !important; height:26px !important  } /* 2015-09-22 추가 */
+textarea  { padding:2px 5px 0 10px !important; } /* 2015-10-07 추가 */
+*:active, *:focus  {-moz-outline:none;outline:none;ie-eummy:expression(this.hideFocus=true);}
+input[type="submit"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner{border : 0px;} 
+
+
+.hide {visibility:hidden;overflow:hidden;position:absolute;top:0;left:0;width:0;height:0;font-size:0;line-height:0}
+
+
+.popWrap {    
+	top: 290px;
+    position: absolute;
+	z-index: 9000;
+    background-color: white;
+    border: 1px solid #3169a4;
+    box-shadow: 0px 0px 15px #4c4c4c;
+    width: 350px;
+    left: -175px;
+    margin-left: 50%;
+}
+
+.popTitleWrap {
+    background: #3169a4;
+    height: 50px;
+    border-bottom: 1px solid #373b62;
+    border-color: #5c5c5c;
+    padding: 0 20px;
+}
+
+.popTitle {	
+    float: left;
+    display: block;
+    padding-top: 17px;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    color: #fff;
+    font-weight: bold;
+    font-family: "돋움";
+}
+
+.popTitleClose {
+	float:right;
+	margin: 10px;
+	padding:20px;
+}
+
+.popBodyWrap {
+	padding: 24px;
+    border-top: 1px solid #fff;
+    font-size: 12px;
+}
+.popBodyContents {	
+	padding-top: 12px;
+}
+
+.popButtonWrap {
+	padding: 0 20px 20px 20px;
+    float: right;
+}
+.popButton {
+	position: relative;
+    display: inline-block;
+    height: 28px;
+    line-height: 27px;
+    margin: 0;
+    min-width: 70px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    cursor: pointer;	
+    padding: 0px 12px 0px 30px;
+	margin-left: 5px;
+	background: #3169a4;
+    border: 1px solid #3169a4;
+    color: #ffffff;
+}
+
+.popButton:hover {
+    background: #265382;
+    border: 1px solid #265382;
+    color: #ffffff;
+}
+
+.popButton:before {
+	content: '';
+    position: absolute;
+    display: block;
+    left: 12px;
+    top: 7px;
+    width: 13px;
+    height: 14px;
+	background: url('../img/icon_yes_over.png') no-repeat 0 1px;
+}

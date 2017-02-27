@@ -1,0 +1,401 @@
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.w3-sidenav a,.w3-sidenav h4 {font-weight:bold}
+
+body {
+    background-color: #ffffff;
+    /* font: 15px Montserrat, sans-serif; */
+    line-height: 1.7;
+    color: #f5f6f7;
+}
+
+p {
+    word-break: break-word;
+}
+
+.w3-container {
+	text-align: center;
+	background: rgb(3, 142, 209);
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.w3-opennav {
+	float: left;
+}
+.w3-nav-title {
+	line-height: 3;
+	margin-top: 30px;
+	font-size: 20px;
+}
+.w3-sidenav {
+	background: rgb(3, 142, 209) !important;
+	padding-top: 35px;
+	width: 180px !important;
+}
+.nav-link {
+	color: white;
+	padding: 15px 2px 15px 16px !important;
+}
+
+
+.container-fluid {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.top-container {
+	padding-top: 55px;
+}
+
+.transfer-top-container {
+	padding-top: 60px;
+}
+
+.home-container {
+	padding-top: 30px;
+}
+
+.contact-container {
+	padding-top: 15px;
+}
+
+.vertical-center-container {
+	padding-top: 150px;
+}
+
+.bottom-container {
+	padding-bottom: 100px;
+}
+
+
+.main-user-area {
+	padding-top: 10px;
+	padding-left: 10px;
+	height: 95px;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.main-user-area img {
+	opacity: 0.7;
+	border: 2px solid #00abff; 
+}
+
+.main-user-img-area {
+	float: left;
+}
+
+.main-user-message-area {
+	padding-left: 10px;
+	line-height: 4.2;
+	float: left;
+	font-size: 15px;
+}
+
+.main-button-area {
+	text-align: right;
+}
+
+.main-btn {
+	margin-bottom: 10px;
+	margin-left: 10px;
+	width: 100px;
+	height: 40px;
+	font-weight: bold;
+	color: white;
+	background-color: rgb(23, 170, 247);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;
+}
+
+.main-btn:active {
+	color: #9c9c9c;
+	background-color: white;	
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2),0 2px 6px 0 rgba(0,0,0,0.19)!important;
+}
+
+.fix-amount-btn,
+.clear-btn {
+	width: 75px;
+}
+
+
+.card-title {
+	line-height: 3;
+	height: 50px;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: left;
+	border-bottom: 2px solid #9c9c9c;
+	padding-left: 20px;
+}
+
+.card-content {
+	height: 80px;
+}
+
+.account-num-area {
+	height: 20px;
+	color: #9c9c9c;;
+	font-size: 12px;
+	text-align: left;
+	padding-left: 10px;
+}
+
+.balance-area {
+
+}
+
+.balance-currency-area {
+	color: #9c9c9c;
+	font-size: 12px;
+	text-align: right;
+	width: 10%;
+	padding-right: 5px;
+	float: right;
+}
+
+.balance-big-area {
+	line-height: 1.7;
+	font-size: 30px;
+	font-weight: bold;
+	float: right;
+}
+
+.balance-small-area {
+	line-height: 1.7;
+	font-size: 20px;
+	text-align: left;
+	font-weight: bold;
+	width: 10%;
+	float: right;
+}
+
+
+.orange-color-font {
+	color: rgb(241, 73, 2);
+}
+.orange-border {
+	border-top: 2px solid rgb(241, 73, 2);
+}
+
+.blue-color-font {
+	color: rgb(23, 170, 247);
+}
+.blue-border {
+	border-top: 2px solid rgb(23, 170, 247);
+}
+
+.green-color-font {
+	color: rgb(44, 144, 118);
+}
+.green-border {
+	border-top: 2px solid rgb(44, 144, 118);
+}
+
+
+.contact-area {
+	height: 90px;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+.contact-user {
+	padding-right: 20px;
+	float: left;
+}
+.contact-user img {
+	opacity: 0.7;
+	border: 2px solid rgb(23, 170, 247);
+}
+
+.contact-name {
+	padding-top: 5px;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: left;
+	color: black;
+}
+
+.contact-email {
+	line-height: 1;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+}
+
+
+
+.amount-area {
+	height: 250px;
+	background-color: #00abff;
+}
+
+.amount-currency-area {
+	padding-top: 10px;
+	color: #ffffff;
+	font-size: 15px;
+	text-align: left;
+}
+
+.amount-display-area {
+	float: left;
+	text-align: right;
+	width: 50%;
+	font-size: 50px;
+	background-color: #00abff;
+	border-bottom: 0px;
+	margin: 0 auto;
+	padding-right: 0px;
+	line-height: 3.47;
+}
+
+.amount-small-area {
+	line-height: 3.8;
+	float: left;
+	font-size: 50px;
+	height: 200px;
+}
+
+.amount-small-area:active {
+	border: 0px;
+}
+
+
+.description {
+	outline: none;
+    border: none;
+    width: 98%;
+    margin-bottom:70px;
+}
+
+.transfer-small-title {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 15px;
+	text-align: left;
+}
+
+.tranfer-contact-content-area {
+	height: 100px;
+}
+
+.transfer-contact-area {
+	border-bottom: 2px solid #9c9c9c;
+}
+
+.tranfer-description-content-area {
+	padding-left: 10px;
+	text-align: left;
+	color: #b5b5b5;
+	font-size: 18px;
+}
+.success-info-line {
+	/* padding-top: 26px; */
+}
+.success-key {
+	float: left;
+    margin-left: 15px;
+    color: #5f5f5f;
+    font-weight: bold;
+    display: inline;
+    text-align: left;
+    width: 80px;
+}
+.success-val {
+	margin-right: 20px;
+    display: inline-block;
+    text-align: right;
+    width: calc(100% - 117px);
+}
+.success-info {
+    position: relative;
+    border-radius: 5px;
+    background: #ebf2f9;
+    color: black;
+    margin: 0 10px;
+    margin-top: 10px;
+    /* height: 80px; */
+}
+
+footer {
+	bottom: 0;
+	position: fixed;
+	width: 100%;
+	height: 60px;
+	line-height: 2.9;
+    background-color: rgba(55, 175, 175, 0.6);
+    /* background-color: #3e888a; */
+}
+
+.footer-btn {
+	line-height: 4;
+	height: 100%;
+	padding: 0;
+	margin: 0 auto;
+	cursor: pointer;
+	background-color: #00abff;
+	font-weight: bold;
+}
+
+.footer-btn:active,
+.footer-btn:hover {
+	background-color: rgb(3, 142, 209);
+}
+
+.left-btn {
+	width: 50%;
+	float: left;
+	border-right: 1px solid rgb(3, 142, 209);
+}
+
+.right-btn {
+	width: 50%;
+	float: right;
+	border-left: 1px solid rgb(3, 142, 209);
+}
+
+
+.success-img-area {
+	opacity: 0.5;
+}
+
+.success-img-area > img {
+	width: 110px;
+}
+
+.success-message-area {
+	word-break: break-word;
+	line-height: 4;
+	font-size: 19px;
+	color: #5f5f5f;
+	font-weight: bold;
+}
+
+
+
+.loader {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+.loader,
+.loader:before,
+.loader:after {
+    animation: 0.7s ease-in-out;
+}
+.loader:before,
+.loader:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.loader-1 { animation-name: loader1; }
+@keyframes loader1 {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+
+.w3-input {
+	outline-style: none;
+}

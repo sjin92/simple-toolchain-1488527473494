@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/swiper.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <a href="#" class="openmenu"><span></span><span></span><span></span></a>
+        <h2>Shopping</h2>
+        <a href="#" class="search"><img src="../img/icon_search_glass.png" alt="Search" /></a>
+    </header>
+
+    <div class="gnbmenu">
+        <h2>Welcome!</h2>
+        <ul class="setting-menus">
+            <li><a href="#" class="exit">Exit</a></li>
+        </ul>
+    </div>
+
+    <div class="menuon-dimmed">a</div>
+
+    <!-- dutyfree section -->
+    <section class="dfbox-section">
+
+        <!-- tab menu -->
+        <div class="tab-menu">
+            <ul class="clearfix">
+                <li class="on"><a href="#">On sale</a></li>
+                <li><a href="#">Quick</a></li>
+                <li><a href="#">Best</a></li>
+                <li><a href="#">Events</a></li>
+            </ul>
+        </div>
+
+        <!-- rolling banner -->
+        <div class="swiper">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="../img/img_rolling01.png" alt="" /></div>
+                    <div class="swiper-slide"><img src="../img/img_rolling02.png" alt="" /></div>
+                    <div class="swiper-slide"><img src="../img/img_rolling03.png" alt="" /></div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <!-- Product List -->
+        <div class="sale-product list">
+            <ul>
+                <li>
+                    <div class="thumb">
+                        <img src="../img/img_r_box01.png" alt="" />
+                    </div>
+                    <h3><span class="logo">[SAMSUNG]</span> Galaxy S7</h3>
+                    <p class="price">$690</p>
+                    <a href="#" class="btn-dark">CART</a>
+                    <a href="#" class="btn-light">BUY</a>
+                    <input type="hidden" class="item-id" value="I01" />
+                </li>
+
+                <li>
+                    <div class="thumb">
+                        <img src="../img/img_r_box02.png" alt="" />
+                    </div>
+                    <h3><span class="logo">[SAMSUNG]</span> Galaxy Gear2</h3>
+                    <p class="price">$400</p>
+                    <a href="#" class="btn-dark">CART</a>
+                    <a href="#" class="btn-light">BUY</a>
+                    <input type="hidden" class="item-id" value="I02" />
+                </li>
+
+                <li>
+                    <div class="thumb">
+                        <img src="../img/img_r_box03.png" alt="" />
+                    </div>
+                    <h3><span class="logo">[SAMSUNG]</span> Galaxy Note5</h3>
+                    <p class="price">$879</p>
+                    <a href="#" class="btn-dark">CART</a>
+                    <a href="#" class="btn-light">BUY</a>
+                    <input type="hidden" class="item-id" value="I03" />
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script src="../common/lib/swiper/swiper.min.js"></script>
+<script>
+$( document ).ready( function() {
+    $( '.openmenu' ).click( function() {
+        $( '.gnbmenu, header, .dfbox-section, .menuon-dimmed' ).addClass( 'active' );
+        $( '.dfbox-section' ).css( 'position','fixed' );
+    } );
+    $( '.menuon-dimmed' ).click( function() {
+        $( '.gnbmenu, header, .dfbox-section, .menuon-dimmed' ).removeClass( 'active' );
+        setTimeout( function() {
+            $( '.dfbox-section' ).css( 'position','absolute' );
+        }, 500 );
+    } );
+
+    $( '.setting-menus li a.exit' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+
+    $( '.sale-product ul li a.btn-light' ).on( 'touchstart', function() {
+        $( this ).addClass( 'on' );
+        return true;
+    } );
+    $( '.sale-product ul li a.btn-light' ).on( 'touchend', function() {
+        $( this ).removeClass( 'on' );
+        return true;
+    } );
+
+    $( '.tab-menu li' ).find( 'a' ).on( 'click', function() {
+        $( '.tab-menu li' ).removeClass( 'on' );
+        $( this ).parent( 'li' ).addClass( 'on' );
+    } );
+
+    $( '.sale-product ul li a.btn-light' ).on( 'click', function() {
+        var price = $( this ).parent( 'li' ).find( 'p.price' ).text(),
+            itemId = $( this ).parent( 'li' ).find( 'input.item-id' ).val();
+        price = price.replace( '$', '' );
+        console.log( price );
+        console.log( itemId );
+        commonJs.movePage( commonJs.PAGE_LIST.DUTYFREE_PAYMENT + '?itemId=' + itemId );
+    } );
+} );
+
+var swiper = new Swiper( '.swiper-container', {
+    pagination: '.swiper-pagination',
+    paginationClickable: true
+} );
+</script>
+</body>
+</html>

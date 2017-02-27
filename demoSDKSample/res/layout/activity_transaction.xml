@@ -1,0 +1,116 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context=".TransactionActivity">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical">
+
+            <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:id="@+id/transaction_start"
+                    android:textSize="20sp"
+                    android:text="@string/transaction_start"
+                    android:gravity="center"
+                    android:layout_marginBottom="1sp"
+                    android:clickable="true"
+                    android:onClick="startTest"
+                    android:contentDescription="@string/transaction_start"/>
+        </LinearLayout>
+
+        <ScrollView android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#000000"
+                    android:paddingTop="@dimen/activity_vertical_margin">
+
+			<LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical">          
+                             
+	            <TextView 	android:layout_width="match_parent"
+	                      	android:layout_height="wrap_content"
+	                      	android:textSize="14sp"
+	                      	android:textColor="#ffffff"
+	                      	android:id="@+id/authenticationRequest"/>
+				<TextView 	android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:textSize="14sp"
+							android:textColor="#ffffff"
+							android:id="@+id/resultrequest"/>
+				<TextView	android:id="@+id/split"
+							android:layout_width="wrap_content" 
+							android:layout_height="match_parent" 
+							android:textColor="#ffffff"
+							android:textSize="14sp"/>    
+				<TextView android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:textSize="14sp"
+							android:textColor="#ffffff"
+							android:id="@+id/drawline"/>  
+							
+	            <TextView 	android:layout_width="match_parent"
+	                      	android:layout_height="wrap_content"
+	                      	android:textSize="14sp"
+	                      	android:textColor="#ffffff"
+	                      	android:id="@+id/processAuthenticationRequest"/>
+				<TextView 	android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:textSize="14sp"
+							android:textColor="#ffffff"
+							android:id="@+id/resultProcessAuthenticationRequest"/>
+				<TextView	android:id="@+id/processAuthenticationRequestSplit"
+							android:layout_width="wrap_content" 
+							android:layout_height="match_parent" 
+							android:textColor="#ffffff"
+							android:textSize="14sp"/>    
+				<TextView 	android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:textSize="14sp"
+							android:textColor="#ffffff"
+							android:id="@+id/processAuthenticationRequestDrawline"/>  					            		    
+			    
+	            <TextView   android:layout_width="match_parent"
+	                      	android:layout_height="wrap_content"
+	                      	android:textSize="14sp"
+	                      	android:textColor="#ffffff"
+	                      	android:id="@+id/sendAuthenticationResponse"/>
+				<TextView 	android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:textSize="14sp"
+							android:textColor="#ffffff"
+							android:id="@+id/resultSendAuthenticationResponse"/>
+				<TextView	android:id="@+id/sendAuthenticationResponseSplit"
+							android:layout_width="wrap_content" 
+							android:layout_height="match_parent" 
+							android:textColor="#ffffff"
+							android:textSize="14sp"/>    
+				<TextView 	android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:textSize="14sp"
+							android:textColor="#ffffff"
+							android:id="@+id/sendAuthenticationResponseDrawline"/> 				
+				
+	            <TextView android:layout_width="match_parent"
+	                      android:layout_height="wrap_content"
+	                      android:textSize="14sp"
+	                      android:textColor="#ffffff"
+	                      android:id="@+id/textView_output"/>
+	        </LinearLayout>    
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

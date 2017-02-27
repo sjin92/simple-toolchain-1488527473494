@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+
+footer.copyright {text-aligh:center;}
+footer.copyright p { display: inline-block;}
+footer.copyright img { display: inline-block;}
+
+.container-fluid {
+	text-align:center;
+}
+
+.page-wrapper {
+	/* text-align:center; */
+	/* display: table;
+    width: 100%;
+    height: 100%; */
+}
+.page-wrapper-inner {/* display: table-cell; vertical-align: middle; */}
+.title {position: fixed; top: 60px;left: 0;right: 0;}
+.logo p{font-size: 0.8em;margin-top: 1em;}    
+.bottom {position:fixed; bottom:0;left:0;}
+.no-padding {padding:0;}
+
+.v-center {position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 10%;
+    margin: auto;}
+
+.login-title {position: fixed;top: 60px;left: 0;right: 0;}
+.login-message {position: fixed;top: 130px;left: 0;right: 0;}    
+.login-input { border: 0px;
+    box-shadow: initial;
+    border-bottom: 1px solid #ccc;
+    padding: 0 5px;
+    width: 90%;
+    margin-left: 5%;
+}

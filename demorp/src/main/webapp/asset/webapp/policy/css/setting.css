@@ -1,0 +1,86 @@
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+.edit-policy{
+	color:white; 
+	font-size:20px; 
+	margin-top: 15px;
+}
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+}
+  
+body {color:black; }
+
+input[type=radio] {
+    /* margin: 15px 0 0; */
+    display: table-cell;
+    vertical-align: middle;
+    margin-top: 1px\9;
+    line-height: normal;
+    height: 26px;
+    width: 26px;
+}
+input[type="radio"]:before {content: " ";
+    background: url(../img/icon_radio_disel.png) 0px 0px no-repeat;
+    /* z-index: 1000; */
+    background-size: contain;
+    width: 26px;
+    height: 26px;
+    display: block;
+    
+}
+input[type="radio"]:checked::before {content: " ";
+    background: url(../img/icon_radio_sel.png) 0px 0px no-repeat;
+    /* z-index: 1000; */
+    background-size: contain;
+    width: 26px;
+    height: 26px;
+    display: block;
+}
+input[type="radio"] + span {padding-left: 5px;}
+  
+
+button[id="policySave"] { 
+    position: fixed;
+    bottom: 0;
+}
+
+/* #policyListDiv label:first-of-type {
+	margin-top: 25px;
+} */
+/* label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    margin-top: 25px;
+    font-weight: 700;
+} */
+input[type=radio] img {
+    vertical-align: middle;
+    /* margin-bottom: 17px; */
+}
+
+.radio_border {
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
+    border: 1;
+    border-top: 1px solid #0e84db;
+}
+
+.radio_border_eye{
+	border: 1;
+    border-top: 1px solid #0e84db;
+}

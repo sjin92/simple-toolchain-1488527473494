@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>FIDO Demo</title>
+
+<link rel="stylesheet" href="../../common/css/default.css">
+<link rel="stylesheet" href="../../common/css/common.css">  
+<link rel="stylesheet" href="../../common/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../common/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../common/lib/bootstrap/css/w3.css">
+<link rel="stylesheet" href="../css/bank-common.css">
+
+
+<style>
+
+
+</style>
+
+</head>
+<body class="w3-content" style="max-width:1600px" id="myHome" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<!-- Sidenav/menu -->
+<nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index:3;width:250px;"><br>
+
+  <a href="#" class="w3-padding nav-link" onclick="userPolicyList();">POLICY SETTING</a>
+  <a href="#" class="w3-padding nav-link"  onclick="moveMainPage()">Demo Main</a>
+   
+</nav>
+
+<!-- Overlay effect when opening sidenav on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  <!-- Header -->
+  <header class="w3-container w3-top">
+    <!-- <span style="float:left; width:30px; color:rgb(3, 142, 209);">|</span> -->
+    <span style="float:left;"><i class="fa fa-home" aria-hidden="true" style="font-size:32px; padding-top:10px; cursor:pointer;" onclick="moveMainPage()"></i></span>
+    <!-- <span class="w3-opennav w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()" style="color:white"><i class="fa fa-bars"></i></span> -->
+    <span class="w3-nav-title" style="padding-right: 23px;"><a href="bank_main.html">Smart Bank</a></span>
+  </header>
+  
+
+<div class="container-fluid text-center top-container">
+
+	<div class="col-sm-4 home-container">
+		<div class="w3-card-4">
+			<div class="main-user-area blue-color-font blue-border">
+				<div class="main-user-img-area"><img src="../../main/img/user-icon.png" class="w3-circle" width="70px" height="70px"></div>
+				<div class="main-user-message-area"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="col-sm-4 home-container">
+		<div class="main-button-area">
+			<button class="w3-btn main-btn" onclick="movePage()">Transfer</button>
+		</div>
+	</div> -->
+	
+	<div class="col-sm-4 home-container">
+		<div class="w3-card-4">
+			<div class="card-title orange-theme orange-color-font orange-border">
+				MY CHECKING ACCOUNT
+			</div>
+			<div class="card-content">
+				<div class="account-num-area">1004-322330-333-010</div>
+				<div class="balance-area">
+					<div class="balance-small-area orange-color-font">00</div>
+					<div class="balance-big-area orange-color-font balance-input"></div>
+					<div class="balance-currency-area">USD</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-sm-4 home-container bottom-container">
+		<div class="w3-card-4">
+			<div class="card-title green-color-font green-border">
+				SAVINGS
+			</div>
+			<div class="card-content">
+				<div class="account-num-area">8282-322330-333-010</div>
+				<div class="balance-area">
+					<div class="balance-small-area green-color-font">00</div>
+					<div class="balance-big-area green-color-font">120.</div>
+					<div class="balance-currency-area">USD</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<footer class="container-fluid text-center">
+	<!-- <div class="footer-btn left-btn" onclick="moveMainPage()">Cancel</div> -->
+	<div class="footer-btn" onclick="movePage()">Transfer</div>
+</footer>
+
+
+<!-- End page content -->
+</div>
+
+
+<script src="../../common/lib/jquery/jquery-2.1.1.min.js"></script>    
+<script src="../../common/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../common/js/language/language.js"></script>
+<script src="../../common/js/util/exception.js"></script>
+<script src="../../common/js/util/commonUtils.js"></script>
+<script src="../../common/js/util/commonPopup.js"></script>
+<script src="../../common/js/util/logger.js"></script>
+<script src="../../common/js/util/app.js"></script>
+
+<script type="text/javascript">
+// This page as blurable
+var BLURABLE = true;
+
+/* $(document).keydown(function(e){   
+    if(e.target.nodeName != "INPUT" && e.target.nodeName != "TEXTAREA"){       
+        if(e.keyCode === 8){   
+        return false;
+        }
+    }
+});
+
+window.history.forward(0); */
+
+
+// Script to open and close sidenav
+function w3_open() {
+    document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
+    document.getElementsByClassName("w3-overlay")[0].style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementsByClassName("w3-sidenav")[0].style.display = "none";
+    document.getElementsByClassName("w3-overlay")[0].style.display = "none";
+}	
+
+function moveMainPage() {
+	location.assign("../../main/pages/main.html");
+}
+
+function movePage() {
+	location.assign("bank_transfer.html");
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+$(function(){
+	var userInfo = customStorage.read("USER");
+	
+	$('.main-user-message-area').append(userInfo.loginId);
+	
+	if(userInfo.bankBalance == null || userInfo.bankBalance < 1000){
+		userInfo.bankBalance = "100000";
+
+		customStorage.write("USER", userInfo);
+	}
+	
+	$('.balance-input').append(numberWithCommas(userInfo.bankBalance) + ".");
+	
+});
+</script>
+
+</body>
+</html>

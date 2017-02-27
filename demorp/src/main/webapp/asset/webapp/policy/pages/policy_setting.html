@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>FIDO Demo APP</title>
+
+<link rel="stylesheet" href="../../common/css/default.css">
+<link rel="stylesheet" href="../../common/css/common.css">
+<link rel="stylesheet"
+	href="../../common/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../common/lib/bootstrap/css/w3.css">
+<link rel="stylesheet"
+	href="../../common/lib/font-awesome/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="../css/main-common.css"> -->
+<link rel="stylesheet" href="../css/setting.css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body id="myHome" data-spy="scroll" data-target=".navbar"
+	data-offset="50">
+	<header class="w3-container" style="margin-bottom:25px;">
+		<span style="float: left;"><i class="fa fa-chevron-left"
+			aria-hidden="true"
+			style="font-size: 32px; padding-top: 15px; cursor: pointer;"
+			onclick="goPrevPage()"></i></span>
+
+		<div class="edit-policy">Policy Setting</div>
+		<span
+			class="w3-opennav w3-hide-large w3-xxlarge w3-hover-text-grey w3-left"
+			onclick="w3_open()" style="color: white"></span>
+	</header>
+
+
+	<div id="policyListDiv" class="container-fluid bg-3 text-left">
+		
+		<label for="eye" style="display: none"> <input type="radio" name="policyRadioBox"
+			id="eye" value="eye" /> <img
+			src="../img/abd_sdk_icon_eye.png" class="radio-icon"> 
+		</label>
+		<hr class="radio_border_eye" style="display: none"> 
+		
+		<label for="finger"> <input type="radio" name="policyRadioBox"
+			id="finger" value="finger" /> <img
+			src="../img/abd_sdk_icon_finger.png" class="radio-icon"> 
+		</label>
+		<hr class="radio_border">
+		
+		<label for="finger_face"> <input type="radio"
+			name="policyRadioBox" id="finger_face" value="finger_face" /> <img
+			src="../img/abd_sdk_icon_finger.png" class="radio-icon"> <b
+			style="color: #ccc; padding-top: 12px; position: absolute;">and</b> <img
+			src="../img/abd_sdk_icon_face.png" class="radio-icon"
+			style="padding-left: 39px;">
+		</label>
+		<hr class="radio_border">
+		
+		<label for="finger_face_voice"> <input type="radio"
+			name="policyRadioBox" id="finger_face_voice"
+			value="finger_face_voice" /> <img
+			src="../img/abd_sdk_icon_finger.png" class="radio-icon"> <b
+			style="color: #ccc; padding-top: 12px; position: absolute;">and</b> <img
+			src="../img/abd_sdk_icon_face.png" class="radio-icon" style="padding-left: 39px;"> <b
+			style="color: #ccc; padding-top: 12px; position: absolute;">and</b> <img
+			src="../img/abd_sdk_icon_voice.png" class="radio-icon" style="padding-left: 39px;">
+		</label>
+		<hr class="radio_border">
+		
+		<label for="finger_voice_sensory"> <input type="radio"
+			name="policyRadioBox" id="finger_voice_sensory"
+			value="finger_voice_sensory" /> <img
+			src="../img/abd_sdk_icon_finger.png" class="radio-icon"> <b
+			style="color: #ccc; padding-top: 12px; position: absolute;">and</b> <img
+			src="../img/abd_sdk_icon_face_voice.png" class="radio-icon" style="padding-left: 39px;">
+		</label>
+		<hr class="radio_border">
+		
+		<label for="all"> <input type="radio" name="policyRadioBox"
+			id="InternalOnly" value="InternalOnly" /> <img
+			src="../img/abd_sdk_icon_finger.png" class="radio-icon"> <b
+			style="color: #ccc; padding-top: 12px; position: absolute; padding-left: 8px;">or</b> <img
+			src="../img/abd_sdk_icon_face.png" class="radio-icon" style="padding-left: 39px;"> <b
+			style="color: #ccc; padding-top: 12px; position: absolute; padding-left: 8px;">or</b> <img
+			src="../img/abd_sdk_icon_voice.png" class="radio-icon" style="padding-left: 39px;">
+		</label>
+	</div>
+
+	<button id="policySave" type="button"
+		class="btn btn-primary btn-block bottom" onclick="policySave();">Save</button>
+
+	<script src="../../common/lib/jquery/jquery-2.1.1.min.js"></script>
+	<script src="../../common/lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../common/js/language/language.js"></script>
+	<script src="../../common/js/util/exception.js"></script>
+	<script src="../../common/js/util/commonUtils.js"></script>
+	<script src="../../common/js/util/commonPopup.js"></script>
+	<script src="../../common/js/util/logger.js"></script>
+	<script src="../../common/js/util/app.js"></script>
+
+	<script>
+		function goPrevPage() {
+			history.go(-1);
+		}
+
+		function policySave() {
+			/* commonPopup.showPopup("LABEL_SUCCESS_TITLE".i18n(), "MSG_SAVE_SUCC"
+					.i18n(), "OK", "goPrevPage"); */
+			
+			commonPopup.showPopup(
+					"Notice",
+					"The policy set through this menu will be used in the following cases: \n - Running Square Portal \n - Payment for shopping mall",
+					"OK",
+					"goPrevPage");
+			
+			
+			
+			var userPolicy = customStorage.read("POLICY");
+			var selectedPolicy = $(':radio[name="policyRadioBox"]:checked')
+					.val();
+			//var mailTp 		= $(':radio[name="mailTp"]:checked').val();
+			//userPolicy[pageId].policyName = targetPolicy.policyName;
+			customStorage.write("POLICY", selectedPolicy);
+		}
+
+		$(function() {
+			var userInfo = customStorage.read("USER");
+			var userPolicy = customStorage.read("POLICY");
+
+			if(navigator.userAgent.match('/SAMSUNG|SM-[N|P|T|Z|G]930')[0]!=null)  {
+			    $('#policyListDiv > label[for=eye]').show();
+			    $('#policyListDiv > hr[class=radio_border_eye]').show();
+			}
+			if (!userPolicy) {
+				userPolicy = new Object();
+				userPolicy = "InternalOnly";
+				customStorage.write("POLICY", userPolicy);
+			}
+			$("#" + userPolicy).attr('checked', 'checked');
+
+			/* $(policyList).each(function(index, value) {
+				var policy = this;
+				//var liElem = "<input type='radio' name='policyRadioBox' id='"+policy.policyId+"' value='"+policy.policyId+"'> "+policy.policyName+"<br>"
+				//$("#policyList").append(liElem);				
+			}); */
+		});
+	</script>
+</body>
+</html>

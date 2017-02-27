@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h2 class="pay">Payment</h2><!-- PADDING 제거를 위해 클래스 추가 20160825 -->
+        <a href="#" class="close"><img src="../img/icon_close.png" alt="Close" /></a>
+    </header>
+
+    <!-- dutyfree section -->
+    <section class="dfbox-section">
+
+        <!-- payment complete message -->
+        <div class="complete-pay">
+            <span class="msg">Successfully Paid!</span>
+        </div>
+
+        <!-- order sheet -->
+        <div class="order-infor">
+            <h3 class="tit">Order Information</h3>
+            <ul id="I01" class="detail hide">
+                <li><strong>Product</strong> <span class="logo">[SAMSUNG]</span> Galaxy S7</li>
+                <li><strong>Payment</strong> Samsung Pay</li>
+                <li><strong>Amount</strong> $ 690</li>
+            </ul>
+            <ul id="I02" class="detail hide">
+                <li><strong>Product</strong> <span class="logo">[SAMSUNG]</span> Galaxy Gear2</li>
+                <li><strong>Payment</strong> Samsung Pay</li>
+                <li><strong>Amount</strong> $ 400</li>
+            </ul>
+            <ul id="I03" class="detail hide">
+                <li><strong>Product</strong> <span class="logo">[SAMSUNG]</span> Galaxy Note5</li>
+                <li><strong>Payment</strong> Samsung Pay</li>
+                <li><strong>Amount</strong> $ 879</li>
+            </ul>
+        </div>
+
+        <div class="btn">
+              <a href="#" class="btn-light big ok">OK</a>
+          </div>
+
+    </section>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+    var params = commonJs.getSearchParameters();
+
+    $( '#' + params.itemId ).addClass( 'selected' );
+    $( '#' + params.itemId ).removeClass( 'hide' );
+
+    $( '.btn a.ok' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+
+    $( 'a.close' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+} );
+</script>
+</body>
+</html>

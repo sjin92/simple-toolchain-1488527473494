@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <a href="#" class="go-back"></a>
+        <h2>Setting</h2>
+    </header>
+
+    <ul class="setting-menus">
+        <li><a href="#" class="policy">Policy Setting</a></li>
+        <li><a href="#" class="timeout">Session Timeout Setting</a></li>
+        <li><a href="#" class="registration down">Registration</a></li>
+            <div class="sub hide">
+                <p class="guide">You can register your biometric data.</p>
+                <ul>
+                    <li class="finger hide">
+                        <span class="in reg" value="finger"><span></span></label>Fingerprint</span>
+                    </li>
+                    <li class="iris hide">
+                        <span class="in reg" value="iris"><span></span></label>Iris</span>
+                    </li>
+                    <li class="faceprint hide">
+                        <span class="in reg" value="face"><span></span></label>Face</span>
+                    </li>
+                    <li class="voice hide">
+                        <span class="in reg" value="voice"><span></span></label>Voice</span>
+                    </li>
+                    <li class="facevoice hide">
+                        <span class="in reg" value="voice_face_sensory"><span></span></label>Face/Voice</span>
+                    </li>
+                </ul>
+            </div>
+        <li><a href="#" class="cleanup">Cleanup</a></li>
+    </ul>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+    var hideSubMenuReg = false;
+
+    if ( commonJs.isGalaxyNote7() ) {
+        $( '.setting-menus li a.registration' ).addClass( 'hide' );
+    } else {
+        $( 'li.faceprint' ).removeClass( 'hide' );
+        $( 'li.voice' ).removeClass( 'hide' );
+        $( 'li.facevoice' ).removeClass( 'hide' );
+    }
+
+    $( '.setting-menus li a' ).on( 'touchstart', function() {
+        $( this ).addClass( 'on' );
+        return true;
+    } );
+    $( '.setting-menus li a' ).on( 'touchend', function() {
+        $( this ).removeClass( 'on' );
+        return true;
+    } );
+    $( 'div.sub li' ).on( 'touchstart', function() {
+        $( this ).addClass( 'on' );
+        return true;
+    } );
+    $( 'div.sub li' ).on( 'touchend', function() {
+        $( this ).removeClass( 'on' );
+        return true;
+    } );
+
+    $( '.setting-menus li a.cleanup' ).on( 'click', function() {
+        var userInfo = commonJs.getUserInfo();
+        if ( userInfo ) {
+            commonJs.clearAllData( true );
+        }
+        // commonJs.moveBack();
+
+    } );
+
+    $( '.setting-menus li a.registration' ).on( 'click', function() {
+        if ( hideSubMenuReg === true ) {
+            $( '.setting-menus div.sub' ).addClass( 'hide' );
+            $( this ).removeClass( 'up' );
+            $( this ).addClass( 'down' );
+            hideSubMenuReg = false;
+        } else {
+            $( '.setting-menus div.sub' ).removeClass( 'hide' );
+            $( this ).removeClass( 'down' );
+            $( this ).addClass( 'up' );
+            hideSubMenuReg = true;
+        }
+    } );
+
+    $( '.setting-menus li a.policy' ).on( 'click', function() {
+        commonJs.movePage( commonJs.PAGE_LIST.SETTING_POLICY );
+    } );
+
+    $( '.setting-menus li a.timeout' ).on( 'click', function() {
+        commonJs.movePage( commonJs.PAGE_LIST.SETTING_TIMEOUT );
+    } );
+
+    $( '.go-back' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+
+    $( 'span.in.reg' ).on( 'click', function() {
+        var policy = $( this ).attr( 'value' ),
+            userInfo = commonJs.getUserInfo();
+        if ( userInfo ) {
+        	console.log( policy );
+            app.requestFido( 'REG', userInfo.loginId, policy );
+        }
+    } );
+} );
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <a href="#" class="go-back"></a>
+        <h2>Policy Setting</h2>
+    </header>
+
+    <!-- iris authen section -->
+    <section class="irauth-section">
+    <h3>Basic authorization</h3>
+    <div class="select-auth">
+        <ul>
+            <li class="xfinger hide">
+                <span class="in"><input type="radio" name="auth" id="finger" value="finger" /><label for="finger"><span></span></label>Fingerprint<span class="ico finger"></span></span>
+            </li>
+            <li class="xiris hide">
+                <span class="in"><input type="radio" name="auth" id="iris" value="iris" /><label for="iris"><span></span></label>Iris<span class="ico iris"></span></span>
+            </li>
+            <li class="xfinger_face hide">
+                <span class="in"><input type="radio" name="auth" id="finger_face" value="finger_face" /><label for="finger_face"><span></span></label>Fingerprint and Face<span class="ico double finger_face"></span></span>
+            </li>
+            <li class="xfinger_voice hide">
+                <span class="in"><input type="radio" name="auth" id="finger_voice" value="finger_voice" /><label for="finger_voice"><span></span></label>Fingerprint and Voice<span class="ico double finger_voice"></span></span>
+            </li>
+            <li class="xfinger_voice_sensory hide">
+                <span class="in"><input type="radio" name="auth" id="finger_voice_sensory" value="finger_voice_sensory" /><label for="finger_voice_sensory"><span></span></label>Finger and Face/Voice<span class="ico double finger_voice_sensory"></span></span>
+            </li>
+            <li class="xrandom hide">
+                <span class="in"><input type="radio" name="auth" id="InternalOnly" value="InternalOnly" /><label for="InternalOnly"><span></span></label>User's choice<span class="ico random"></span></span>
+            </li>
+        </ul>
+    </div>
+
+    </section>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+    var policyId = commonJs.getPolicyInfo();
+
+    if ( policyId ) {
+        $( '#' + policyId ).prop( 'checked', true );
+    }
+
+    if ( commonJs.isGalaxyNote7() ) {
+        $( 'li.xfinger' ).removeClass( 'hide' );
+        $( 'li.xiris' ).removeClass( 'hide' );
+    } else {
+        $( 'li.xfinger' ).removeClass( 'hide' );
+        $( 'li.xfinger_face' ).removeClass( 'hide' );
+        $( 'li.xfinger_voice' ).removeClass( 'hide' );
+        $( 'li.xfinger_voice_sensory' ).removeClass( 'hide' );
+        $( 'li.xrandom' ).removeClass( 'hide' );
+    }
+
+    $( '.go-back' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+
+    $( '.select-auth input[type="radio"]' ).on( 'click', function() {
+        var policyId = $( this ).val();
+        if ( policyId ) {
+            commonJs.setPolicyInfo( policyId );
+        }
+    } );
+
+} );
+
+
+</script>
+</body>
+</html>
+

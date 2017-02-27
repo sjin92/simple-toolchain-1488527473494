@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" manifest="../appcache.manifest">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexsign Demo App</title>
+<link rel="stylesheet" href="../../common/css/common.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container-fido-main">
+
+    <div class="fido-main">
+        <div class="fido-head clearfix">
+            <h2>Nexsign</h2>
+            <div>
+                <a href="#" class="f off">SSO</a>
+                <a href="#" class="s"></a>
+            </div>
+        </div>
+
+        <div class="main-box">
+
+            <h3>Enterprise Applications</h3>
+            <ul class="apps clearfix">
+                <li>
+                    <a href="#" class="workplace"><span></span><img src="../img/icon_set1.png" /></a><br/>
+                    <span class="sj">Email</span>
+                </li>
+                <li id="C02" class="hide">
+                    <a href="#" class="pcoff"><span></span><img src="../img/icon_set2.png" /></a><br/>
+                    <span class="sj">Desktop Control</span>
+                </li>
+                <li id="C01" class="hide">
+                    <a href="#"><span></span><img src="../img/icon_set3.png" /></a><br/>
+                    <span class="sj">Oracle HCM</span>
+                </li>
+                <li id="P01" class="hide">
+                    <a href="#" class="banking"><span></span><img src="../img/icon_set4.png" /></a><br/>
+                    <span class="sj">Banking</span>
+                </li>
+                <li id="P02" class="hide">
+                    <a href="#" class="duty-free"><span></span><img src="../img/icon_set5.png" /></a><br/>
+                    <span class="sj">Shopping</span>
+                </li>
+                <li id="P04"  class="hide">
+                    <a href="#"><span></span><img src="../img/icon_set6_2.png" /></a><br/>
+                    <span class="sj">Messenger</span>
+                </li>
+                <li id="P03" class="hide">
+                    <a href="#" class="shopping"><span></span><img src="../img/icon_set7.png" /></a><br/>
+                    <span class="sj">Online Mall</span>
+                </li>
+                <li id="P05" class="hide">
+                    <a href="#"><span></span><img src="../img/icon_set8.png" /></a><br/>
+                    <span class="sj">Wallet</span>
+                </li>
+                <li id="P00" class="hide">
+                    <a href="#"><span></span><img src="../img/icon_set9.png" /></a><br/>
+                    <span class="sj">Add</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+    var singlePassCheck,
+        params = commonJs.getSearchParameters();
+
+    if ( params && params.userId != null ) {
+        loginForMain( params.userId );
+    }
+
+    addEventHandlerForCaching();
+
+    app.requestAppList();
+
+    if ( commonJs.isLogedIn() ) {
+        $( '.fido-head a.f' ).removeClass( 'off' );
+        singlePassCheck = false;
+    } else {
+        singlePassCheck = true;
+    }
+
+    // if ( commonJs.isGalaxyNote7() ) {
+    //     $( '.fido-head a.f' ).text( 'SSO' );
+    // }
+    $( '.fido-head a.f' ).on( 'click', function() {
+        if ( singlePassCheck === false ) {
+            $( this ).addClass( 'off' );
+            singlePassCheck = true;
+            commonJs.resetUserData();
+            location.replace( commonJs.PAGE_LIST.MAIN );
+        }
+        else {
+            // Do nothing.
+        }
+    } );
+
+    $( '.apps li a' ).on( 'touchstart', function() {
+        $( this ).children( 'span' ).css( 'display', 'block' );
+        return true;
+    } );
+    $( '.apps li a' ).on( 'touchend', function() {
+        $( this ).children( 'span' ).css( 'display', 'none' );
+        return true;
+    } );
+
+    $( '.fido-head a.s' ).on( 'click', function() {
+        commonJs.movePage( commonJs.PAGE_LIST.SETTING );
+    } );
+
+    $( '.apps li a.workplace' ).on( 'click', function() {
+        commonJs.movePage( commonJs.PAGE_LIST.WORKPLACE );
+    } );
+
+    $( '.apps li a.pcoff' ).on( 'click', function() {
+        commonJs.movePage( commonJs.PAGE_LIST.PCOFF_AUTH );
+    } );
+
+    $( '.apps li a.banking' ).on( 'click', function() {
+        commonJs.movePage( commonJs.PAGE_LIST.BANKING );
+    } );
+
+    $( '.apps li a.duty-free' ).on( 'click', function() {
+        commonJs.movePage( commonJs.PAGE_LIST.DUTYFREE );
+    } );
+
+    // $( '.apps li a.shopping' ).on( 'click', function() {
+    //     commonJs.movePage( commonJs.PAGE_LIST.SHOPPING );
+    // } );
+
+} );
+
+
+function addEventHandlerForCaching() {
+    var appCache = window.applicationCache;
+    // 메니페스트이 리소스가 모두 캐싱된 후 발생.
+    appCache.addEventListener( 'cached', handleCacheEvent, false );
+    // 메니페스트를 새로 가져와 캐시 갱신을 해야 하는지 확인. 과정상 항상 가장 먼저 발생.
+    appCache.addEventListener( 'checking', handleCacheEvent, false );
+    // 갱신된 것을 찾았다. 브라우저가 리소스를 다운로드 시작.
+    appCache.addEventListener( 'downloading', handleCacheEvent, false );
+    // 메니페스트 파일에 대한 응답이 404나 410, 다운로드 실패,
+    // 아니면 다운로드가 진행중인데 메니페스트가 변경됬을때.
+    appCache.addEventListener( 'error', handleCacheEvent, false );
+    // 메이페스트의 모두 다운로드 완료후 발생.
+    appCache.addEventListener( 'noupdate', handleCacheEvent, false );
+    // 메니페스트 파일에 대한 응답이 404나 410 이면 발생한다.
+    // 앱 캐시 안의 내용이 삭제 된다.
+    appCache.addEventListener( 'obsolete', handleCacheEvent, false );
+    // 메니페스트 파일에 나열된 각 리소스를 모두 가져오면 발생
+    appCache.addEventListener( 'progress', handleCacheEvent, false );
+    // 메니페스트의 리소스들이 새로 다시 다운로드 되었을때 발생.
+    appCache.addEventListener( 'updateready', handleCacheEvent, false );
+}
+
+
+function handleCacheEvent( event ) {
+    var appCache = window.applicationCache;
+
+    //console.log(event);
+    switch ( event.type ) {
+        case 'checking':
+            Logger.info( 'ApplicationCache checking' );
+            progress.show( 'downloading' );
+            break;
+        case 'noupdate':    //
+            Logger.info( 'No update ApplicationCache' );
+            progress.setProgress( 100 );
+            progress.hide();
+            break;
+        case 'downloading': //
+            app.requestProgress( true, '' );
+            Logger.info( 'ApplicationCache downloading' );
+            break;
+        case 'progress':    //
+            Logger.info( 'ApplicationCache progress' );
+            var total = event.total;
+            var current = event.loaded;
+            progress.setProgress( Math.ceil( current * 100 / total ) );
+            break;
+        case 'cached':  // cache compleated
+            app.requestProgress( false, '' );
+            Logger.info( 'ApplicationCache completed' );
+            progress.hide();
+            break;
+        case 'error':   // cache compleated
+            Logger.error( 'Resource loading error : {0}', event.url );
+            progress.hide();
+            break;
+        case 'updateready':
+            if ( appCache.status == appCache.UPDATEREADY ) {
+                Logger.info( 'Page updated' );
+                // 브라우저가 새 앱 캐시를 다운받은 후 페이지 리로드 수행
+                appCache.swapCache();
+                window.location.reload();
+            } else {
+                // Do nothing
+            }
+            break;
+        default:
+            Logger.info( 'Do nothing event : {0}', event.type );
+    }
+    return false;
+}
+
+
+function returnCallback( result ) { // jshint ignore:line
+    if ( result != null ) {
+        result = JSON.parse( result );
+        for ( var key in result ) {
+            if ( result[key].isActive || result[key].isActive === 'true' || result[key].isActive === true ) {
+                $( '#' + result[key].AppId ).removeClass( 'hide' );
+            }
+        }
+    } else {
+        // Do nothing.
+    }
+}
+
+function loginForMain( userId ) {
+    var userInfo = commonJs.getUserInfo();
+    if ( !userInfo ) {
+        userInfo = {
+            rpId: 'InternalOnly',
+            loginTime: 0
+        };
+    }
+
+    // var emailExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // //var regExp = /^[a-zA-Z0-9]+$/;
+    // if ( !userId ) {
+    //     commonPopup.showPopup( 'LABEL_ERR_TITLE'.i18n(), 'MSG_ERR_LOGINID_EMPTY'.i18n() );
+    //     return false;
+    // }
+    // else if ( !emailExp.test( userId ) ) {
+    //     commonPopup.showPopup( 'LABEL_ERR_TITLE'.i18n(), 'MSG_ERR_LOGINID_FORMAT'.i18n() + userId );
+    //     return false;
+    // }
+
+    userInfo.loginId = userId;
+    userInfo.loginTime = commonJs.getCurrentSecond();
+    customStorage.write( 'USER', userInfo );
+}
+
+</script>
+</body>
+</html>

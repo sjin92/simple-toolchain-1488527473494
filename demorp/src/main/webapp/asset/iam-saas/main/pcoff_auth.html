@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container-full">
+
+    <div class="login-wrap">
+        <a href="#" class="login-close"></a>
+        <div class="locked-icon">
+            <p class="icon-locked">
+                <span class="locked"></span>
+            </p>
+            <!--<p class="txt1">Log in to workplace PC</p>-->
+            <p class="txt2">Logoff of work portal on PC</p>
+        </div>
+        <a href="#" class="finger-btm">Logoff</a>
+    </div>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+    $( '.finger-btm' ).on( 'touchstart', function() {
+        $( this ).addClass( 'on' );
+    } );
+    $( '.finger-btm' ).on( 'touchend', function() {
+        $( this ).removeClass( 'on' );
+    } );
+
+    $( '.login-close' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+
+    $( 'a.finger-btm' ).on( 'click', function() {
+        var userInfo = commonJs.getUserInfo(),
+            policyId = commonJs.getPolicyInfo();
+        // app.requestFido( 'AUTH', userInfo.loginId, policyId );
+        app.requestFido( 'AUTH', userInfo.loginId, 'finger' );
+    } );
+
+} );
+
+function returnCallback( result, policy ) { // jshint ignore:line
+    if ( result == 'false' || result === false ) {
+        commonPopup.showPopup( 'Notice', 'Canceled Authentication','OK', '', '' );
+    } else {
+        // $.get( commonJs.PAGE_LIST.PC_OFF_REQUEST, function( data ) { // jshint ignore:line
+        //     app.requestToast( 'Work portal log off message has been sent successfully.' );
+        //     commonJs.moveBack();
+        // } );
+        // commonAjax( commonJs.PAGE_LIST.PC_OFF_REQUEST, '', 'GET', {
+        //     successFunc: function( data ) { // jshint ignore:line
+        //         app.requestToast( 'Work portal log off message has been sent successfully.' );
+        //         commonJs.moveBack();
+        //     },
+        //     errorFunc: function() {
+        //         // Do nothing.
+        //     }
+        // } );
+
+        $.ajax( {
+            type: 'GET',
+            url: commonJs.PAGE_LIST.PC_OFF_REQUEST,
+            cache: false,
+            contentType: 'application/json; charset=UTF-8',
+            success: function() {
+                app.requestToast( 'Work portal log off message has been sent successfully.' );
+                commonJs.moveBack();
+            }
+        } );
+
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd 
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+    
+    <!--AOP(Aspect Oriented Programming)-->
+	<!-- <aop:aspectj-autoproxy /> -->
+	
+	<!--Bean Definition-->
+	<context:component-scan base-package="fido.api" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
+	</context:component-scan>
+		
+	<context:component-scan base-package="fido.service" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+	</context:component-scan>
+	
+	<bean name="propertiesService" class="org.anyframe.util.properties.impl.PropertiesServiceImpl" destroy-method="destroy">
+		<property name="dynamicReload" value="1000" />
+		<property name="encoding" value="UTF-8" />
+		<property name="fileNames">
+			<value>classpath:context.properties</value>
+		</property>
+	</bean>
+	
+	<util:properties id="context" location="classpath:context.properties" />
+</beans>

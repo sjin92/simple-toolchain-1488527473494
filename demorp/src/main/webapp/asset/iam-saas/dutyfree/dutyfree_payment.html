@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/swiper.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <a href="#" class="go-back"></a>
+        <h2>Order</h2>
+    </header>
+
+    <!-- dutyfree section -->
+    <section class="dfbox-section">
+
+        <h3 class="order-tit">Product Information</h3>
+        <div class="inner-infor">
+
+            <div class="select-prod">
+                <div class="sale-product">
+                    <ul>
+                        <li id="I01" class="hide">
+                            <div class="thumb">
+                                <img src="../img/img_r_box01.png" alt="" />
+                            </div>
+
+                            <h3><span class="logo">[SAMSUNG]</span> Galaxy S7</h3>
+                            <p class="price">$690</p>
+                        </li>
+                        <li id="I02" class="hide">
+                            <div class="thumb">
+                                <img src="../img/img_r_box02.png" alt="" />
+                            </div>
+
+                            <h3><span class="logo">[SAMSUNG]</span> Galaxy Gear2</h3>
+                            <p class="price">$400</p>
+                        </li>
+                        <li id="I03" class="hide">
+                            <div class="thumb">
+                                <img src="../img/img_r_box03.png" alt="" />
+                            </div>
+
+                            <h3><span class="logo">[SAMSUNG]</span> Galaxy Note5</h3>
+                            <p class="price">$879</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="total-pay">
+                <span class="item">Total payment (1 item)</span>
+                <span class="price">$ 690</span>
+            </div>
+
+        </div>
+
+        <h3 class="order-tit">Methods of payment</h3>
+        <div class="inner-infor">
+
+            <div class="radio">
+                <input type="radio" name="radio" id="s_pay" checked="checked" />
+                <label for="s_pay">Samsung Pay</label>
+            </div>
+
+            <div class="select-method">
+                <div class="swiper-container paymt">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide samsung"><a href="#"><span class="num">5695 - **** - **** - 5678</span></a></li>
+                        <li class="swiper-slide amex"><a href="#"><span class="num">5895 - **** - **** - 1314</span></a></li>
+                        <li class="swiper-slide master"><a href="#"><span class="num">9235 - **** - **** - 6678</span></a></li>
+                        <li class="swiper-slide"><a href="#"><span class="num">7535 - **** - **** - 1223</span></a></li>
+                        <li class="swiper-slide no-screen"></li>
+                    </ul>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+
+            <div class="radio credit">
+                <input type="radio" name="radio" id="c_pay" />
+                <label for="c_pay">Credit Card</label>
+            </div>
+
+
+            <div class="btn">
+                <a href="#" class="btn-light big buy">BUY</a>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script src="../common/lib/swiper/swiper.min.js"></script>
+<script>
+$( document ).ready( function() {
+    var params = commonJs.getSearchParameters();
+
+    $( '#' + params.itemId ).addClass( 'selected' );
+    $( '#' + params.itemId ).removeClass( 'hide' );
+    $( '.total-pay span.price' ).text( $( '#' + params.itemId + ' p.price' ).text() );
+
+    $( '.btn a.buy' ).on( 'touchstart', function() {
+        $( this ).addClass( 'on' );
+        return true;
+    } );
+    $( '.btn a.buy' ).on( 'touchend', function() {
+        $( this ).removeClass( 'on' );
+        return true;
+    } );
+
+    $( '.btn a.buy' ).on( 'click', function() {
+        var userInfo = commonJs.getUserInfo(),
+            policyId = commonJs.getPolicyInfo();
+        if ( userInfo ) {
+            app.requestFido( 'AUTH', userInfo.loginId, policyId );
+        }
+    } );
+
+    $( 'a.go-back' ).click( function() {
+        commonJs.moveBack();
+    } );
+} );
+
+function returnCallback( result ) { // jshint ignore:line
+    if ( result == 'false' || result === false ) {
+        commonPopup.showPopup( 'Notice', 'Canceled Authentication', 'OK', '', '' );
+    } else {
+        var params = commonJs.getSearchParameters();
+        commonJs.movePage( commonJs.PAGE_LIST.DUTYFREE_SUCCESS + '?itemId=' + params.itemId, false );
+    }
+}
+
+var swiper = new Swiper( '.swiper-container', {
+    pagination: '.swiper-pagination',
+    slidesPerView: 'auto',
+    paginationClickable: true,
+    spaceBetween: 0
+} );
+</script>
+</body>
+</html>
+

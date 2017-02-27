@@ -1,0 +1,134 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'spd';
+    font-weight: 700;
+    src: local('SpoqaHanSans-Bold'), local('SpoqaHanSans-Bold'),
+    url(../font/SpoqaHanSans-Bold/SpoqaHanSans-Bold.eot) format('eot'),
+    url(../font/SpoqaHanSans-Bold/SpoqaHanSans-Bold.svg) format('svg'),
+    url(../font/SpoqaHanSans-Bold/SpoqaHanSans-Bold.ttf) format('truetype'),
+    url(../font/SpoqaHanSans-Bold/SpoqaHanSans-Bold.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'spm';
+    font-weight: 400;
+    src: local('SpoqaHanSans-Regular'), local('SpoqaHanSans-Regular'),
+    url(../font/SpoqaHanSans-Regular/SpoqaHanSans-Regular.eot) format('eot'),
+    url(../font/SpoqaHanSans-Regular/SpoqaHanSans-Regular.svg) format('svg'),
+    url(../font/SpoqaHanSans-Regular/SpoqaHanSans-Regular.ttf) format('truetype'),
+    url(../font/SpoqaHanSans-Regular/SpoqaHanSans-Regular.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'spl';
+    font-weight: 200;
+    src: local('SpoqaHanSans-Thin'), local('SpoqaHanSans-Thin'),
+    url(../font/SpoqaHanSans-Thin/SpoqaHanSans-Thin.eot) format('eot'),
+    url(../font/SpoqaHanSans-Thin/SpoqaHanSans-Thin.svg) format('svg'),
+    url(../font/SpoqaHanSans-Thin/SpoqaHanSans-Thin.ttf) format('truetype'),
+    url(../font/SpoqaHanSans-Thin/SpoqaHanSans-Thin.woff) format('woff');
+}
+
+/*div.container-fido-main {width:412px; height:708px; background:url('../img/fido_main_eng.png') 0 0 no-repeat; background-size:cover}*/
+div.container-fido-main {width:412px; height:708px; background:#2e3641 0 0 no-repeat; background-size:cover}
+.fido-main {position:absolute; top:42px; left:50%; margin-left:-183px; width:366px; height:624px; padding:17px; background:#fff; border-top:8px solid #36bfb9; border-radius:5px; box-shadow:0 0 5px #333;}
+div.main-box{height:550px; overflow-y:auto; padding-top:50px;}
+.fido-main .fido-head div a.f {display:inline-block; font-size:13px; width:80px; height:22px; padding-top:3px; color:#fff; background:#37bab5; text-align:center; border-radius:11px;}
+.fido-main ul.apps li.hide {display:none;}
+.fido-login input.user-id {color:#ffffff; font-size:16px; height:26px; border:0; width:256px; text-align:left; background:url('../img/login_input.png') 0 0 no-repeat; padding-left:25px; padding-bottom:10px}
+.fido-login p.txt-onepass {width:350px; height:144px; color:#4ad5cd; text-indent:0px; overflow:hidden; margin:0 auto; padding-top:110px; font-size:29px; font-weight:bold;}
+.fido-login p.subtitle{width:350px; height:156px; color:#ffffff; font-size:16px; padding-top:25px; margin:0 auto;}
+.fido-login a.login-btn {position:fixed; z-index:1; width:384px; height:60px; padding-top:20px; left:50%; bottom:12px; margin-left:-192px; color:#3c4a58; font-family:'spd'; text-align:center; background:#4ad5cd; border-radius:6px;}
+.fido-login a.login-btn.on {background:#16b6ad; color:#485664;}
+.sale-product a.on {background:#16b6ad; color:#485664;}
+.sale-product li.hide {display:none;}
+.sale-product li.selected {display:list-item;}
+.inner-infor a.on {background:#16b6ad; color:#485664;}
+.order-infor ul.hide{display:none;}
+.order-infor ul.selected{display:inline;}
+.btns a.b.transfer.on{background:#16b6ad !important; color:#485664 !important;}
+.btn a.send.on{background:#16b6ad !important; color:#485664 !important;}
+.activation-list{height:513px;}
+.btn a.apply.on{background:#16b6ad !important; color:#485664 !important;}
+.activation-list div.s p.txt3 input[type="number"] {width:55px; height:32px; border:0; text-align:center; font-size:19px; margin:0 6px; color:#fff; background:#3c4a58}
+.activation-list div.s div.combo-wrap div.auth-list {
+    position:absolute; top:30px; z-index:10; background:#fff; border-radius:6px;
+}
+.activation-list div.s div.combo-wrap div.auth-list a {display:block; padding:10px 15px; border-bottom:1px solid #2e3641; color:#485664; font-family:'spd'}
+.activation-list div.s div.combo-wrap div.auth-list a.last {border-bottom:0px;}
+.activation-list div.s div.combo-wrap div.country-list a.last {border-bottom:0px;}
+.activation-list div.s div.combo-wrap div.auth-list a.on {color:#22c8c0}
+.activation-list div.s div.combo-wrap div.auth-list.hide{display:none;}
+span.fraud-notice{font-size:15px;}
+.select-auth .ico.double {position:absolute; top:12px; right:8px; display:inline-block; width:132px; height:75px;}
+.select-auth .finger {background:url('../img/auth_fingerprint.png') no-repeat 0 0; background-size:75px 75px;}
+.select-auth .iris {background:url('../img/auth_iris.png') no-repeat 0 0; background-size:75px 75px;}
+.select-auth .random {background:url('../img/auth_random.png') no-repeat 0 0; background-size:75px 75px;}
+.select-auth .faceprint {background:url('../img/auth_face.png') no-repeat 0 0; background-size:75px 75px;}
+.select-auth .voice {background:url('../img/auth_voice.png') no-repeat 0 0; background-size:75px 75px;}
+.select-auth .facevoice {background:url('../img/auth_face_voice.png') no-repeat 0 0; background-size:75px 75px;}
+.select-auth .finger_voice_sensory {background:url('../img/auth_fingerprint_facevoice.png') no-repeat 0 0; background-size:132px 75px;}
+.select-auth .finger_face {background:url('../img/auth_fingerprint_face.png') no-repeat 0 0; background-size:132px 75px;}
+.select-auth .finger_voice {background:url('../img/auth_fingerprint_voice.png') no-repeat 0 0; background-size:132px 75px;}
+.singlepass-section .hcm {height:97px; padding:21px 0 21px 96px; background:#2e3641 url('../img/icon_set3.png') no-repeat 25px 50%; background-size:54px auto; color:#fff; font-size:19px; line-height:55px;}
+.singlepass-section .banking {height:97px; padding:21px 0 21px 96px; background:#2e3641 url('../img/icon_set4.png') no-repeat 25px 50%; background-size:54px auto; color:#fff; font-size:19px; line-height:55px;}
+.singlepass-section .dutyfree {height:97px; padding:21px 0 21px 96px; background:#2e3641 url('../img/icon_set7.png') no-repeat 25px 50%; background-size:54px auto; color:#fff; font-size:19px; line-height:55px;}
+.singlepass-section .shopping {height:97px; padding:21px 0 21px 96px; background:#2e3641 url('../img/icon_set5.png') no-repeat 25px 50%; background-size:54px auto; color:#fff; font-size:19px; line-height:55px;}
+.singlepass-section .onesns {height:97px; padding:21px 0 21px 96px; background:#2e3641 url('../img/icon_set6.png') no-repeat 25px 50%; background-size:54px auto; color:#fff; font-size:19px; line-height:55px;}
+.singlepass-section .onewallet {height:97px; padding:21px 0 21px 96px; background:#2e3641 url('../img/icon_set8.png') no-repeat 25px 50%; background-size:54px auto; color:#fff; font-size:19px; line-height:55px;}
+.singlepass-section .remote {height:97px; padding:21px 0 21px 96px; background:#2e3641 url('../img/icon_set2.png') no-repeat 25px 50%; background-size:54px auto; color:#fff; font-size:19px; line-height:55px;}
+.setting-menus .sub {background:#3c4a58;}
+.setting-menus .sub .guide {height:45px; padding:15px 0 0 17px; background:#485664; color:#fff; font-size:15px;}
+.setting-menus .sub li {border-bottom:2px solid #2e3641;}
+.setting-menus .sub li:last-child {border-bottom:0;}
+.setting-menus .sub li .in {background:none; margin-left:43px;border-bottom:0;}
+.setting-menus .finger {background:url('../img/auth_fingerprint.png') no-repeat 326px 12px; background-size:75px 75px;}
+.setting-menus .iris {background:url('../img/auth_iris.png') no-repeat 326px 12px; background-size:75px 75px;}
+.setting-menus .random {background:url('../img/auth_random.png') no-repeat 326px 	12px; background-size:75px 75px;}
+.setting-menus .faceprint {background:url('../img/auth_face.png') no-repeat 326px 12px; background-size:75px 75px;}
+.setting-menus .voice {background:url('../img/auth_voice.png') no-repeat 326px 12px; background-size:75px 75px;}
+.setting-menus .facevoice {background:url('../img/auth_face_voice.png') no-repeat 326px 12px; background-size:75px 75px;}
+.setting-menus .finger_voice_sensory {background:url('../img/auth_fingerprint_facevoice.png') no-repeat 269px 12px; background-size:132px 75px;}
+.setting-menus .finger_face {background:url('../img/auth_fingerprint_face.png') no-repeat 269px 12px; background-size:132px 75px;}
+.setting-menus .finger_voice {background:url('../img/auth_fingerprint_voice.png') no-repeat 269px 12px; background-size:132px 75px;}
+.setting-menus li a.registration.down {background: #2e3641 url('../img/icon_arrow_down2.png') 96% 50% no-repeat;background-size: auto 12px;}
+.setting-menus li a.registration.up {background: #2e3641 url('../img/icon_arrow_up.png') 96% 50% no-repeat;background-size: auto 12px;}
+.setting-menus div.sub li.on {background:#16b6ad; color:#485664;}
+.setting-menus li a.down.on {color:#2e3641; background:#16b6ad url('../img/icon_arrow_rightdark_down.png') 96% 50% no-repeat; background-size:auto 12px;}
+.setting-menus li a.down.on span.tx {color:#2e3641}
+.setting-menus li a.up.on {color:#2e3641; background:#16b6ad url('../img/icon_arrow_rightdark_up.png') 96% 50% no-repeat; background-size:auto 12px;}
+.setting-menus li a.up.on span.tx {color:#2e3641}
+div.current-time{display:block; position:absolute; left:1680px; top:130px;width:230px;}
+div.current-time .date{font-size:16px;padding:0 0 15px 7px;color:#2e3641;}
+div.current-time .time{font-size:46px;color:#2e3641;}
+.dfbox-section {position:absolute; z-index:10; left:0%; width:100%; transition:left 0.3s}
+.dfbox-section.active {left:78%;}
+.inbox-section {position:absolute; z-index:10; left:0%; width:100%; transition:left 0.3s}
+.inbox-section.active {left:78%;}
+.singlepass-section {position:absolute; z-index:10; left:0%; width:100%; transition:left 0.3s}
+.singlepass-section.active {left:78%;}
+.single-menus li span.ss-sns {background:url('../img/icon_set6_2.png') 0 0 no-repeat; background-size:54px auto}
+.sale-product.list{background:#3c4a58;}
+.select-method .paymt li.amex {display:inline-block; width:201px !important; height:127px; margin-right:31px; background:#485664 url('../img/img_pay_card_amex.png') no-repeat 0 0; background-size:201px 127px; border-radius:10px; opacity:.2}
+.select-method .paymt li.amex.on {background:#fff url('../img/img_pay_card_amex.png') no-repeat 0 0; background-size:201px 127px;}
+.select-method .paymt li.swiper-slide-active.amex {background:url('../img/img_pay_card_amex.png') 0 0 no-repeat; background-size:201px 127px; opacity:1}
+.select-method .paymt li.samsung {display:inline-block; width:201px !important; height:127px; margin-right:31px; background:#485664 url('../img/img_pay_card_samsung.png') no-repeat 0 0; background-size:201px 127px; border-radius:10px; opacity:.2}
+.select-method .paymt li.samsung.on {background:#fff url('../img/img_pay_card_samsung.png') no-repeat 0 0; background-size:201px 127px;}
+.select-method .paymt li.swiper-slide-active.samsung {background:url('../img/img_pay_card_samsung.png') 0 0 no-repeat; background-size:201px 127px; opacity:1}
+.select-method .paymt li.master {display:inline-block; width:201px !important; height:127px; margin-right:31px; background:#485664 url('../img/img_pay_card_master.png') no-repeat 0 0; background-size:201px 127px; border-radius:10px; opacity:.2}
+.select-method .paymt li.master.on {background:#fff url('../img/img_pay_card_master.png') no-repeat 0 0; background-size:201px 127px;}
+.select-method .paymt li.swiper-slide-active.master {background:url('../img/img_pay_card_master.png') 0 0 no-repeat; background-size:201px 127px; opacity:1}
+
+.fido-main .fido-head .title-logo {width: 66px; height: 28px;}
+
+div.pre-blur{z-index:10;position:fixed; top:56px; left:0; display:block; width:412px; height:708px;background:url('../img/img_preblur.png');}
+
+.v-center {position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 10%;
+    margin: auto;
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/btn_bl_press" android:state_pressed="true" />
+    <item android:drawable="@color/btn_bl" android:state_pressed="false" />
+</selector> <!-- From: file:/Users/FIDO-kj84park/Desktop/AndroidMultiModalAuthenticator/sc_ma_fido_client/client-sdk/src/main/res/drawable/btn_bl.xml -->

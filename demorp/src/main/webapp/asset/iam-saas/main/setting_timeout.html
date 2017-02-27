@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <a href="#" class="go-back"></a>
+        <h2>Session Timeout</h2>
+    </header>
+
+    <ul class="setting-menus">
+        <li><span class="in"><input type="radio" name="timeout" id="min10" /><label for="min10"><span></span></label>10 minutes</span></li>
+        <li><span class="in"><input type="radio" name="timeout" id="min30" /><label for="min30"><span></span></label>30 minutes</span></li>
+        <li><span class="in"><input type="radio" name="timeout" id="min60" /><label for="min60"><span></span></label>1 hour</span></li>
+        <li><span class="in"><input type="radio" name="timeout" id="min120" /><label for="min120"><span></span></label>2 hour</a></li>
+        <li><span class="in out"><input type="radio" name="timeout" id="customtime" /><label for="customtime"><span></span></label><input type="text" class="minute" />seconds</span></li>
+    </ul>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+    $( '.setting-menus li a' ).on( 'touchstart', function() {
+        $( this ).addClass( 'on' );
+    } );
+    $( '.setting-menus li a' ).on( 'touchend', function() {
+        $( this ).removeClass( 'on' );
+        return true;
+    } );
+
+    $( '.setting-menus input.minute' ).on( 'focus', function() {
+        $( '.setting-menus input[type="radio"]' ).prop( 'checked', false );
+        $( '#customtime' ).prop( 'checked', true );
+    } );
+    $( '#customtime' ).on( 'click', function() {
+        $( '.setting-menus input.minute' ).focus();
+    } );
+
+    $( 'a.go-back' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+
+    $( '.setting-menus input[type="radio"]' ).on( 'click', function() {
+        var timeout;
+        switch ( this.id ) {
+            case 'min10':
+                timeout = 10 * 60;
+                break;
+            case 'min30':
+                timeout = 30 * 60;
+                break;
+            case 'min60':
+                timeout = 60 * 60;
+                break;
+            case 'min120':
+                timeout = 120 * 60;
+                break;
+            default:
+                return;
+        }
+        commonJs.saveSessionTimeoutSetting( timeout );
+    } );
+
+    $( '.setting-menus input.minute' ).on( 'focusout', function() {
+        var timeout = $( this ).val();
+        if ( $( '#customtime' ).prop( 'checked' ) !== true || timeout == null || timeout < 10 ) {
+            return;
+        }
+        commonJs.saveSessionTimeoutSetting( timeout );
+    } );
+
+    var timeoutSetting = commonJs.getSessionTimeoutSetting();
+    $( '.setting-menus input[type="radio"]' ).prop( 'checked', false );
+
+    console.log( timeoutSetting.timeout );
+    switch ( timeoutSetting.timeout ) {
+        case ( 10 * 60 ):
+            $( '#min10' ).prop( 'checked', true );
+            break;
+        case ( 30 * 60 ):
+            $( '#min30' ).prop( 'checked', true );
+            break;
+        case ( 60 * 60 ):
+            $( '#min60' ).prop( 'checked', true );
+            break;
+        case ( 120 * 60 ):
+            $( '#min120' ).prop( 'checked', true );
+            break;
+        default:
+            $( '#customtime' ).prop( 'checked', true );
+            $( '.setting-menus input.minute' ).val( timeoutSetting.timeout );
+            $( '.setting-menus input.minute' ).focus();
+            break;
+    }
+} );
+
+</script>
+</body>
+</html>
+

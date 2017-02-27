@@ -1,0 +1,116 @@
+@charset "utf-8";
+
+#wrap{position:relative;height:100%;min-width:1240px;}
+/* #header{width:100%;min-width:1240px;} */
+#contanier{/* height: calc(100% - 66px);*/min-height:calc(100% - 80px); width:100%; position:relative;}
+#contanier.bg{background: url('../../fido/img/main/bg.png') repeat 0 0px;min-width: 1280px;} /* 2015-09-22 추가 */
+/* #content{padding: 20px 30px 60px 40px;}  2015-03-24 jy98.lee 디자인 적용 */
+
+.none {display:none;}
+
+/* footer 2015-09-23 */
+#footer {width:100%;min-width:1280px;position:fixed;bottom:0;color:#777777;background:#e6eaee;padding-top:15px;font-size:12px;z-index:3;}
+#footer ul {float:left;margin-left:50px;margin-top:5px;}
+#footer li  {display:inline-block;}
+#footer li em   {padding:0 13px;}
+#footer li span {color:#0c4b9d;padding-right:5px;}
+#footer p   {float:right;margin-right:50px;background: url('../img/footer_logo.png') no-repeat right 0;padding-right:150px;padding-top:5px;height:30px;}
+#footer a   {color:#777777;}
+#footer a:hover {color:#000000;}
+
+
+/*.main_wrap footer {clear:both; position:absolute; bottom:30px; width:100%; min-width:1280px;}
+.main_wrap footer .cr {float:left; color:#666;margin-left:50px}
+.main_wrap footer .language {float:right; color:#333; font-weight:bold;margin-right:50px}
+.main_wrap footer .language select {width:140px; margin-left:5px; color:#333;}
+.main_wrap footer .logo_area {margin-bottom:30px;margin-left:50px} /* 2014-09-24 수정 */*/
+/* modal window */
+.main_wrap .modal_popup {/*width:420px;height:250px;*/padding:20px; background-color:#fff;position:absolute;top:50%;left:50%;margin-left:-210px;margin-top:-125px; z-index:9999}
+.main_wrap .modal_popup dl {margin-bottom:20px;border-bottom:1px solid #ccc;}
+.main_wrap .modal_popup dt {width:380px;background-color:#004a88;text-align:center; line-height:50px;font-size:18px;color:#fff;font-weight:bold;}
+.main_wrap .modal_popup dd {margin:15px 20px;}
+.main_wrap .modal_popup dd strong {display:block;padding-left:10px;line-height:20px; background:url("../img/common/ico_dot.gif") 2px no-repeat;font-size:14px}
+.main_wrap .modal_popup dd em {padding-left:12px;line-height:17px;}
+.main_wrap .modal_popup .but_area {text-align:center}
+
+
+
+#messageArea {    
+	float: right;
+    z-index: 2;
+    margin: 30px 30px;
+    border-radius: 18px;
+    width: 400px;
+    height: 550px;
+    text-align: center;
+    
+    position: relative;
+}
+
+#messageArea_bg {
+	z-index: 2;
+    margin: 30px 30px;
+    border-radius: 18px;
+    background: #FFF;
+    opacity: 0.5;
+    width: 400px;
+    height: 550px;
+    text-align: center;
+    right: 0px;
+    position: absolute;
+}
+#messageArea .title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 30px;
+    color: #000;
+}
+
+#messageArea .message {
+	font-size: 22px;
+    margin-top: 28px;
+    color: #5F5F5F;
+}
+
+
+
+#messageArea #btn_area {
+    display: inline-block;
+}
+#messageArea #btn_area div {
+	height: 144px;
+    width: 139px;
+    font-size: 31px;
+    top: 290px;
+    text-align: center;
+    line-height: 54px;
+    border-radius: 17px;
+    background-color: #000;
+    position:absolute;
+    
+    background: -moz-linear-gradient(top, #457cb5 0%, #2d649d 100%);
+    background: -webkit-linear-gradient(top, #457cb5 0%,#2d649d 100%);
+    background: linear-gradient(to bottom, #457cb5 0%,#2d649d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#457cb5', endColorstr='#2d649d',GradientType=0 );
+}
+
+
+#messageArea #fingerprint_wrap {
+	left : 44px;
+}
+
+#messageArea #fingerprint {
+	margin-top: 10px;
+} 
+#messageArea #startAgain_wrap {
+	right : 42px;
+}
+#messageArea #startAgain_wrap:hover {
+	border: 3px solid #ffffff;
+	top: 287px;
+	right : 39px;
+}
+#messageArea #startAgain {
+	margin-top: 13px;
+}
+

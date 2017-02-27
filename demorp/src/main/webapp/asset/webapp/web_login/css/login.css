@@ -1,0 +1,29 @@
+@charset "utf-8";
+	
+.loginArea {height:100%;}
+.loginArea .loginWrap {position:relative; margin:0 auto; z-index:2 }
+.loginArea .description {position:absolute; left:77px; top:0; /*min-height:1200px;*/padding:100px 0 0 0px; background: #3169a4 url('../img/login_bg.png') no-repeat 0 top;width:470px;
+filter:alpha(opacity=85); opacity:.85;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)"}
+.loginArea .description p {text-align:center;}
+.loginArea .description p strong.title {color:#fff; font-weight:normal;font-size:65px;}
+
+.loginArea .tit {position:absolute; left:136px; top:346px;font-size:18px;color:#fff;font-weight:bold;}
+.loginArea .loginbox {position:absolute; left:137px; top:381px;}
+.loginArea .loginbox ul {padding:0; width:350px;}
+.loginArea .loginbox ul li {position:relative; font-weight:500;}
+.loginArea .loginbox ul li > label{width: 72px;height:25px;display: inline-block;font-size:12px;letter-spacing:-0.5px; vertical-align: middle;color:#0d204c; font-weight:600;padding-left:11px;line-height:30px;}
+.loginArea .loginbox ul li.mtext {display:none;background: url('../../sdc/img/icon.png') no-repeat 2px 3px; color:#ffcc00;padding:2px 0 2px  22px;}
+.loginArea .loginbox ul li .idsave {line-height:12px;}
+.loginArea .loginbox ul li .pass {color:#325088;line-height:12px;}
+.loginArea .loginbox ul li .pass:hover{color:#526fa9;}
+.loginArea .loginbox ul li input[type=text], .loginArea .loginbox ul li input[type=password] {font-size:14px; color:#666; border:1px solid #d8d8d8; width:336px;padding:12px 6px  !important;}
+.loginArea .loginbox ul li input:hover {border: 1px solid #6e96c0;}
+.loginArea .loginbox ul li input:focus {border: 1px solid #6e96c0;outline: none;}
+.loginArea .loginbox ul li > input {border:1px solid #d8d8d8;height:100% !important;margin-bottom:5px;}
+
+.loginArea .purple-btn {border:1px solid #ffffff;margin-top:35px;}
+.loginArea .purple-btn:hover  {border: 1px solid #ffffff;background:#3b81b7}
+.loginArea .purple-btn:active  {border: 1px solid #85beeb;background:#3b81b7;}
+.loginArea .btn-login {width:348px;height:50px;color: #fff;font-size:16px;;line-height: 50px;font-weight:bold;text-align:center;cursor:pointer;}
+
+			

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/FIDO-kj84park/Desktop/AndroidMultiModalAuthenticator/sc_ma_fido_client/client-sdk/src/main/res/values-ko/string.xml -->
+    <eat-comment/>
+    <string name="app_name">FIDO RP TEST</string>
+    <string name="authenticator_selection_cancel">취소</string>
+    <string name="authenticator_selection_ok">확인</string>
+    <string name="authenticator_selector_dialog_title">인증수단 선택</string>
+    <string name="face_print">얼굴</string>
+    <string name="fido_client_permission_description">This application acts as a FIDO Client. It may access authentication devices available on the system, create and delete FIDO registrations on behalf of other applications.</string>
+    <string name="finger_print">지문</string>
+    <string name="footer_authenticator_selector">길게 클릭하면 상세설명이 출력됩니다.</string>
+    <string name="title_activity_oxygen">OxygenActivity</string>
+    <string name="title_authenticator_selector">Authenticator 확인</string>
+</resources>

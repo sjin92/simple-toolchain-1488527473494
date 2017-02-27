@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_divider_below"
+    android:orientation="horizontal">
+
+    <RadioButton
+        android:id="@+id/radioSelection"
+        style="@style/ToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/authenticator_selector_radio_left_padding" />
+
+    <ImageView
+        android:id="@+id/imageAuthenticator"
+        style="@style/ThumnailView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:contentDescription="@string/app_name" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textTitle"
+            style="@style/TextAppearance.TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name" />
+
+<!--        <TextView
+            android:id="@+id/textDesc"
+            style="@style/TextAppearance.TextDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name" />-->
+
+    </LinearLayout>
+
+
+</LinearLayout>
+<!-- From: file:/Users/FIDO-kj84park/Desktop/AndroidMultiModalAuthenticator/sc_ma_fido_client/client-sdk/src/main/res/layout/list_authenticator_selection.xml -->

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/swiper.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <a href="#" class="openmenu"><span></span><span></span><span></span></a>
+        <h2>Groupware</h2>
+    </header>
+
+    <div class="gnbmenu">
+        <h2>Welcome!</h2>
+        <ul class="setting-menus">
+            <li><a href="#" class="exit">Exit</a></li>
+        </ul>
+    </div>
+
+    <div class="menuon-dimmed">a</div>
+    <section class="inbox-section">
+        <!-- time schedule -->
+        <div class="portal-schedule clearfix">
+            <div class="f">
+                <span class="date">19.Sep.2016</span>
+                <span class="day">MON</span>
+            </div>
+            <div class="s">
+                <ul>
+                    <li><span>10:30</span>Biz. Meeting at Chic..</li>
+                    <li><span>13:00</span>Weekly report</li>
+                    <li><span>15:00</span>Conference call with..</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- inbox -->
+        <div class="portal-inbox df smartbox">
+            <div class="head clearfix">
+                <span class="tit">Inbox</span>
+                <span class="cnt">1</span>
+            </div>
+            <ul>
+                <li class="clearfix">
+                    <div class="f star-off"></div>
+                    <div id="email_title" class="s">
+                        <p class="subject ellip">Re : Other requests regarding related some</p>
+                        <p class="person ellip">Rechard Won/Solution G(FIDO)eneraly</p>
+                    </div>
+                    <div class="t">
+                        <span class="files"><a href="#" class="clip"></a></span>
+                        <span class="time">11:25</span>
+                    </div>
+                </li>
+                <li class="clearfix"><!-- past-->
+                    <div class="f star-off"></div>
+                    <div class="s">
+                        <p class="subject ellip">Re : Other requests regarding</p>
+                        <p class="person ellip">Rechard Won/Solution G(FIDO)</p>
+                    </div>
+                    <div class="t">
+                        <span class="files"></span>
+                        <span class="time">11:25</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- pending approval -->
+        <div class="portal-pending df smartbox">
+            <div class="head clearfix">
+                <span class="tit">Pending approval</span>
+                <span class="cnt">2</span>
+            </div>
+            <ul>
+                <li class="clearfix">
+                    <div class="f"></div>
+                    <div class="s">
+                        <p class="subject ellip">Re : Other requests regarding</p>
+                        <p class="person ellip">Rechard Won/Solution G(FIDO)</p>
+                    </div>
+                    <div class="t">
+                        <span class="files"></span>
+                        <span class="time">11:25</span>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <div class="f"></div>
+                    <div class="s">
+                        <p class="subject ellip">Re : Other requests regarding</p>
+                        <p class="person ellip">Rechard Won/Solution G(FIDO)</p>
+                    </div>
+                    <div class="t">
+                        <span class="files"></span>
+                        <span class="time">11:25</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script src="../common/lib/swiper/swiper.min.js"></script>
+<script>
+$( document ).ready( function() {
+    $( '.openmenu' ).click( function() {
+        $( '.gnbmenu, header, .inbox-section, .menuon-dimmed' ).addClass( 'active' );
+        $( '.inbox-section' ).css( 'position','fixed' );
+    } );
+    $( '.menuon-dimmed' ).click( function() {
+        $( '.gnbmenu, header, .inbox-section, .menuon-dimmed' ).removeClass( 'active' );
+        setTimeout( function() {
+            $( '.inbox-section' ).css( 'position','absolute' );
+        }, 500 );
+    } );
+
+    $( '#email_title' ).click( function() {
+        commonJs.movePage( commonJs.PAGE_LIST.WORKPLACE_INBOX );
+    } );
+
+
+    $( '.setting-menus li a.exit' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+
+} );
+</script>
+</body>
+</html>

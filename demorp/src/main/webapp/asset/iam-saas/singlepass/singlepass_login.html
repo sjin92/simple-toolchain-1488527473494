@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" manifest="../appcache.manifest">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../../common/css/common.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container-fs">
+
+    <div class="fido-login">
+        <span></span>
+        <p class="txt-onepass">Nexsign for Enterprise</p>
+        <p class="subtitle">Mobile Single Sign On</p>
+        <input type="text" id="user-id" class="user-id" placeholder="user01" value="user01"/>
+        <a href="#" class="login-btn">Login</a>
+    </div>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+
+    addEventHandlerForCaching();
+
+    $( '.fido-login .login-btn' ).on( 'touchstart', function() {
+        $( this ).addClass( 'on' );
+        return true;
+    } );
+    $( '.fido-login .login-btn' ).on( 'touchend', function() {
+        $( this ).removeClass( 'on' );
+        return true;
+    } );
+
+    $( '.fido-login input.user-id' ).on( 'focus', function() {
+        $( this ).prop( 'placeholder', '' );
+    } );
+
+    $( '.fido-login input.user-id' ).on( 'focusout', function() {
+        var value = $( this ).val();
+        if ( value != null && value !== '' ) {
+            return;
+        }
+        $( this ).prop( 'placeholder', 'user01' );
+    } );
+
+    $( '.fido-login a.login-btn' ).on( 'click', function() {
+        login();
+    } );
+} );
+
+function login() {
+    var userId = $( '#user-id' ).val(),
+        userInfo = commonJs.getUserInfo();
+    if ( !userInfo ) {
+        userInfo = {
+            rpId: 'InternalOnly',
+            loginTime: 0
+        };
+    }
+
+    // var emailExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // //var regExp = /^[a-zA-Z0-9]+$/;
+    // if ( !userId ) {
+    //     commonPopup.showPopup( 'LABEL_ERR_TITLE'.i18n(), 'MSG_ERR_LOGINID_EMPTY'.i18n() );
+    //     return false;
+    // }
+    // else if ( !emailExp.test( userId ) ) {
+    //     commonPopup.showPopup( 'LABEL_ERR_TITLE'.i18n(), 'MSG_ERR_LOGINID_FORMAT'.i18n() );
+    //     return false;
+    // }
+
+    if ( userId !== 'user01' && userId !== 'user02' && userId !== 'user03' ) {
+        commonPopup.showPopup( 'LABEL_ERR_TITLE'.i18n(), 'User id you entered is not registered.' );
+        return false;
+    }
+
+    userInfo.loginId = userId;
+    userInfo.loginTime = commonJs.getCurrentSecond();
+    customStorage.write( 'USER', userInfo );
+
+    // var params = commonJs.getSearchParameters();
+
+    // app.requestLoginComplete( userInfo.loginId, commonJs.PAGE_LIST[ params.pageId ], '' );
+
+    // TODO: 정책 가져와서 넣어줘야 함.
+    // app.requestFido( 'AUTH' );
+    app.requestFido( 'AUTH', userInfo.loginId, 'finger' );
+}
+
+function returnCallback( result ) { // jshint ignore:line
+    if ( result === 'true' || result === true ) {
+        location.replace( commonJs.PAGE_LIST.SINGLEPASS_SETTING );
+    }
+}
+
+
+
+function addEventHandlerForCaching() {
+    var appCache = window.applicationCache;
+    // 메니페스트이 리소스가 모두 캐싱된 후 발생.
+    appCache.addEventListener( 'cached', handleCacheEvent, false );
+    // 메니페스트를 새로 가져와 캐시 갱신을 해야 하는지 확인. 과정상 항상 가장 먼저 발생.
+    appCache.addEventListener( 'checking', handleCacheEvent, false );
+    // 갱신된 것을 찾았다. 브라우저가 리소스를 다운로드 시작.
+    appCache.addEventListener( 'downloading', handleCacheEvent, false );
+    // 메니페스트 파일에 대한 응답이 404나 410, 다운로드 실패,
+    // 아니면 다운로드가 진행중인데 메니페스트가 변경됬을때.
+    appCache.addEventListener( 'error', handleCacheEvent, false );
+    // 메이페스트의 모두 다운로드 완료후 발생.
+    appCache.addEventListener( 'noupdate', handleCacheEvent, false );
+    // 메니페스트 파일에 대한 응답이 404나 410 이면 발생한다.
+    // 앱 캐시 안의 내용이 삭제 된다.
+    appCache.addEventListener( 'obsolete', handleCacheEvent, false );
+    // 메니페스트 파일에 나열된 각 리소스를 모두 가져오면 발생
+    appCache.addEventListener( 'progress', handleCacheEvent, false );
+    // 메니페스트의 리소스들이 새로 다시 다운로드 되었을때 발생.
+    appCache.addEventListener( 'updateready', handleCacheEvent, false );
+}
+
+
+function handleCacheEvent( event ) {
+    var appCache = window.applicationCache;
+
+    //console.log(event);
+    switch ( event.type ) {
+        case 'checking':
+            Logger.info( 'ApplicationCache checking' );
+            progress.show( 'downloading' );
+            break;
+        case 'noupdate':    //
+            Logger.info( 'No update ApplicationCache' );
+            progress.setProgress( 100 );
+            progress.hide();
+            break;
+        case 'downloading': //
+            app.requestProgress( true, '' );
+            Logger.info( 'ApplicationCache downloading' );
+            break;
+        case 'progress':    //
+            Logger.info( 'ApplicationCache progress' );
+            var total = event.total;
+            var current = event.loaded;
+            progress.setProgress( Math.ceil( current * 100 / total ) );
+            break;
+        case 'cached':  // cache compleated
+            app.requestProgress( false, '' );
+            Logger.info( 'ApplicationCache completed' );
+            progress.hide();
+            break;
+        case 'error':   // cache compleated
+            Logger.error( 'Resource loading error : {0}', event.url );
+            progress.hide();
+            break;
+        case 'updateready':
+            if ( appCache.status == appCache.UPDATEREADY ) {
+                Logger.info( 'Page updated' );
+                // 브라우저가 새 앱 캐시를 다운받은 후 페이지 리로드 수행
+                appCache.swapCache();
+                window.location.reload();
+            } else {
+                // Do nothing
+            }
+            break;
+        default:
+            Logger.info( 'Do nothing event : {0}', event.type );
+    }
+    return false;
+}
+</script>
+</body>
+</html>
+

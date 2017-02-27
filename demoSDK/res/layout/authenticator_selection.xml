@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafafa"
+    tools:context="com.samsung.sds.fido.uaf.client.ui.AuthenticatorSelector">
+
+    <TextView
+        android:id="@+id/textAuthSelection"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#1976d2"
+        android:gravity="center_vertical"
+        android:paddingLeft="16.50dp"
+        android:paddingRight="16.50dp"
+        android:text="@string/authenticator_selector_dialog_title"
+        android:textColor="#FAFAFA"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/authenticator_selector_title_divider_height"
+        android:layout_alignBottom="@+id/textAuthSelection"
+        android:background="@color/authenticator_selector_popup_title" />
+
+
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingLeft="16.5dp"
+        android:paddingRight="16.5dp"
+        android:showDividers="middle"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_wh"
+            android:text="@string/authenticator_selection_cancel"
+            android:textColor="@drawable/btn_wh_text"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/okButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bl"
+            android:text="@string/authenticator_selection_ok"
+            android:textColor="@drawable/btn_bl_text"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/button_layout"
+        android:layout_below="@id/textAuthSelection"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/authenticator_selector_list_padding_left"
+        android:paddingRight="@dimen/authenticator_selector_list_padding_left"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical">
+
+        <ListView
+            android:id="@+id/listAuthSelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fafafa"
+            android:footerDividersEnabled="true" />
+    </LinearLayout>
+
+</RelativeLayout>
+<!-- From: file:/Users/FIDO-kj84park/Desktop/AndroidMultiModalAuthenticator/sc_ma_fido_client/client-sdk/src/main/res/layout/authenticator_selection.xml -->

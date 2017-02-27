@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div id="timeout-popup" class="timeout-popup hide">
+    <div class="film" style="display:block;"></div>
+    <div class="modal-pop">
+        <div class="modal-container">
+
+            <div class="m succes">Authentication time out!<br>Now you need to verify as following:</div>
+
+            <div class="v">
+                <span class="icon fp"></span>
+                <span class="cb"></span>
+                <span class="icon fv"></span>
+            </div>
+
+            <div class="btn">
+                <a href="#" class="btn-dark cancel">CANCEL</a>
+                <a href="#" class="btn-light ok">OK</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="fraud-popup" class="fraud-popup hide">
+    <div class="film" style="display:block;"></div>
+    <div class="modal-pop">
+        <div class="modal-container">
+
+            <div class="m warning">We found something unusual.<br>We need additional verification:</div>
+
+            <div class="v">
+                <span class="icon fv"></span>
+            </div>
+
+            <div class="btn">
+                <a href="#" class="btn-dark cancel">CANCEL</a>
+                <a href="#" class="btn-light ok">OK</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+
+    <header>
+        <a href="#" class="go-back"></a>
+        <h2>Transfer <span class="fraud-notice hide"> ( Fraud Detection On )</span></h2>
+    </header>
+
+    <!-- Booking Transfer section -->
+    <section class="dfbox-section">
+
+        <div class="transfer-from">
+            <h3>FROM</h3>
+            <div class="clearfix">
+                <span class="account">Current account 10-11-53215</span>
+                <div class="cash">$ 10,230</div>
+            </div>
+        </div>
+
+        <div class="transfer-to">
+            <h3>TO</h3>
+            <div class="i-field">To Jay Yoon</div>
+            <div class="i-field">Hansin Bank, 13-21-21342</div>
+
+            <h3>MONEY</h3>
+            <div class="i-deposit-field">$ 0</div>
+            <div class="deposit-set">
+                <a href="#" class="deposit">$ 1000</a>
+                <a href="#" class="deposit">$ 100</a>
+                <a href="#" class="deposit">$ 50</a>
+                <a href="#" class="deposit">$ 10</a>
+            </div>
+        </div>
+
+
+        <div class="btn">
+              <a href="#" class="btn-light big send">SEND</a>
+        </div>
+
+    </section>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+    var params = commonJs.getSearchParameters(),
+        fraudInfo = commonJs.getFraudInfo();
+
+    if ( fraudInfo && fraudInfo.isActive ) {
+        $( 'header .fraud-notice' ).removeClass( 'hide' );
+    }
+
+    $( '.transfer-from span.account' ).text( 'Current account ' + params.acntNo );
+    $( '.transfer-from div.cash' ).text( '$ ' + Number( params.amount ).toLocaleString( 'en' ) );
+
+    $( 'a.go-back' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+
+    $( '.btn a.send' ).on( 'touchstart', function() {
+        $( this ).addClass( 'on' );
+    } );
+    $( '.btn a.send' ).on( 'touchend', function() {
+        $( this ).removeClass( 'on' );
+    } );
+
+    $( 'div.i-deposit-field' ).on( 'click', function() {
+        $( this ).text( '$ 0' );
+    } );
+
+    $( '.btn a.send' ).on( 'click', function() {
+        var userInfo = commonJs.getUserInfo(),
+            fraudInfo = commonJs.getFraudInfo(),
+            total = $( 'div.i-deposit-field' ).text().substr( 2 ).replace( /,/g, '' ) * 1;
+        if ( total <= 0 ) {
+            commonPopup.showPopup( 'LABEL_ERR_TITLE'.i18n(), 'Please enter amount for fund transferring.' );
+            return;
+        }
+        if ( userInfo ) {
+            if ( fraudInfo && fraudInfo.isActive === true && fraudInfo.type === 'timeout' ) {
+                fraudInfo.startTime = commonJs.getCurrentSecond();
+                fraudInfo.userClick = true;
+                commonJs.setFraudInfo( fraudInfo );
+                if ( commonJs.isGalaxyNote7() ) {
+                    app.requestFido( 'AUTH', userInfo.loginId, 'finger' );
+                } else {
+                    app.requestFido( 'AUTH', userInfo.loginId, 'face' );
+                }
+            } else if ( fraudInfo && fraudInfo.isActive === true && fraudInfo.type === 'geo' ) {
+                fraudInfo.userClick = true;
+                commonJs.setFraudInfo( fraudInfo );
+                if ( commonJs.isGalaxyNote7() ) {
+                    app.requestFido( 'AUTH', userInfo.loginId, 'finger' );
+                } else {
+                    app.requestFido( 'AUTH', userInfo.loginId, 'face' );
+                }
+            } else if ( fraudInfo && fraudInfo.isActive === true && fraudInfo.type === 'behavior' ) {
+                fraudInfo.userClick = true;
+                commonJs.setFraudInfo( fraudInfo );
+                app.requestFido( 'AUTH', userInfo.loginId, 'InternalOnly' );
+            } else {
+                if ( total < 100 ) {
+                    app.requestFido( 'AUTH', userInfo.loginId, 'voice' );
+                } else if ( total < 1000 ) {
+                    app.requestFido( 'AUTH', userInfo.loginId, 'finger' );
+                } else {
+                    app.requestFido( 'AUTH', userInfo.loginId, 'finger_voice_sensory' );
+                }
+            }
+        }
+    } );
+
+    $( '.deposit-set a.deposit' ).on( 'click', function() {
+        var amount = $( this ).text().substr( 2 ) * 1,
+            total = $( 'div.i-deposit-field' ).text().substr( 2 ).replace( /,/g, '' ) * 1;
+        if ( params.amount < total + amount ) {
+            commonPopup.showPopup( 'LABEL_ERR_TITLE'.i18n(), 'Transfering amount cannot exceed account balance.' );
+            return;
+        }
+        total += amount;
+        $( 'div.i-deposit-field' ).text( '$ ' + Number( total ).toLocaleString( 'en' ) );
+    } );
+
+} );
+
+function returnCallback( result, policyId ) { // jshint ignore:line
+    var amount = $( 'div.i-deposit-field' ).text().substr( 2 ).replace( /,/g, '' ) * 1,
+        fraudInfo = commonJs.getFraudInfo();
+    if ( result == 'false' || result === false ) {
+        commonPopup.showPopup( 'Notice', 'Canceled Authentication', 'OK', '', '' );
+    } else if ( fraudInfo.isActive && fraudInfo.userClick ) {
+        fraudInfo.userClick = false;
+        commonJs.setFraudInfo( fraudInfo );
+        fraudCheck( policyId );
+    } else {
+        commonJs.movePage( commonJs.PAGE_LIST.BANKING_SUCCESS + '?amount=' + amount, false );
+    }
+}
+
+function fraudCheck( policyId ) {
+    var fraudInfo = commonJs.getFraudInfo();
+
+    if ( fraudInfo && fraudInfo.isActive === true && fraudInfo.type === 'timeout' ) {
+        // fraudInfo.isActive = false;
+        commonJs.setFraudInfo( fraudInfo );
+        if ( fraudInfo.startTime + fraudInfo.timeout < commonJs.getCurrentSecond() ) {
+            if ( commonJs.isGalaxyNote7() ) {
+                showPopupAndAdditionalAuth( 'timeout', 'iris' );
+            } else {
+                showPopupAndAdditionalAuth( 'timeout', 'finger_face' );
+            }
+        }
+
+    } else if ( fraudInfo && fraudInfo.isActive === true && fraudInfo.type === 'geo' ) {
+        // fraudInfo.isActive = false;
+        commonJs.setFraudInfo( fraudInfo );
+        if ( commonJs.isGalaxyNote7() ) {
+            if ( fraudInfo.lastLocation !== fraudInfo.currentLocation ) {
+                showPopupAndAdditionalAuth( 'geo', 'iris' );
+            }
+        } else {
+            if ( fraudInfo.lastLocation === fraudInfo.currentLocation ) {
+                // Do nothing.
+            } else if ( fraudInfo.currentLocation === 'L4' ) {
+                showPopupAndAdditionalAuth( 'geo', 'finger_voice_sensory' );
+            } else if ( fraudInfo.lastLocation === 'L3' || fraudInfo.lastLocation === 'L4' || fraudInfo.currentLocation === 'L3' ) {
+                showPopupAndAdditionalAuth( 'geo', 'finger' );
+            } else {
+                showPopupAndAdditionalAuth( 'geo', 'voice' );
+            }
+        }
+
+    } else if ( fraudInfo && fraudInfo.isActive === true && fraudInfo.type === 'behavior' ) {
+        // fraudInfo.isActive = false;
+        commonJs.setFraudInfo( fraudInfo );
+        if ( policyId && policyId !== fraudInfo.behavior ) {
+            if ( commonJs.isGalaxyNote7() ) {
+                showPopupAndAdditionalAuth( 'behavior', 'iris' );
+            } else {
+                showPopupAndAdditionalAuth( 'behavior', 'finger' );
+            }
+        }
+    }
+}
+
+function showPopupAndAdditionalAuth( type, policyId ) {
+    var userInfo = commonJs.getUserInfo(),
+        selectorOk,
+        selectorCancel,
+        selectorIcons,
+        popup,
+        okFn,
+        cancelFn,
+        html;
+
+    if ( type && type === 'timeout' ) {
+        selectorOk = '.timeout-popup .modal-pop .btn a.ok';
+        selectorCancel = '.timeout-popup .modal-pop .btn a.cancel';
+        popup = '#timeout-popup';
+        selectorIcons = '.timeout-popup div.v';
+    } else if ( type && type === 'geo' ) {
+        selectorOk = '.fraud-popup .modal-pop .btn a.ok';
+        selectorCancel = '.fraud-popup .modal-pop .btn a.cancel';
+        popup = '#fraud-popup';
+        selectorIcons = '.fraud-popup div.v';
+    } else if ( type && type === 'behavior' ) {
+        selectorOk = '.fraud-popup .modal-pop .btn a.ok';
+        selectorCancel = '.fraud-popup .modal-pop .btn a.cancel';
+        popup = '#fraud-popup';
+        selectorIcons = '.fraud-popup div.v';
+    }
+
+    okFn = function( event ) { // jshint ignore:line
+            app.requestFido( 'AUTH', userInfo.loginId, policyId );
+            $( selectorOk ).off( 'click' );
+            $( selectorCancel ).off( 'click' );
+            $( popup ).addClass( 'hide' );
+        };
+    cancelFn = function( event ) { // jshint ignore:line
+            $( selectorOk ).off( 'click' );
+            $( selectorCancel ).off( 'click' );
+            $( popup ).addClass( 'hide' );
+        };
+
+    switch ( policyId ) {
+        case 'finger':
+            html = '<span class="icon fp"></span>';
+            break;
+        case 'voice':
+            html = '<span class="icon vc"></span>';
+            break;
+        case 'iris':
+            html = '<span class="icon ir"></span>';
+            break;
+        case 'finger_face':
+            html = '<span class="icon fp"></span>' +
+                '<span class="cb"></span>' +
+                '<span class="icon fc"></span>';
+            break;
+        case 'finger_voice_sensory':
+            html = '<span class="icon fp"></span>' +
+                '<span class="cb"></span>' +
+                '<span class="icon fv"></span>';
+            break;
+    }
+
+    if ( selectorOk && selectorCancel && userInfo && popup ) {
+        $( selectorIcons ).empty();
+        $( selectorIcons ).prepend( html );
+
+        $( selectorOk ).on( 'click', okFn );
+        $( selectorCancel ).on( 'click', cancelFn );
+        $( popup ).removeClass( 'hide' );
+    }
+}
+
+</script>
+</body>
+</html>

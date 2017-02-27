@@ -1,0 +1,22 @@
+<resources>
+
+    <string name="app_name">NiceAuthSDK</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="initialize">Initialize</string>
+    <string name="get_discovery">GetDiscovery</string>
+    <string name="registration">Registration</string>
+    <string name="authentication">Authentication</string>
+    <string name="transaction">Transaction Confirmation</string>
+    <string name="deregistration">Deregistration</string>
+    <string name="output_result">Result : </string>
+
+    <string name="OK">OK</string>
+    <string name="Cancel">Cancel</string>
+
+    <string name="getdiscovery_start">GetDiscovery Start</string>
+    <string name="registration_start">Registration Start</string>
+    <string name="authentication_start">Authentication Start</string>
+    <string name="transaction_start">Transaction Start</string>
+    <string name="deregistration_start">Deregistration Start</string>
+</resources>

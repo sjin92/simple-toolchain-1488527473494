@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>FIDO Demo</title>
+<link rel="stylesheet" href="../../common/css/default.css">
+<link rel="stylesheet" href="../../common/css/common.css">  
+<link rel="stylesheet" href="../../common/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../common/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../common/lib/bootstrap/css/w3.css">
+<link rel="stylesheet" href="../css/bank-common.css">
+
+<style>
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+}
+
+.modal-header {
+	color: black !important;
+}
+
+.modal-body {
+	color: black !important;
+}
+</style>
+
+</head>
+<body class="w3-content" style="max-width:1600px" id="myHome" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<!-- Sidenav/menu -->
+<nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index:3;width:250px;"><br>
+
+  <a href="#" class="w3-padding nav-link" onclick="userPolicyList();">POLICY SETTING</a>
+  <a href="#" class="w3-padding nav-link" onclick="moveMainPage();">Demo Main</a>
+   
+</nav>
+
+<!-- Overlay effect when opening sidenav on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  <!-- Header -->
+  <header class="w3-container w3-top">
+    <!-- <span style="float:left; width:30px; color:rgb(3, 142, 209);">|</span> -->
+    <span style="float:left;"><i class="fa fa-home" aria-hidden="true" style="font-size:32px; padding-top:10px; cursor:pointer;" onclick="moveMainPage()"></i></span>
+    <!-- <span class="w3-opennav w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()" style="color:white"><i class="fa fa-bars"></i></span> -->
+    <span class="w3-nav-title" style="padding-right: 23px;><a href="bank_main.html">Smart Bank</a></span>
+  </header>
+  
+
+<div class="container-fluid text-center transfer-top-container">
+	
+	<div class="col-sm-4 amount-area">
+		<div class="amount-currency-area">Amount (USD)</div>
+		<input class="w3-input amount-display-area" type="text" maxlength="6"></input>
+		<span class="amount-small-area">.00</span>
+		<button class="w3-btn main-btn fix-amount-btn" value="100">100</button>
+		<button class="w3-btn main-btn fix-amount-btn" value="1000">1,000</button>
+		<button class="w3-btn main-btn fix-amount-btn" value="10000">10,000</button>
+		<button class="w3-btn main-btn clear-btn">Clear</button>
+	</div>
+	
+	<div class="col-sm-4 transfer-contact-area">
+		<div class="transfer-small-title blue-color-font">To</div>
+		<div class="tranfer-contact-content-area">
+			<div class="contact-user"><img src="../../main/img/user-icon.png" class="w3-circle" width="70px" height="70px"></div>
+			<div class="contact-name">Gildong Hong</div>
+			<div class="contact-email blue-color-font">gildong.hong@samsung.com</div>
+		</div>	
+	</div>
+
+	<div class="col-sm-4">
+		<div class="transfer-description-area">
+			<div class="transfer-small-title blue-color-font">Description</div>
+			<div class="tranfer-description-content-area">
+				
+				<input type="text" class="description" placeholder="Type your description in here." maxlength="20">
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<footer class="container-fluid text-center">
+	<!-- <div class="footer-btn left-btn" onclick="cancel()">Cancel</div> -->
+	<div class="footer-btn" onclick="transfer()">Transfer</div>
+</footer>
+
+
+<!-- End page content -->
+</div>
+
+
+<script src="../../common/lib/jquery/jquery-2.1.1.min.js"></script>    
+<script src="../../common/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../common/js/language/language.js"></script>
+<script src="../../common/js/util/exception.js"></script>
+<script src="../../common/js/util/commonUtils.js"></script>
+<script src="../../common/js/util/commonPopup.js"></script>
+<script src="../../common/js/util/logger.js"></script>
+<script src="../../common/js/util/app.js"></script>
+
+<script type="text/javascript">
+//This page as blurable
+var BLURABLE = false;
+
+
+// Script to open and close sidenav
+function w3_open() {
+    document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
+    document.getElementsByClassName("w3-overlay")[0].style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementsByClassName("w3-sidenav")[0].style.display = "none";
+    document.getElementsByClassName("w3-overlay")[0].style.display = "none";
+}	
+
+var totalAmount = 0;
+
+$(function(){
+	var userInfo = customStorage.read("USER");
+	
+	$('.clear-btn').on('click', function(){
+		totalAmount = 0;
+		
+		$('.amount-display-area').val("");
+	});
+	
+	$('.fix-amount-btn').on('click', function(){
+		var currentInput = 1 * $('.amount-display-area').val().replace(/,/gi, "");
+		
+		var selectedNum = 1 * $(this).attr('value');
+
+		var displayAmount;
+		if(currentInput > 0){
+			selectedNum += currentInput;
+		}
+		
+		totalAmount = selectedNum;
+		
+		userInfo.bankTotalAmount = totalAmount;
+		customStorage.write("USER", userInfo);
+		
+		$('.amount-display-area').val(numberWithCommas(selectedNum));
+		
+	});
+	
+	
+	$(".w3-input").keyup(function(event){
+		if (!(event.keyCode >=37 && event.keyCode<=40)) {
+			var inputVal = $(this).val();
+			$(this).val(numberWithCommas(inputVal.replace(/[^0-9]/gi,'')));
+		}
+	});
+	
+});
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function moveMainPage() {
+	location.assign("../../main/pages/main.html");
+}
+
+function cancel(){
+	location.assign("bank_main.html");
+}
+
+function transfer(){
+	if(totalAmount > 0){
+		
+		var userInfo = customStorage.read("USER");
+		
+		var description = $('.description').val();
+		userInfo.description = description
+		customStorage.write("USER", userInfo);
+		
+		
+		var policyId;
+		
+		if(userInfo.bankTotalAmount < 1000){
+			policyId = "";
+			requestOtp("AUTH");
+		}else if(userInfo.bankTotalAmount < 10000){
+			policyId = "finger";
+			requestFido("AUTH", policyId);
+		}else{
+			policyId = "finger_voice_sensory";
+			requestFido("AUTH", policyId);
+		}
+		
+		totalAmount = 0;
+	}else {
+		commonPopup.showPopup("Notice","Please type the amount to transfer.","OK");
+	}
+}
+
+function requestFido(type, policyId){
+	var userInfo = customStorage.read("USER");
+	app.requestFido(type, userInfo.loginId, policyId);
+}
+
+function requestOtp(type){
+	var userInfo = customStorage.read("USER");
+	app.requestOtp(type, userInfo.loginId);
+}
+
+function returnCallback(result){
+	if(result == "false" || result == false){
+		$(".clear-btn").trigger("click");
+		commonPopup.showPopup("Information", "Canceled Authentication","OK", "CustomHistory.back", "");
+	}else{
+		location.assign("bank_success.html");
+	}
+}
+
+
+
+
+</script>
+
+</body>
+</html>

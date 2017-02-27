@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../../common/css/common.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container-w">
+    <header>
+        <a href="#" class="go-back"></a>
+        <h2>Attachment</h2>
+    </header>
+
+    <div class="attchment-detail">
+        </div>
+        <img src="../img/samsung-sds-fido-intro-all.png" alt="" width="100%" />
+    </div>
+
+    <div class="pre-blur"></div>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+    app.requestBlurView( true );
+
+    $( 'a.go-back' ).click( function() {
+        commonJs.moveBack();
+    } );
+
+    setTimeout( function() {
+        $( 'div.pre-blur' ).addClass( 'hide' );
+    }, 1000 * 3 );
+} );
+</script>
+</body>
+</html>
+

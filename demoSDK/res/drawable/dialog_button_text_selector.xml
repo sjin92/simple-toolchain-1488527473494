@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/button_text_press" android:state_pressed="true"/>
+    <item android:color="@color/button_text" android:state_pressed="false"/>
+    <item android:color="@color/button_text" android:state_enabled="true"/>
+    <item android:color="@color/button_text"/>
+</selector><!-- From: file:/Users/FIDO-kj84park/Desktop/AndroidMultiModalAuthenticator/sc_ma_fido_client/client-sdk/src/main/res/drawable/dialog_button_text_selector.xml -->

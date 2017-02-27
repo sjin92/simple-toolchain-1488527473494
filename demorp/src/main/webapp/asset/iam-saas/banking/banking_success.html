@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h2 class="pay">Transfer</h2><!-- PADDING 제거를 위해 클래스 추가 20160825 -->
+        <a href="#" class="close"><img src="../img/icon_close.png" alt="Close" /></a>
+    </header>
+
+    <!-- Booking Transfer section -->
+    <section class="dfbox-section">
+
+        <!-- Transfer complete message -->
+        <div class="complete-transfer">
+            <span class="msg">Successfully Sent!</span>
+        </div>
+
+        <!-- order sheet -->
+        <div class="trasfer-infor">
+            <h3 class="tit">Transfer Information</h3>
+            <ul class="detail clearfix">
+                <li>
+                    <strong>TO</strong>
+                    <div class="info">
+                        <span class="name">Jay Yoon</span>
+                        <span class="addr">[Hansin Bank, 13-21-21342]</span>
+                    </div>
+                </li>
+                <li><strong>Amount </strong><span class="amount">$ 137</span></li>
+            </ul>
+        </div>
+
+        <div class="btn">
+              <a href="#" class="btn-light big ok">OK</a>
+          </div>
+
+    </section>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+    var params = commonJs.getSearchParameters();
+    $( 'span.amount' ).text( '$ ' + Number( params.amount ).toLocaleString( 'en' ) );
+
+    $( 'a.close' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+
+    $( '.btn a.ok' ).on( 'click', function() {
+        commonJs.moveBack();
+    } );
+} );
+</script>
+</body>
+</html>
+

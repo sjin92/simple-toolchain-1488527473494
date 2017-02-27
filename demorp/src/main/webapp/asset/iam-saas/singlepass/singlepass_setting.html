@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/swiper.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <!-- <a href="#" class="go-back"></a> -->
+        <a href="#" class="openmenu"><span></span><span></span><span></span></a>
+        <h2>Mobile SSO Setting</h2>
+    </header>
+
+    <div class="gnbmenu">
+        <h2>Welcome!</h2>
+        <ul class="setting-menus">
+            <li><a href="#" class="exit">Exit</a></li>
+        </ul>
+    </div>
+
+    <div class="menuon-dimmed">a</div>
+
+    <section class="singlepass-section">
+
+    <ul class="single-menus">
+        <li class="title">Enterprise Applications</li>
+        <li id="P04">
+            <a href="#" class="single"><span class="ss-icon ss-sns"></span>Messenger<br /><span class="sb hide"></span><span class="tx off">Inactive</span></a>
+        </li>
+        <li id="P01">
+            <a href="#" class="single"><span class="ss-icon ss-banking"></span>Banking<br /><span class="sb hide"></span><span class="tx off">Inactive</span></a>
+        </li>
+        <li id="P02">
+            <a href="#" class="single"><span class="ss-icon ss-shopping"></span>Shopping<br /><span class="sb hide"></span><span class="tx off">Inactive</span></a>
+        </li>
+        <li id="P03">
+            <a href="#" class="single"><span class="ss-icon ss-free"></span>Duty Free<br /><span class="sb hide"></span><span class="tx off">Inctive</span></a>
+        </li>
+        <li id="P05">
+            <a href="#" class="single"><span class="ss-icon ss-wallet"></span>Wallet<br /><span class="sb hide"></span><span class="tx off">Inactive</span></a>
+        </li>
+    </ul>
+
+    </section>
+
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script src="../common/lib/swiper/swiper.min.js"></script>
+<script>
+$( document ).ready( function() {
+    $( '.openmenu' ).click( function() {
+        $( '.gnbmenu, header, .singlepass-section, .menuon-dimmed' ).addClass( 'active' );
+        $( '.singlepass-section' ).css( 'position','fixed' );
+    } );
+    $( '.menuon-dimmed' ).click( function() {
+        $( '.gnbmenu, header, .singlepass-section, .menuon-dimmed' ).removeClass( 'active' );
+        setTimeout( function() {
+            $( '.singlepass-section' ).css( 'position','absolute' );
+        }, 500 );
+    } );
+
+    $( '.single-menus li a' ).on( 'touchstart', function() {
+        $( this ).addClass( 'on' );
+    } );
+    $( '.single-menus li a' ).on( 'touchend', function() {
+        $( this ).removeClass( 'on' );
+    } );
+
+    $( '.single-menus li a' ).on( 'click', function() {
+        var appId = $( this ).parent().prop( 'id' );
+        commonJs.movePage( commonJs.PAGE_LIST.SINGLEPASS_SETTING_DETAIL + '?appId=' + appId );
+    } );
+
+    $( '.setting-menus li a.exit' ).on( 'click', function() {
+        app.requestFinishApp( false );
+    } );
+
+    app.requestAppList();
+} );
+
+function returnCallback( result ) { // jshint ignore:line
+    if ( result != null ) {
+        $( 'span.tx' ).addClass( 'off' );
+        $( 'span.tx' ).text( 'Inactive' );
+        result = JSON.parse( result );
+        for ( var key in result ) {
+            if ( result[ key ].isActive === true || result[ key ].isActive === 'true' ) {
+                $( '#' + result[ key ].AppId ).find( 'span.tx' ).removeClass( 'off' );
+                $( '#' + result[ key ].AppId ).find( 'span.tx' ).text( 'Active' );
+                $( '#' + result[ key ].AppId ).find( 'a' ).removeClass( 'single' );
+                $( '#' + result[ key ].AppId ).find( 'span.tx' ).removeClass( 'off' );
+                $( '#' + result[ key ].AppId ).find( 'span.sb' ).removeClass( 'hide' );
+                $( '#' + result[ key ].AppId ).find( 'span.sb' ).text( result[ key ].UserId );
+            }
+        }
+    } else {
+        // Do nothing.
+    }
+}
+</script>
+</body>
+</html>

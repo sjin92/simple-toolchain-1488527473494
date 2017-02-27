@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+
+<div class="container-w">
+
+    <header>
+        <a href="#" class="go-back"></a>
+        <h2>Inbox</h2>
+    </header>
+
+    <div class="inbox-detail">
+        <p class="title ellip">Re : Other requests regarding the discusttion point is</p>
+        <p class="date">09-Sep-2016 11:25</p>
+        <div class="sender">
+            Sender
+            <span>Rechard Won/Solution G (FIDO TF)</span>
+        </div>
+    </div>
+    <div class="adding-file">
+        <a href="#" id="attachment1" class="file-p">Innovation_User_Auth_Fido.ppts <span class="lock"></span></a>
+        <a href="#" id="attachment2" class="file-p">Fingerprint Mouse.ppts</a>
+    </div>
+
+    <div class="inbox-contents">
+        <p>
+            Hi Frank,<br /><br />
+
+            Thank you for the prompt reply.<br /><br />
+
+            Is it Safe to assume that the discussion point is<br />
+            How to do it rather than go or no go of the<br />
+            Pilot?<br /><br />
+
+            If there is anything we could assist in<br />
+            Addition the simplification of the demo set to<br />
+            Fasten the decision, please let Adrian and me<br />
+            Know so that we will see what we have to do.<br /><br />
+
+            Thank you.
+        </p>
+    </div>
+
+    <div class="btm-btn three-btn">
+        <a href="#">Reply</a><a href="#">Forward</a><a href="#">Delete</a>
+    </div>
+</div>
+
+
+<script src="../common/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="../common/js/util/app.js"></script>
+<script src="../common/js/util/exception.js"></script>
+<script src="../common/js/util/commonUtils.js"></script>
+<script src="../common/js/util/commonPopup.js"></script>
+<script src="../common/js/util/logger.js"></script>
+<script src="../common/js/language/language.js"></script>
+<script src="../common/js/common.js"></script>
+<script>
+$( document ).ready( function() {
+    $( '.setting-menus li a' ).on( 'touchstart', function() {
+        $( this ).addClass( 'on' );
+        return false;
+    } );
+    $( '.setting-menus li a' ).on( 'touchend', function() {
+        $( this ).removeClass( 'on' );
+        return false;
+    } );
+
+    $( 'a.go-back' ).click( function() {
+        commonJs.moveBack();
+    } );
+
+    $( '#attachment1' ).click( function() {
+        commonJs.movePage( commonJs.PAGE_LIST.WORKPLACE_ATTACHMENT1 );
+    } );
+
+    // $( '#attachment2' ).click( function() {
+    //     commonJs.movePage( commonJs.PAGE_LIST.WORKPLACE_ATTACHMENT2 );
+    // } );
+
+} );
+</script>
+</body>
+</html>
+

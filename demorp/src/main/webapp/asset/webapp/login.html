@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html  manifest="appcache.manifest">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FIDO Demo APP</title>
+    	
+	<!-- CSS Import -->
+	<link href="./common/css/default.css" rel="stylesheet">
+	<link href="./common/css/common.css" rel="stylesheet">
+	<link href="./common/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="./common/lib/bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="./common/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="./login/css/login.css" rel="stylesheet">
+	
+	<style type="text/css">
+		.modal {
+		  text-align: center;
+		  padding: 0!important;
+		}
+		
+		.modal:before {
+		  content: '';
+		  display: inline-block;
+		  height: 100%;
+		  vertical-align: middle;
+		  margin-right: -4px;
+		}
+		
+		.modal-dialog {
+		  display: inline-block;
+		  text-align: left;
+		  vertical-align: middle;
+		  width: 80%;
+		}
+	</style>
+	
+</head>
+<body>
+    <div id="initPg" class="page-wrapper" style="display:none;">
+    	<div class="container-fluid page-wrapper-inner no-padding">
+	   		<h1 class="title">Samsung SDS<br/>FIDO Demo</h1>
+	    	<div class="logo v-center">
+				<img src="../common/img/logo_ko.gif" class="sds_logo"></img>
+				<p>COPYRIGHT(C) SAMSUNG SDS ALL RIGHT RESERVED.</p>
+			</div>
+	    	     		        
+			<button type="button" class="btn btn-primary btn-block bottom" onclick="goLoginPage();" replaceText="LABEL_BUTTON_START_NOW">Login</button>
+		</div>
+    </div>
+    <div id="loginPg" >
+    	<div class="container-fluid page-wrapper no-padding">
+    	  	<h2 class="login-title" replaceText="LABEL_INPUT_LOGIN_ID">Email account</h2>
+    	  	<div class="login-message" replaceText="LABEL_INFO_TYPE_LOGIN_ID">Please enter your Email account</div>
+		    <form role="form" novalidate="novalidate" onsubmit="return false;">
+		    	<div class="col-xs-16 form-group v-center">
+			  		<label for="loginId" class="sr-only" replaceText="LABEL_INPUT_LOGIN_ID">Email account</label>
+			  		<input type="email" class="form-control login-input" id="loginId" replaceAttr='{"placeholder":"LABEL_INPUT_LOGIN_SAMPLE"}'>
+			  	</div>
+			  	<button type="submit" class="btn btn-primary btn-block bottom" onclick="login();" replaceText="LABEL_BUTTON_LOGIN">Login</button>
+			  	<!-- <button type="submit" class="btn btn-primary btn-block bottom" onclick="tempLogin();" replaceText="LABEL_BUTTON_LOGIN">Login</button> -->
+			  </div>
+			</form>
+		</div>
+	</div>
+
+    
+	<!-- js Import -->
+    <!-- <script src="../common/lib/jqueryMobile/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="./common/lib/jquery/jquery-2.1.1.min.js"></script>    
+    <script src="./common/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./common/js/util/app.js"></script>
+    <script src="./common/js/language/language.js"></script>
+    <script src="./common/js/util/exception.js"></script>
+    <script src="./common/js/util/commonUtils.js"></script>
+    <script src="./common/js/util/commonPopup.js"></script>
+    <script src="./common/js/util/logger.js"></script>
+    
+	<script type="text/javascript">
+		function handleCacheEvent(event) {
+			var appCache = window.applicationCache;
+			
+			//console.log(event);
+			switch(event.type) {
+			case "checking":
+				Logger.info('ApplicationCache checking');
+				progress.show("downloading");
+				break;
+			case "noupdate":	//
+				Logger.info('No update ApplicationCache');
+				progress.setProgress(100);
+				progress.hide();
+				break;
+			case "downloading":	//
+				Logger.info('ApplicationCache downloading');				
+				break;
+			case "progress":	// 
+				Logger.info('ApplicationCache progress');
+				var total = event.total;
+				var current = event.loaded;
+				progress.setProgress(Math.ceil(current*100/total));
+				break;
+			case "cached":	// cache compleated
+				Logger.info('ApplicationCache completed');
+				progress.hide();
+				break;
+			case "error":	// cache compleated
+				Logger.error('Resource loading error : {0}', event.url);
+				progress.hide();
+				break;
+			case "updateready":
+				if(appCache.status == appCache.UPDATEREADY) {
+					Logger.info('Page updated');
+			          // 브라우저가 새 앱 캐시를 다운받은 후 페이지 리로드 수행
+			          appCache.swapCache();
+			          window.location.reload();
+		        } else {
+		          // Do nothing
+		        }
+				break;
+				default:
+					Logger.info('Do nothing event : {0}', event.type);
+					
+			}
+		    return false;
+		}
+
+		function tempLogin() {
+			location.href="./main/pages/main.html";
+		}
+		
+		function goToMainPage() {
+			var userInfo = customStorage.read("USER");
+			app.requestLoginComplete(userInfo.loginId, contextRoot + "/webapp_v2/main/pages/main.html", "");		
+		}
+
+		function login() {
+			var userInfo = customStorage.read("USER");
+			if(!userInfo) {
+				userInfo = new Object();
+				userInfo.rpId = "InternalOnly";
+			}
+			userInfo.loginId = $("#loginId").val();
+			customStorage.write("USER", userInfo);
+			var emailExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			//var regExp = /^[a-zA-Z0-9]+$/;
+			if(!userInfo.loginId) {
+				commonPopup.showPopup("LABEL_ERR_TITLE".i18n(), "MSG_ERR_LOGINID_EMPTY".i18n());
+				return false;
+			}
+			else if(!emailExp.test(userInfo.loginId)) {
+				commonPopup.showPopup("LABEL_ERR_TITLE".i18n(), "MSG_ERR_LOGINID_FORMAT".i18n());
+				return false;
+			}
+			
+			goToMainPage();
+			
+			//commonPopup.showPopup("LABEL_INFO_TITLE".i18n(), "MSG_FIDO_REG_START".i18n(),"OK","goToMainPage");
+			
+			/* else if(!regExp.test(userInfo.loginId)) {
+				commonPopup.showPopup("LABEL_ERR_TITLE".i18n(), "MSG_ERR_LOGINID_FORMAT".i18n());
+				return false;
+			} */
+
+			/* if(navigator.onLine) {	// Online Mode
+				commonAjax("../user/" + userInfo.loginId + "/getMainPage", null,"GET",
+						{
+						
+							successFunc:function(data) {
+								if(data.errorCode && "0".indexOf(data.errorCode) != "0") {
+									Logger.error("MSG_ERR_LOGIN".i18n());
+									commonPopup.showPopup("LABEL_ERR_TITLE".i18n(), "MSG_ERR_LOGIN".i18n());
+								}
+								else if(data.mainPage){
+									userInfo.mainPage = data.mainPage; 
+									customStorage.write("USER", userInfo);
+									//commonPopup.showPopup("LABEL_INFO_TITLE".i18n(), "MSG_SAVE_SUCC".i18n(),"OK","goMainPage");
+										
+									app.requestLoginComplete(userInfo.loginId, "https://scdev.oxygenapi.com/demo-server/webapp_v2/main/pages/main.html", "");
+									location.assign("./main/pages/main.html");
+								}
+								else {
+									customStorage.write("USER", userInfo);
+									//commonPopup.showPopup("LABEL_INFO_TITLE".i18n(), "MSG_SAVE_SUCC".i18n(),"OK","goMainPage");	
+									app.requestLoginComplete(userInfo.loginId, "https://scdev.oxygenapi.com/demo-server/webapp_v2/main/pages/main.html", "");
+									// Move next page
+									location.assign("./main/pages/main.html");
+								}
+							},
+							errorFunc:function() {
+								customStorage.write("USER", userInfo);	
+								Logger.debug("error");
+								location.assign("../webapp_v2/login.html");
+								// Move next page
+								//location.assign("./main/pages/main.html");
+							}
+						});
+			}
+			else {	// Offline Mode
+				customStorage.write("USER", userInfo);	
+				
+				// Move next page
+				location.assign("./main/pages/main.html");
+			} */
+		}
+		
+		
+		function goLoginPage() {
+			$("#initPg").hide();
+			$("#loginPg").show();				
+		}
+		
+		$(window).load(function() {		
+			var appCache = window.applicationCache;			
+			// 메니페스트이 리소스가 모두 캐싱된 후 발생.
+		    appCache.addEventListener('cached', handleCacheEvent, false);
+		    // 메니페스트를 새로 가져와 캐시 갱신을 해야 하는지 확인. 과정상 항상 가장 먼저 발생.
+		    appCache.addEventListener('checking', handleCacheEvent, false);
+		    // 갱신된 것을 찾았다. 브라우저가 리소스를 다운로드 시작.
+		    appCache.addEventListener('downloading', handleCacheEvent, false);
+		    // 메니페스트 파일에 대한 응답이 404나 410, 다운로드 실패, 
+		    // 아니면 다운로드가 진행중인데 메니페스트가 변경됬을때.
+		    appCache.addEventListener('error', handleCacheEvent, false);
+		    // 메이페스트의 모두 다운로드 완료후 발생.
+		    appCache.addEventListener('noupdate', handleCacheEvent, false);
+		    // 메니페스트 파일에 대한 응답이 404나 410 이면 발생한다. 
+		    // 앱 캐시 안의 내용이 삭제 된다. 
+		    appCache.addEventListener('obsolete', handleCacheEvent, false);
+		    // 메니페스트 파일에 나열된 각 리소스를 모두 가져오면 발생
+		    appCache.addEventListener('progress', handleCacheEvent, false);
+		    // 메니페스트의 리소스들이 새로 다시 다운로드 되었을때 발생.
+		    appCache.addEventListener('updateready', handleCacheEvent, false);
+			
+			var userInfo = customStorage.read("USER");
+			
+			if(userInfo) {
+				if(userInfo.loginId) {
+					Logger.debug("Already signed");
+					location.assign("./main/pages/main.html");
+					//goToMainPage();
+				}
+			}
+		});
+	</script>
+</body>
+</html>

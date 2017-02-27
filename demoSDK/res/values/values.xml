@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/FIDO-kj84park/Desktop/AndroidMultiModalAuthenticator/sc_ma_fido_client/client-sdk/src/main/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="authenticator_selector_popup_title">#FAFAFA</color>
+    <color name="btn_bl">#1976d2</color>
+    <color name="btn_bl_press">#156abd</color>
+    <color name="btn_bl_press_text">#ddedf5</color>
+    <color name="btn_wh">#fafafa</color>
+    <color name="btn_wh_disable">#80FAFAFA</color>
+    <color name="btn_wh_press">#e1e1e1</color>
+    <color name="btn_wh_press_border">#7fa0c3</color>
+    <color name="btn_wh_press_text">#1867b2</color>
+    <color name="button_color">#fafafa</color>
+    <color name="button_divider">#3a3a3a</color>
+    <color name="button_pressed">#1976d2</color>
+    <color name="button_text">#1976d2</color>
+    <color name="button_text_press">#fafafa</color>
+    <color name="defaultBlue">#1976d2</color>
+    <color name="defaultWhite">#FAFAFA</color>
+    <color name="listSelected">#1A000000</color>
+    <color name="list_item_divider">#ced1d3</color>
+    <color name="list_pressed">#1976d2</color>
+    <!-- From: file:/Users/FIDO-kj84park/Desktop/AndroidMultiModalAuthenticator/sc_ma_fido_client/client-sdk/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="authenticator_selector_button_Layout_margin_top">20dp</dimen>
+    <dimen name="authenticator_selector_button_horizontal_divider_height">1dp</dimen>
+    <dimen name="authenticator_selector_frame_padding_top">16dp</dimen>
+    <dimen name="authenticator_selector_icon_left_padding">21dp</dimen>
+    <dimen name="authenticator_selector_list_image_margin">20dp</dimen>
+    <dimen name="authenticator_selector_list_padding_bottom">4dp</dimen>
+    <dimen name="authenticator_selector_list_padding_left">16.50dp</dimen>
+    <dimen name="authenticator_selector_list_padding_right">6dp</dimen>
+    <dimen name="authenticator_selector_list_padding_top">4dp</dimen>
+    <dimen name="authenticator_selector_radio_left_padding">19.50dp</dimen>
+    <dimen name="authenticator_selector_title_divider_height">2dp</dimen>
+    <!-- From: file:/Users/FIDO-kj84park/Desktop/AndroidMultiModalAuthenticator/sc_ma_fido_client/client-sdk/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="app_name">FIDO RP TEST</string>
+    <string name="authenticator_selection_cancel">CANCEL</string>
+    <string name="authenticator_selection_ok">CONFIRM</string>
+    <string name="authenticator_selector_dialog_title">Authenticator Selector</string>
+    <string name="face_print">Faceprint</string>
+    <string name="fido_client_permission_description">This application acts as a FIDO Client. It may access authentication devices available on the system, create and delete FIDO registrations on behalf of other applications.</string>
+    <string name="finger_print">Fingerprint</string>
+    <string name="footer_authenticator_selector">Long click for the detail description.</string>
+    <string name="title_activity_oxygen">OxygenActivity</string>
+    <string name="title_activity_sdk">SDKACtivity</string>
+    <string name="title_authenticator_selector">Authenticator Selector</string>
+    <!-- From: file:/Users/FIDO-kj84park/Desktop/AndroidMultiModalAuthenticator/sc_ma_fido_client/client-sdk/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AppTheme" parent="android:Theme.NoDisplay">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="AuthenticatorSelectorTheme" parent="android:Theme.Holo">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+    </style>
+    <style name="PopupTheme" parent="android:Theme.Holo.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="SelectionButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/dialog_button_selector</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@drawable/dialog_button_text_selector</item>
+    </style>
+    <style name="SelectionListView" parent="@android:style/Widget.Holo.ListView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:listSelector">@drawable/list_selector</item>
+        <item name="android:divider">@color/list_item_divider</item>
+        <item name="android:footerDividersEnabled">true</item>
+        <item name="android:dividerHeight">1dp</item>
+    </style>
+    <style name="TextAppearance" parent="@android:style/TextAppearance">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="TextAppearance.DialogButtonText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="TextAppearance.PopupTitle" parent="@android:style/TextAppearance.DialogWindowTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/authenticator_selector_popup_title</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="TextAppearance.TextDesc">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#555555</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="TextAppearance.TextTitle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="ThumnailView">
+        <item name="android:layout_marginTop">@dimen/authenticator_selector_list_image_margin</item>
+        <item name="android:layout_marginBottom">@dimen/authenticator_selector_list_image_margin</item>
+        <item name="android:layout_marginLeft">@dimen/authenticator_selector_list_image_margin</item>
+        <item name="android:layout_marginRight">@dimen/authenticator_selector_list_image_margin</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@drawable/noimg</item>
+        <item name="android:contentDescription">@string/app_name</item>
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">45dp</item>
+
+        <item name="android:layout_gravity">center_vertical|center</item>
+    </style>
+    <style name="ToggleButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/radio_button_selector</item>
+        <item name="android:layout_gravity">center_vertical|center</item>
+        <item name="android:focusable">false</item>
+        <item name="android:clickable">false</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:textOff">""</item>
+        <item name="android:textOn">""</item>
+    </style>
+</resources>
