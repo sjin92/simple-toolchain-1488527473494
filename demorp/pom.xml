@@ -168,16 +168,22 @@
 			<groupId>org.restlet.jee</groupId>
 			<artifactId>org.restlet</artifactId>
 			<version>2.2.1</version>
+			<scope>system</scope>
+            		<systemPath>${project.basedir}/lib/org.restlet-2.2.1.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.restlet.jee</groupId>
 			<artifactId>org.restlet.ext.jackson</artifactId>
 			<version>2.2.1</version>
+			<scope>system</scope>
+            		<systemPath>${project.basedir}/lib/org.restlet.ext.jackson-2.2.1.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.restlet.jee</groupId>
 			<artifactId>org.restlet.ext.jaxrs</artifactId>
 			<version>2.2.1</version>
+			<scope>system</scope>
+            		<systemPath>${project.basedir}/lib/org.restlet.ext.jaxrs-2.2.1.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
