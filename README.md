@@ -6,6 +6,9 @@ You can bind a Nexsign service instance to an Relying Party application running 
 
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/Nexsign/DemoRP)
 
+
+[![Deploy to Bluemix-test](https://bluemix.net/deploy/button.png)](https://console.ng.bluemix.net/devops/pipelines/5573be7a-15eb-4321-b74d-4eab76c7b140)
+
 ### Running the app on Bluemix
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
