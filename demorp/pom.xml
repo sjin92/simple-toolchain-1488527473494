@@ -19,12 +19,13 @@
 		<slf4j.version>1.7.5</slf4j.version>
 		<!-- JACOCO -->
 		<jacoco.version>0.7.2.201409121644</jacoco.version>
+	        <system.score.path>${basedir}/lib</system.score.path>
 	</properties>
 	
 	<repositories>
 		<repository>
 			<id>fido-group</id>
-			<url>http://70.121.224.52:8081/nexus/content/groups/FIDO_Public_Repositories/</url>
+			<url>http://repo1.maven.org/maven2/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -160,6 +161,8 @@
 			<groupId>com.samsung.sds.fido</groupId>
 			<artifactId>uaf-server-sdk</artifactId>
 			<version>1.4.1</version>
+			<scope>system</scope>
+            		<systemPath>${basedir}/lib/uaf-server-sdk-1.4.1.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.restlet.jee</groupId>
@@ -190,6 +193,8 @@
 			<groupId>org.anyframe</groupId>
 			<artifactId>anyframe-core</artifactId>
 			<version>1.6.0</version>
+			<scope>system</scope>
+            		<systemPath>${basedir}/lib/anyframe-core-1.6.0.jar</systemPath>
 		</dependency>
 		<!-- JACOCO -->
 		<dependency>
