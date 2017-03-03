@@ -1,5 +1,3 @@
-declared-services:
-
 applications:
 - path: target/samplerp-1.0.0.war
   memory: 512M
