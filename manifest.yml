@@ -1,0 +1,11 @@
+declared-services:
+
+applications:
+- path: target/samplerp-1.0.0.war
+  memory: 512M
+  instances: 1
+  domain: mybluemix.net
+  name: demorp
+  host: demorp
+  disk_quota: 1024M
+  buildpack:	java_buildpack
