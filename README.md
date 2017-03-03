@@ -4,8 +4,7 @@ Demo RP is a demo RP application running on bluemix runtime demonstrating how to
 
 You can bind a Nexsign service instance to an Relying Party application running on Bluemix runtime and then use FIDO authentication with the Nexsign service.
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/Nexsign/DemoRP)
-
+[![Deploy To Bluemix](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/Nexsign/DemoRP)
 
 [![Deploy to Bluemix-test](https://bluemix.net/deploy/button.png)](https://console.ng.bluemix.net/devops/pipelines/5573be7a-15eb-4321-b74d-4eab76c7b140)
 

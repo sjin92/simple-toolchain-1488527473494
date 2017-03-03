@@ -1,0 +1,64 @@
+description: demorp-sample-toolchain
+name: demorp-sample-toolchain
+sample-build:
+  parameters:
+    configuration:
+      content: "---\nstages:\n- name: BUILD\n  inputs:\n  - type: git\n    branch:
+        master\n    service: ${SAMPLE_REPO}\n  triggers:\n  - type: commit\n  jobs:\n
+        \ - name: Build\n    type: builder\n- name: DEPLOY\n  inputs:\n  - type: job\n
+        \   stage: BUILD\n    job: Build\n  triggers:\n  - type: stage\n  properties:\n
+        \ - name: CF_APP_NAME\n    value: undefined\n    type: text\n  - name: APP_URL\n
+        \   value: undefined\n    type: text\n  jobs:\n  - name: Blue-Green Deploy\n
+        \   type: deployer\n    target:\n      region_id: ${PROD_REGION_ID}\n      organization:
+        ${PROD_ORG_NAME}\n      space: ${PROD_SPACE_NAME}\n      application: ${CF_APP_NAME}\n
+        \   script: |\n      #!/bin/bash\n      # Push app\n      if ! cf app $CF_APP;
+        then  \n        cf push $CF_APP\n      else\n        OLD_CF_APP=${CF_APP}-OLD-$(date
+        +\"%s\")\n        rollback() {\n          set +e  \n          if cf app $OLD_CF_APP;
+        then\n            cf logs $CF_APP --recent\n            cf delete $CF_APP
+        -f\n            cf rename $OLD_CF_APP $CF_APP\n          fi\n          exit
+        1\n        }\n        set -e\n        trap rollback ERR\n        cf rename
+        $CF_APP $OLD_CF_APP\n        cf push $CF_APP\n        cf delete $OLD_CF_APP
+        -f\n      fi\n      # Export app name and URL for use in later Pipeline jobs\n
+        \     export CF_APP_NAME=\"$CF_APP\"\n      export APP_URL=http://$(cf app
+        $CF_APP_NAME | grep urls: | awk '{print $2}')\n      # View logs\n      #cf
+        logs \"${CF_APP}\" --recent\n      \n"
+      env:
+        CF_APP_NAME: demorp-sample-toolchain
+        PROD_ORG_NAME: Grace_Organization
+        PROD_REGION_ID: ibm:yp:us-south
+        PROD_SPACE_NAME: test
+        SAMPLE_REPO: sample-repo
+      execute: true
+    name: simple-simple-toolchain
+    services:
+    - sample-repo
+    ui-pipeline: true
+  service_id: pipeline
+sample-repo:
+  parameters:
+    api_root_url: https://api.github.com
+    enable_traceability: false
+    # extra_capabilities:
+    # - capability_id: git.issues
+    #   dashboard_url: https://github.com/open-toolchain/node-hello-world/issues
+    #   display_name: Issues
+    #   enabled: true
+    #   label: node-hello-world
+    #   tags:
+    #   - think
+    #   - code
+    # has_issues: true
+    has_issues: false
+    label: node-hello-world
+    owner_id: Nexsign
+    repo_name: node-hello-world
+    repo_url: https://github.com/Nexsign/DemoRP.git
+    token_url: https://otc-github-public-broker.ng.bluemix.net/github/token
+    type: link
+  service_id: githubpublic
+# webide:
+#   parameters:
+#     container_url: ""
+#     dashboard_url: /devops/code/edit/edit.html#,toolchain=c8a68e3d-e682-48e0-84c4-c2d12684bbc3
+#     toolchain_id: c8a68e3d-e682-48e0-84c4-c2d12684bbc3
+#   service_id: orion
