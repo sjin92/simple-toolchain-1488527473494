@@ -8,4 +8,4 @@ applications:
   name: demorp
   host: demorp
   disk_quota: 1024M
-  buildpack:	java_buildpack
+  buildpack: java_buildpack
